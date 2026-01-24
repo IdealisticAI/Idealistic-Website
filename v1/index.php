@@ -831,7 +831,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 }
 
 ?><!doctype html>
-<html lang="<?php echo htmlspecialchars($lang[$lang] ?? "en", ENT_QUOTES, 'UTF-8'); ?>" data-theme="light">
+<html lang="<?php echo htmlspecialchars($langCodes[$lang] ?? "en", ENT_QUOTES, 'UTF-8'); ?>" data-theme="light">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -858,7 +858,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "BigManage",
+            "name": "<?php echo IdealisticOfficeVariable::APPLICATION_NAME ?>",
             "operatingSystem": "Web",
             "url": "https://www.idealistic.ai",
             "description": "Manage companies, roles, reminders and access using natural chat across multiple platforms.",
@@ -1188,7 +1188,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
-            <img src="https://www.idealistic.ai/.images/logoCircular.png" alt="<?php echo IdealisticOfficeVariable::COMPANY_NAME ?> logo">
+            <img src="https://www.idealistic.ai/.images/logoCircular.png"
+                 alt="<?php echo IdealisticOfficeVariable::COMPANY_NAME ?> logo">
             <span class="fw-bold"><?php echo htmlspecialchars($t['brand'], ENT_QUOTES, 'UTF-8'); ?></span>
         </a>
 
@@ -1212,7 +1213,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
                 </li>
                 <li class="nav-item ms-2 d-none d-lg-inline"><a class="btn btn-outline-primary btn-sm"
                                                                 href="#contact"><?php echo htmlspecialchars($t['cta_request'], ENT_QUOTES, 'UTF-8'); ?>
-                        <span class="visually-hidden"> for BigManage</span></a></li>
+                        <span class="visually-hidden"> for <?php echo IdealisticOfficeVariable::APPLICATION_NAME ?></span></a>
+                </li>
 
                 <li class="nav-item ms-2">
                     <div class="dropdown">
@@ -1279,7 +1281,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
                 <div class="d-flex gap-3 mt-4 flex-wrap reveal">
                     <a href="#contact"
                        class="btn btn-primary btn-lg"><?php echo htmlspecialchars($t['cta_request'], ENT_QUOTES, 'UTF-8'); ?>
-                        <span class="visually-hidden"> for BigManage</span></a>
+                        <span class="visually-hidden"> for <?php echo IdealisticOfficeVariable::APPLICATION_NAME ?></span></a>
                     <a href="#features"
                        class="btn btn-outline-secondary btn-lg"><?php echo htmlspecialchars($t['cta_explore'], ENT_QUOTES, 'UTF-8'); ?></a>
                 </div>
