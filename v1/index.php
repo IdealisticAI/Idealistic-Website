@@ -1221,22 +1221,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
                             <i class="bi bi-translate"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="/office/en/">🇬🇧 English</a>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/en/">🇬🇧 English</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/el/">🇬🇷 Greek</a>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/el/">🇬🇷 Greek</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/es/">🇪🇸 Spanish</a>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/es/">🇪🇸 Spanish</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/fr/">🇫🇷 French</a>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/fr/">🇫🇷 French</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/de/">🇩🇪 German</a>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/de/">🇩🇪 German</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/it/">🇮🇹 Italian</a>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/it/">🇮🇹 Italian</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/pt/">🇵🇹
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/pt/">🇵🇹
                                     Portuguese</a>
                             </li>
-                            <li><a class="dropdown-item" href="/office/nl/">🇳🇱 Dutch</a></li>
+                            <li><a class="dropdown-item"
+                                   href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/nl/">🇳🇱 Dutch</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -1459,7 +1468,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
                         </li>
                         <li>
                             <i class="bi bi-currency-exchange me-2"></i><a
-                                    href="http://www.idealistic.ai/office/pricing"
+                                    href="http://www.idealistic.ai<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/pricing"
                                     target="_blank"><?php echo htmlspecialchars($t['ft_pricing'], ENT_QUOTES, 'UTF-8'); ?></a>
                         </li>
                     </ul>
@@ -1534,15 +1543,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 
         <div class="py-2 footer-links d-flex align-items-center gap-3 flex-wrap">
             <a class="d-flex align-items-center gap-2"
-               href="/office/terms/terms_of_use/"
+               href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/terms/terms_of_use/"
                target="_blank" rel="noopener"><i class="bi bi-journal-text"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_terms'], ENT_QUOTES, 'UTF-8'); ?></span></a>
             <a class="d-flex align-items-center gap-2"
-               href="/office/policies/privacy_policy/"
+               href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/policies/privacy_policy/"
                target="_blank" rel="noopener"><i class="bi bi-shield-lock"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_privacy'], ENT_QUOTES, 'UTF-8'); ?></span></a>
             <a class="d-flex align-items-center gap-2"
-               href="/office/documentation/<?php echo $langCodes[$lang] ?? ''; ?>"
+               href="<?php echo BigManageVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/<?php echo $langCodes[$lang] ?? ''; ?>"
                target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_doc'], ENT_QUOTES, 'UTF-8'); ?></span></a>
             <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"
