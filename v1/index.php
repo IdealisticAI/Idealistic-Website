@@ -1529,7 +1529,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-3 py-2">
             <img src="https://www.idealistic.ai/.images/logoCircular.png" alt="logo" height="32">
-            <small class="muted">© 2025 Idealistic — <?php echo BigManageVariable::APPLICATION_NAME ?></small>
+            <small class="muted">© 2025 <?php echo BigManageVariable::COMPANY_NAME ?></small>
         </div>
 
         <div class="py-2 footer-links d-flex align-items-center gap-3 flex-wrap">
