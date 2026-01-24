@@ -1,6 +1,6 @@
 <?php
 require '/var/www/.structure/library/base/form.php';
-require '/var/www/.structure/library/bigmanage/init.php';
+require '/var/www/.structure/library/idealistic_office/init.php';
 $recaptcha_secret_key_data = get_keys_from_file("google_recaptcha", 1);
 
 if ($recaptcha_secret_key_data === null) {
@@ -1221,22 +1221,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
                             <i class="bi bi-translate"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="/bigmanage/en/">🇬🇧 English</a>
+                            <li><a class="dropdown-item" href="/office/en/">🇬🇧 English</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/el/">🇬🇷 Greek</a>
+                            <li><a class="dropdown-item" href="/office/el/">🇬🇷 Greek</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/es/">🇪🇸 Spanish</a>
+                            <li><a class="dropdown-item" href="/office/es/">🇪🇸 Spanish</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/fr/">🇫🇷 French</a>
+                            <li><a class="dropdown-item" href="/office/fr/">🇫🇷 French</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/de/">🇩🇪 German</a>
+                            <li><a class="dropdown-item" href="/office/de/">🇩🇪 German</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/it/">🇮🇹 Italian</a>
+                            <li><a class="dropdown-item" href="/office/it/">🇮🇹 Italian</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/pt/">🇵🇹
+                            <li><a class="dropdown-item" href="/office/pt/">🇵🇹
                                     Portuguese</a>
                             </li>
-                            <li><a class="dropdown-item" href="/bigmanage/nl/">🇳🇱 Dutch</a></li>
+                            <li><a class="dropdown-item" href="/office/nl/">🇳🇱 Dutch</a></li>
                         </ul>
                     </div>
                 </li>
@@ -1459,7 +1459,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
                         </li>
                         <li>
                             <i class="bi bi-currency-exchange me-2"></i><a
-                                    href="http://www.idealistic.ai/bigmanage/pricing"
+                                    href="http://www.idealistic.ai/office/pricing"
                                     target="_blank"><?php echo htmlspecialchars($t['ft_pricing'], ENT_QUOTES, 'UTF-8'); ?></a>
                         </li>
                     </ul>
@@ -1534,15 +1534,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
 
         <div class="py-2 footer-links d-flex align-items-center gap-3 flex-wrap">
             <a class="d-flex align-items-center gap-2"
-               href="/bigmanage/terms/terms_of_use/"
+               href="/office/terms/terms_of_use/"
                target="_blank" rel="noopener"><i class="bi bi-journal-text"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_terms'], ENT_QUOTES, 'UTF-8'); ?></span></a>
             <a class="d-flex align-items-center gap-2"
-               href="/bigmanage/policies/privacy_policy/"
+               href="/office/policies/privacy_policy/"
                target="_blank" rel="noopener"><i class="bi bi-shield-lock"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_privacy'], ENT_QUOTES, 'UTF-8'); ?></span></a>
             <a class="d-flex align-items-center gap-2"
-               href="/bigmanage/documentation/<?php echo $langCodes[$lang] ?? ''; ?>"
+               href="/office/documentation/<?php echo $langCodes[$lang] ?? ''; ?>"
                target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_doc'], ENT_QUOTES, 'UTF-8'); ?></span></a>
             <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"
