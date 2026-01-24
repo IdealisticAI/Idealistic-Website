@@ -1,1 +1,1 @@
-Website implementation of the BigManage application.
+Website implementation of the Idealistic application.
