@@ -1,5 +1,6 @@
 <?php
-require_once '/var/www/.structure/library/base/utilities.php';
+require '/var/www/.structure/library/base/form.php';
+require '/var/www/.structure/library/bigmanage/init.php';
 $recaptcha_secret_key_data = get_keys_from_file("google_recaptcha", 1);
 
 if ($recaptcha_secret_key_data === null) {
@@ -12,7 +13,7 @@ $recaptcha_site_key = '6Lf_zyQUAAAAAAxfpHY5Io2l23ay3lSWgRzi_l6B';
 $translations = [
 
     'english' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Home',
         'nav_features' => 'Features',
         'nav_usecases' => 'How it works',
@@ -22,7 +23,7 @@ $translations = [
         'label_dark' => 'Dark',
 
         'h1' => 'Control your company with natural chat — no menus, no friction.',
-        'lead' => 'BigManage lets teams control their company using natural chat — without menus or friction. Manage positions, reminders, access, clients and workflows across WhatsApp, Telegram, Discord, email and more.',
+        'lead' => BigManageVariable::APPLICATION_SHORT_NAME . ' lets teams control their company using natural chat — without menus or friction. Manage positions, reminders, access, clients and workflows across WhatsApp, Telegram, Discord, email and more.',
         'pill_1_title' => 'Multi-platform',
         'pill_1_desc' => 'works across chat & email',
         'pill_2_title' => 'Conversational',
@@ -33,24 +34,24 @@ $translations = [
         'features_title' => 'Powerful features designed for teams',
         'features_desc' => 'Everything you need to manage companies, members, positions, access and scheduling through natural chat prompts — directly from platforms you already use.',
         'f_company' => 'Streamlined Organizational Structure',
-        'f_company_desc' => 'Define roles, departments, managers, cases, targets, and lists with ease. BigManage lets you map your entire organization clearly, ensuring everyone knows their responsibilities and objectives for maximum efficiency.',
+        'f_company_desc' => 'Define roles, departments, managers, cases, targets, and lists with ease. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' lets you map your entire organization clearly, ensuring everyone knows their responsibilities and objectives for maximum efficiency.',
         'f_employees' => 'Intelligent Task Awareness',
-        'f_employees_desc' => 'Stay on top of your work with automated reminders, deadlines, and notifications. BigManage ensures your team never misses an important task or milestone, keeping operations smooth and timely.',
+        'f_employees_desc' => 'Stay on top of your work with automated reminders, deadlines, and notifications. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' ensures your team never misses an important task or milestone, keeping operations smooth and timely.',
         'f_positions' => 'Comprehensive Financial Oversight',
-        'f_positions_desc' => 'Monitor suppliers, investors, shareholders, partners, goods, services, and sales or subscription revenue effortlessly. BigManage consolidates all financial data into a single, easy-to-manage platform for smarter business decisions.',
+        'f_positions_desc' => 'Monitor suppliers, investors, shareholders, partners, goods, services, and sales or subscription revenue effortlessly. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' consolidates all financial data into a single, easy-to-manage platform for smarter business decisions.',
         'f_departments' => 'Advanced Access Control',
-        'f_departments_desc' => 'Protect your company with customizable security options, including general access, time-based access, and weekday-specific permissions. BigManage ensures that sensitive data is only accessible to the right people at the right time.',
+        'f_departments_desc' => 'Protect your company with customizable security options, including general access, time-based access, and weekday-specific permissions. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' ensures that sensitive data is only accessible to the right people at the right time.',
         'f_access' => 'Empowered Creative Tools',
-        'f_access_desc' => 'Boost innovation with tools for image creation, file creation and modification, and intelligent link analysis. BigManage supports your team’s creativity while keeping processes organized and actionable.',
+        'f_access_desc' => 'Boost innovation with tools for image creation, file creation and modification, and intelligent link analysis. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' supports your team’s creativity while keeping processes organized and actionable.',
         'f_reminders' => 'Smart Storage & Attachment Management',
-        'f_reminders_desc' => 'Upload, analyze, and search attachments effortlessly. BigManage provides a secure, intelligent storage system that ensures your files are organized, accessible, and actionable whenever you need them.',
+        'f_reminders_desc' => 'Upload, analyze, and search attachments effortlessly. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' provides a secure, intelligent storage system that ensures your files are organized, accessible, and actionable whenever you need them.',
 
-        'about_title' => 'About BigManage',
-        'about_p1' => 'BigManage is immediately accessible via Instagram, Meta Messenger, WhatsApp, Discord, Telegram and email — so you can start using the service from tools you already use, without learning a new interface. Because BigManage operates through chat prompts rather than menu-driven screens, most people understand how to use it in under an hour.',
-        'about_p2' => 'BigManage is like a helpful colleague — it understands your messages, routes them to the right place, and turns simple requests into complex actions. We keep support personal: you can email or call us directly, expect quick responses, and we’ll arrange calls or meetings if needed. If we miss you, we’ll get back fast to understand the issue and help find the best solution.',
+        'about_title' => 'About ' . BigManageVariable::APPLICATION_SHORT_NAME,
+        'about_p1' => BigManageVariable::APPLICATION_SHORT_NAME . ' is immediately accessible via Instagram, Meta Messenger, WhatsApp, Discord, Telegram and email — so you can start using the service from tools you already use, without learning a new interface. Because ' . BigManageVariable::APPLICATION_SHORT_NAME . ' operates through chat prompts rather than menu-driven screens, most people understand how to use it in under an hour.',
+        'about_p2' => BigManageVariable::APPLICATION_SHORT_NAME . ' is like a helpful colleague — it understands your messages, routes them to the right place, and turns simple requests into complex actions. We keep support personal: you can email or call us directly, expect quick responses, and we’ll arrange calls or meetings if needed. If we miss you, we’ll get back fast to understand the issue and help find the best solution.',
 
         'how_title' => 'How it works — in plain chat',
-        'how_desc' => 'Type or speak natural instructions — BigManage extracts intent, identifies the target (company/position/person) and executes or confirms actions.',
+        'how_desc' => 'Type or speak natural instructions — ' . BigManageVariable::APPLICATION_SHORT_NAME . ' extracts intent, identifies the target (company/position/person) and executes or confirms actions.',
         'how_create' => 'Create companies',
         'how_create_desc' => 'Example: “Create a company named HorizonTech.”',
         'how_add' => 'Add members & assign positions',
@@ -63,9 +64,9 @@ $translations = [
         'how_reminders_desc' => 'Example: “Create a reminder called ‘Monthly Report’ to start in 60 seconds, repeat every one hour.”',
 
         'contact_title' => 'Contact Us',
-        'contact_desc' => 'Want a demo, pricing details or to integrate BigManage with your stack? Drop a message and our team will get back to you.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => 'Want a demo, pricing details or to integrate ' . BigManageVariable::APPLICATION_SHORT_NAME . ' with your stack? Drop a message and our team will get back to you.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europe, Estonia',
         'label_name' => 'Name',
         'placeholder_name' => 'Your name',
@@ -101,7 +102,7 @@ $translations = [
     ],
 
     'greek' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Αρχική',
         'nav_features' => 'Χαρακτηριστικά',
         'nav_usecases' => 'Πώς λειτουργεί',
@@ -111,7 +112,7 @@ $translations = [
         'label_dark' => 'Σκοτεινή',
 
         'h1' => 'Διαχειριστείτε την εταιρεία σας με φυσική συνομιλία — χωρίς μενού, χωρίς τριβές.',
-        'lead' => 'Το BigManage επιτρέπει στις ομάδες να διαχειρίζονται την εταιρεία τους μέσω φυσικής συνομιλίας — χωρίς μενού ή περιττή πολυπλοκότητα. Διαχειριστείτε θέσεις, υπενθυμίσεις, πρόσβαση, πελάτες και ροές εργασίας μέσω WhatsApp, Telegram, Discord, email και άλλων.',
+        'lead' => 'Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' επιτρέπει στις ομάδες να διαχειρίζονται την εταιρεία τους μέσω φυσικής συνομιλίας — χωρίς μενού ή περιττή πολυπλοκότητα. Διαχειριστείτε θέσεις, υπενθυμίσεις, πρόσβαση, πελάτες και ροές εργασίας μέσω WhatsApp, Telegram, Discord, email και άλλων.',
         'pill_1_title' => 'Πολλαπλές πλατφόρμες',
         'pill_1_desc' => 'λειτουργεί σε chat & email',
         'pill_2_title' => 'Συνομιλητικό',
@@ -122,24 +123,24 @@ $translations = [
         'features_title' => 'Ισχυρές δυνατότητες σχεδιασμένες για ομάδες',
         'features_desc' => 'Όλα όσα χρειάζεστε για να διαχειρίζεστε εταιρείες, members, θέσεις, πρόσβαση και προγραμματισμό μέσω φυσικών εντολών συνομιλίας — απευθείας από τα εργαλεία που ήδη χρησιμοποιείτε.',
         'f_company' => 'Αποτελεσματική Οργανωτική Δομή',
-        'f_company_desc' => 'Ορίστε εύκολα ρόλους, τμήματα, διευθυντές, περιπτώσεις, στόχους και λίστες. Το BigManage σας επιτρέπει να χαρτογραφήσετε ολόκληρο τον οργανισμό με σαφήνεια, ώστε όλοι να γνωρίζουν τις ευθύνες και τους στόχους τους για μέγιστη αποτελεσματικότητα.',
+        'f_company_desc' => 'Ορίστε εύκολα ρόλους, τμήματα, διευθυντές, περιπτώσεις, στόχους και λίστες. Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' σας επιτρέπει να χαρτογραφήσετε ολόκληρο τον οργανισμό με σαφήνεια, ώστε όλοι να γνωρίζουν τις ευθύνες και τους στόχους τους για μέγιστη αποτελεσματικότητα.',
         'f_employees' => 'Έξυπνη Παρακολούθηση Εργασιών',
-        'f_employees_desc' => 'Μείνετε ενημερωμένοι με αυτόματες υπενθυμίσεις, προθεσμίες και ειδοποιήσεις. Το BigManage διασφαλίζει ότι η ομάδα σας δεν χάνει ποτέ σημαντική εργασία ή ορόσημο, διατηρώντας τις λειτουργίες ομαλές και έγκαιρες.',
+        'f_employees_desc' => 'Μείνετε ενημερωμένοι με αυτόματες υπενθυμίσεις, προθεσμίες και ειδοποιήσεις. Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' διασφαλίζει ότι η ομάδα σας δεν χάνει ποτέ σημαντική εργασία ή ορόσημο, διατηρώντας τις λειτουργίες ομαλές και έγκαιρες.',
         'f_positions' => 'Ολοκληρωμένη Οικονομική Εποπτεία',
-        'f_positions_desc' => 'Παρακολουθήστε προμηθευτές, επενδυτές, μετόχους, συνεργάτες, αγαθά, υπηρεσίες και έσοδα από πωλήσεις ή συνδρομές εύκολα. Το BigManage συγκεντρώνει όλα τα οικονομικά δεδομένα σε μια ενιαία πλατφόρμα για πιο έξυπνες επιχειρηματικές αποφάσεις.',
+        'f_positions_desc' => 'Παρακολουθήστε προμηθευτές, επενδυτές, μετόχους, συνεργάτες, αγαθά, υπηρεσίες και έσοδα από πωλήσεις ή συνδρομές εύκολα. Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' συγκεντρώνει όλα τα οικονομικά δεδομένα σε μια ενιαία πλατφόρμα για πιο έξυπνες επιχειρηματικές αποφάσεις.',
         'f_departments' => 'Προηγμένος Έλεγχος Πρόσβασης',
-        'f_departments_desc' => 'Προστατέψτε την εταιρεία σας με προσαρμοσμένες επιλογές ασφάλειας, όπως γενική πρόσβαση, χρονικά περιορισμένη πρόσβαση και δικαιώματα ανά ημέρα της εβδομάδας. Το BigManage εξασφαλίζει ότι τα ευαίσθητα δεδομένα είναι προσβάσιμα μόνο από τα κατάλληλα άτομα τη σωστή στιγμή.',
+        'f_departments_desc' => 'Προστατέψτε την εταιρεία σας με προσαρμοσμένες επιλογές ασφάλειας, όπως γενική πρόσβαση, χρονικά περιορισμένη πρόσβαση και δικαιώματα ανά ημέρα της εβδομάδας. Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' εξασφαλίζει ότι τα ευαίσθητα δεδομένα είναι προσβάσιμα μόνο από τα κατάλληλα άτομα τη σωστή στιγμή.',
         'f_access' => 'Δυναμικά Δημιουργικά Εργαλεία',
-        'f_access_desc' => 'Ενισχύστε τη δημιουργικότητα με εργαλεία για δημιουργία εικόνων, δημιουργία και τροποποίηση αρχείων και έξυπνη ανάλυση συνδέσμων. Το BigManage υποστηρίζει τη δημιουργικότητα της ομάδας σας, διατηρώντας παράλληλα οργανωμένες και εφαρμόσιμες διαδικασίες.',
+        'f_access_desc' => 'Ενισχύστε τη δημιουργικότητα με εργαλεία για δημιουργία εικόνων, δημιουργία και τροποποίηση αρχείων και έξυπνη ανάλυση συνδέσμων. Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' υποστηρίζει τη δημιουργικότητα της ομάδας σας, διατηρώντας παράλληλα οργανωμένες και εφαρμόσιμες διαδικασίες.',
         'f_reminders' => 'Έξυπνη Αποθήκευση & Διαχείριση Συνημμένων',
-        'f_reminders_desc' => 'Ανεβάστε, αναλύστε και αναζητήστε συνημμένα με ευκολία. Το BigManage παρέχει ένα ασφαλές και έξυπνο σύστημα αποθήκευσης που διασφαλίζει ότι τα αρχεία σας είναι οργανωμένα, προσβάσιμα και άμεσα χρησιμοποιήσιμα όποτε τα χρειάζεστε.',
+        'f_reminders_desc' => 'Ανεβάστε, αναλύστε και αναζητήστε συνημμένα με ευκολία. Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' παρέχει ένα ασφαλές και έξυπνο σύστημα αποθήκευσης που διασφαλίζει ότι τα αρχεία σας είναι οργανωμένα, προσβάσιμα και άμεσα χρησιμοποιήσιμα όποτε τα χρειάζεστε.',
 
         'about_title' => 'Σχετικά με το BigManage',
-        'about_p1' => 'Το BigManage είναι άμεσα προσβάσιμο μέσω Instagram, Meta Messenger, WhatsApp, Discord, Telegram και email — οπότε μπορείτε να ξεκινήσετε άμεσα από εργαλεία που ήδη χρησιμοποιείτε, χωρίς να μάθετε νέο περιβάλλον. Επειδή το BigManage λειτουργεί με εντολές συνομιλίας αντί για μενού, οι περισσότεροι χρήστες το κατανοούν άμεσα.',
-        'about_p2' => 'Το BigManage είναι σαν έναν χρήσιμο συνάδελφο — καταλαβαίνει τα μηνύματά σας, τα κατευθύνει στο σωστό σημείο και μετατρέπει απλά αιτήματα σε πολύπλοκες ενέργειες. Διατηρούμε την υποστήριξη προσωπική: μπορείτε να μας στείλετε email ή να μας καλέσετε απευθείας, να περιμένετε γρήγορες απαντήσεις και θα κανονίσουμε κλήσεις ή συναντήσεις αν χρειαστεί. Αν μας χάσετε, θα επικοινωνήσουμε σύντομα για να κατανοήσουμε το ζήτημα και να βρούμε την καλύτερη λύση.',
+        'about_p1' => 'Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' είναι άμεσα προσβάσιμο μέσω Instagram, Meta Messenger, WhatsApp, Discord, Telegram και email — οπότε μπορείτε να ξεκινήσετε άμεσα από εργαλεία που ήδη χρησιμοποιείτε, χωρίς να μάθετε νέο περιβάλλον. Επειδή το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' λειτουργεί με εντολές συνομιλίας αντί για μενού, οι περισσότεροι χρήστες το κατανοούν άμεσα.',
+        'about_p2' => 'Το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' είναι σαν έναν χρήσιμο συνάδελφο — καταλαβαίνει τα μηνύματά σας, τα κατευθύνει στο σωστό σημείο και μετατρέπει απλά αιτήματα σε πολύπλοκες ενέργειες. Διατηρούμε την υποστήριξη προσωπική: μπορείτε να μας στείλετε email ή να μας καλέσετε απευθείας, να περιμένετε γρήγορες απαντήσεις και θα κανονίσουμε κλήσεις ή συναντήσεις αν χρειαστεί. Αν μας χάσετε, θα επικοινωνήσουμε σύντομα για να κατανοήσουμε το ζήτημα και να βρούμε την καλύτερη λύση.',
 
         'how_title' => 'Πώς λειτουργεί — με απλή συνομιλία',
-        'how_desc' => 'Πληκτρολογήστε ή μιλήστε φυσικές εντολές — το BigManage εξάγει την πρόθεση, εντοπίζει τον στόχο (εταιρεία/θέση/άτομο) και εκτελεί ή επιβεβαιώνει τις ενέργειες.',
+        'how_desc' => 'Πληκτρολογήστε ή μιλήστε φυσικές εντολές — το ' . BigManageVariable::APPLICATION_SHORT_NAME . ' εξάγει την πρόθεση, εντοπίζει τον στόχο (εταιρεία/θέση/άτομο) και εκτελεί ή επιβεβαιώνει τις ενέργειες.',
         'how_create' => 'Δημιουργία εταιρειών',
         'how_create_desc' => 'Παράδειγμα: «Δημιούργησε την εταιρεία HorizonTech.»',
         'how_add' => 'Προσθήκη members & ανάθεση θέσεων',
@@ -153,8 +154,8 @@ $translations = [
 
         'contact_title' => 'Επικοινωνήστε μαζί μας',
         'contact_desc' => 'Θέλετε επίδειξη, πληροφορίες τιμολόγησης ή κάτι άλλο; Στείλτε μήνυμα και η ομάδα μας θα επικοινωνήσει μαζί σας.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Ευρώπη, Αθήνα',
         'label_name' => 'Όνομα',
         'placeholder_name' => 'Το όνομά σας',
@@ -190,7 +191,7 @@ $translations = [
     ],
 
     'dutch' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Home',
         'nav_features' => 'Functies',
         'nav_usecases' => 'Hoe het werkt',
@@ -200,7 +201,7 @@ $translations = [
         'label_dark' => 'Donker',
 
         'h1' => 'Beheer uw bedrijf met natuurlijke chat — geen menu\'s, geen wrijving.',
-        'lead' => 'BigManage laat teams hun bedrijf beheren via natuurlijke chat — zonder menu\'s of frictie. Beheer posities, herinneringen, toegang, klanten en workflows via WhatsApp, Telegram, Discord, e-mail en meer.',
+        'lead' => BigManageVariable::APPLICATION_SHORT_NAME . ' laat teams hun bedrijf beheren via natuurlijke chat — zonder menu\'s of frictie. Beheer posities, herinneringen, toegang, klanten en workflows via WhatsApp, Telegram, Discord, e-mail en meer.',
         'pill_1_title' => 'Multi-platform',
         'pill_1_desc' => 'werkt via chat & e-mail',
         'pill_2_title' => 'Conversatie',
@@ -211,24 +212,24 @@ $translations = [
         'features_title' => 'Krachtige functies ontworpen voor teams',
         'features_desc' => 'Alles wat u nodig hebt om bedrijven, members, posities, toegang en planning te beheren via natuurlijke chatopdrachten — direct vanuit de platforms die u al gebruikt.',
         'f_company' => 'Gestroomlijnde organisatiestructuur',
-        'f_company_desc' => 'Definieer eenvoudig rollen, afdelingen, managers, cases, targets en lijsten. BigManage laat je de hele organisatie helder in kaart brengen, zodat iedereen zijn verantwoordelijkheden en doelstellingen kent voor maximale efficiëntie.',
+        'f_company_desc' => 'Definieer eenvoudig rollen, afdelingen, managers, cases, targets en lijsten. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' laat je de hele organisatie helder in kaart brengen, zodat iedereen zijn verantwoordelijkheden en doelstellingen kent voor maximale efficiëntie.',
         'f_employees' => 'Intelligente taakbewaking',
-        'f_employees_desc' => 'Blijf op de hoogte met geautomatiseerde herinneringen, deadlines en meldingen. BigManage zorgt ervoor dat je team nooit een belangrijke taak of mijlpaal mist, waardoor de werkzaamheden soepel en op tijd verlopen.',
+        'f_employees_desc' => 'Blijf op de hoogte met geautomatiseerde herinneringen, deadlines en meldingen. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' zorgt ervoor dat je team nooit een belangrijke taak of mijlpaal mist, waardoor de werkzaamheden soepel en op tijd verlopen.',
         'f_positions' => 'Uitgebreid financieel overzicht',
-        'f_positions_desc' => 'Houd leveranciers, investeerders, aandeelhouders, partners, goederen, diensten en verkoop- of abonnementsinkomsten moeiteloos bij. BigManage consolideert alle financiële gegevens in één gebruiksvriendelijk platform voor slimmere beslissingen.',
+        'f_positions_desc' => 'Houd leveranciers, investeerders, aandeelhouders, partners, goederen, diensten en verkoop- of abonnementsinkomsten moeiteloos bij. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' consolideert alle financiële gegevens in één gebruiksvriendelijk platform voor slimmere beslissingen.',
         'f_departments' => 'Geavanceerde toegangscontrole',
-        'f_departments_desc' => 'Bescherm je bedrijf met aanpasbare beveiligingsopties, waaronder algemene toegang, tijdgebonden toegang en weekdag-specifieke machtigingen. BigManage zorgt dat gevoelige gegevens alleen toegankelijk zijn voor de juiste mensen op het juiste moment.',
+        'f_departments_desc' => 'Bescherm je bedrijf met aanpasbare beveiligingsopties, waaronder algemene toegang, tijdgebonden toegang en weekdag-specifieke machtigingen. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' zorgt dat gevoelige gegevens alleen toegankelijk zijn voor de juiste mensen op het juiste moment.',
         'f_access' => 'Krachtige creatieve tools',
-        'f_access_desc' => 'Stimuleer innovatie met tools voor afbeeldingen, het aanmaken en bewerken van bestanden en intelligente linkanalyse. BigManage ondersteunt de creativiteit van je team en houdt processen georganiseerd en uitvoerbaar.',
+        'f_access_desc' => 'Stimuleer innovatie met tools voor afbeeldingen, het aanmaken en bewerken van bestanden en intelligente linkanalyse. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' ondersteunt de creativiteit van je team en houdt processen georganiseerd en uitvoerbaar.',
         'f_reminders' => 'Slim opslag- en bijlagebeheer',
-        'f_reminders_desc' => 'Upload, analyseer en doorzoek bijlagen moeiteloos. BigManage biedt een veilige, intelligente opslagoplossing die je bestanden georganiseerd, toegankelijk en inzetbaar houdt wanneer je ze nodig hebt.',
+        'f_reminders_desc' => 'Upload, analyseer en doorzoek bijlagen moeiteloos. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' biedt een veilige, intelligente opslagoplossing die je bestanden georganiseerd, toegankelijk en inzetbaar houdt wanneer je ze nodig hebt.',
 
         'about_title' => 'Over BigManage',
-        'about_p1' => 'BigManage is direct toegankelijk via Instagram, Meta Messenger, WhatsApp, Discord, Telegram en e-mail — zodat u kunt beginnen met de tools die u al gebruikt, zonder een nieuwe interface te hoeven leren. Omdat BigManage werkt via chatopdrachten in plaats van menu\'s, begrijpen de meeste mensen het binnen een uur.',
-        'about_p2' => 'BigManage is als een behulpzame collega: het begrijpt uw berichten, leidt ze naar de juiste plek en zet eenvoudige verzoeken om in complexe acties. We houden ondersteuning persoonlijk: u kunt ons mailen of bellen, snelle reacties verwachten en we regelen gesprekken of afspraken indien nodig. Als we u even missen, nemen we snel contact op om het probleem te begrijpen en een oplossing te vinden.',
+        'about_p1' => BigManageVariable::APPLICATION_SHORT_NAME . ' is direct toegankelijk via Instagram, Meta Messenger, WhatsApp, Discord, Telegram en e-mail — zodat u kunt beginnen met de tools die u al gebruikt, zonder een nieuwe interface te hoeven leren. Omdat ' . BigManageVariable::APPLICATION_SHORT_NAME . ' werkt via chatopdrachten in plaats van menu\'s, begrijpen de meeste mensen het binnen een uur.',
+        'about_p2' => BigManageVariable::APPLICATION_SHORT_NAME . ' is als een behulpzame collega: het begrijpt uw berichten, leidt ze naar de juiste plek en zet eenvoudige verzoeken om in complexe acties. We houden ondersteuning persoonlijk: u kunt ons mailen of bellen, snelle reacties verwachten en we regelen gesprekken of afspraken indien nodig. Als we u even missen, nemen we snel contact op om het probleem te begrijpen en een oplossing te vinden.',
 
         'how_title' => 'Hoe het werkt — in eenvoudige chat',
-        'how_desc' => 'Typ of spreek natuurlijke instructies — BigManage haalt intentie eruit, identificeert het doel (bedrijf/positie/persoon) en voert acties uit of bevestigt ze.',
+        'how_desc' => 'Typ of spreek natuurlijke instructies — ' . BigManageVariable::APPLICATION_SHORT_NAME . ' haalt intentie eruit, identificeert het doel (bedrijf/positie/persoon) en voert acties uit of bevestigt ze.',
         'how_create' => 'Bedrijven aanmaken',
         'how_create_desc' => 'Voorbeeld: “Maak een bedrijf genaamd HorizonTech.”',
         'how_add' => 'Members toevoegen & posities toewijzen',
@@ -241,9 +242,9 @@ $translations = [
         'how_reminders_desc' => 'Voorbeeld: “Maak een herinnering genaamd \'Maandelijkse Rapport\' die start over 60 seconden, herhaal elk uur.”',
 
         'contact_title' => 'Contact',
-        'contact_desc' => 'Wilt u een demo, prijsinformatie of BigManage integreren met uw stack? Stuur een bericht en ons team neemt contact op.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => 'Wilt u een demo, prijsinformatie of ' . BigManageVariable::APPLICATION_SHORT_NAME . ' integreren met uw stack? Stuur een bericht en ons team neemt contact op.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europa, Estland',
         'label_name' => 'Naam',
         'placeholder_name' => 'Uw naam',
@@ -279,7 +280,7 @@ $translations = [
     ],
 
     'german' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Start',
         'nav_features' => 'Funktionen',
         'nav_usecases' => 'So funktioniert es',
@@ -289,7 +290,7 @@ $translations = [
         'label_dark' => 'Dunkel',
 
         'h1' => 'Steuern Sie Ihr Unternehmen per natürlichem Chat — keine Menüs, keine Reibung.',
-        'lead' => 'BigManage ermöglicht Teams die Steuerung ihres Unternehmens über natürlichen Chat — ohne Menüs oder Reibung. Verwalten Sie Positionen, Erinnerungen, Zugänge, Kunden und Workflows über WhatsApp, Telegram, Discord, E-Mail und mehr.',
+        'lead' => BigManageVariable::APPLICATION_SHORT_NAME . ' ermöglicht Teams die Steuerung ihres Unternehmens über natürlichen Chat — ohne Menüs oder Reibung. Verwalten Sie Positionen, Erinnerungen, Zugänge, Kunden und Workflows über WhatsApp, Telegram, Discord, E-Mail und mehr.',
         'pill_1_title' => 'Plattformübergreifend',
         'pill_1_desc' => 'funktioniert über Chat & E-Mail',
         'pill_2_title' => 'Konversationell',
@@ -300,24 +301,24 @@ $translations = [
         'features_title' => 'Leistungsstarke Funktionen für Teams',
         'features_desc' => 'Alles, was Sie benötigen, um Firmen, members, Positionen, Zugänge und Zeitplanung per natürlicher Chatsteuerung zu verwalten — direkt aus den Plattformen, die Sie bereits nutzen.',
         'f_company' => 'Optimierte Organisationsstruktur',
-        'f_company_desc' => 'Definieren Sie Rollen, Abteilungen, Manager, Fälle, Ziele und Listen mit Leichtigkeit. BigManage ermöglicht es Ihnen, Ihre gesamte Organisation klar abzubilden, damit jeder seine Aufgaben und Ziele kennt — für maximale Effizienz.',
+        'f_company_desc' => 'Definieren Sie Rollen, Abteilungen, Manager, Fälle, Ziele und Listen mit Leichtigkeit. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' ermöglicht es Ihnen, Ihre gesamte Organisation klar abzubilden, damit jeder seine Aufgaben und Ziele kennt — für maximale Effizienz.',
         'f_employees' => 'Intelligentes Aufgabenbewusstsein',
-        'f_employees_desc' => 'Behalten Sie alles im Blick mit automatischen Erinnerungen, Fristen und Benachrichtigungen. BigManage stellt sicher, dass Ihr Team keine wichtige Aufgabe oder Meilenstein verpasst und Abläufe reibungslos und termingerecht bleiben.',
+        'f_employees_desc' => 'Behalten Sie alles im Blick mit automatischen Erinnerungen, Fristen und Benachrichtigungen. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' stellt sicher, dass Ihr Team keine wichtige Aufgabe oder Meilenstein verpasst und Abläufe reibungslos und termingerecht bleiben.',
         'f_positions' => 'Umfassende finanzielle Übersicht',
-        'f_positions_desc' => 'Überwachen Sie Lieferanten, Investoren, Aktionäre, Partner, Waren, Dienstleistungen sowie Verkaufs- oder Abonnementumsätze mühelos. BigManage konsolidiert alle finanziellen Daten auf einer einzigen, leicht zu verwaltenden Plattform für bessere Entscheidungen.',
+        'f_positions_desc' => 'Überwachen Sie Lieferanten, Investoren, Aktionäre, Partner, Waren, Dienstleistungen sowie Verkaufs- oder Abonnementumsätze mühelos. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' konsolidiert alle finanziellen Daten auf einer einzigen, leicht zu verwaltenden Plattform für bessere Entscheidungen.',
         'f_departments' => 'Erweiterte Zugriffskontrolle',
-        'f_departments_desc' => 'Schützen Sie Ihr Unternehmen mit anpassbaren Sicherheitsoptionen, einschließlich allgemeinem Zugriff, zeitbasiertem Zugriff und wochentagspezifischen Berechtigungen. BigManage sorgt dafür, dass sensible Daten nur zur richtigen Zeit für die richtigen Personen zugänglich sind.',
+        'f_departments_desc' => 'Schützen Sie Ihr Unternehmen mit anpassbaren Sicherheitsoptionen, einschließlich allgemeinem Zugriff, zeitbasiertem Zugriff und wochentagspezifischen Berechtigungen. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' sorgt dafür, dass sensible Daten nur zur richtigen Zeit für die richtigen Personen zugänglich sind.',
         'f_access' => 'Leistungsstarke Kreativwerkzeuge',
-        'f_access_desc' => 'Fördern Sie Innovation mit Tools zur Bilderstellung, Dateierstellung und -bearbeitung sowie intelligenter Linkanalyse. BigManage unterstützt die Kreativität Ihres Teams und hält Prozesse organisiert und umsetzbar.',
+        'f_access_desc' => 'Fördern Sie Innovation mit Tools zur Bilderstellung, Dateierstellung und -bearbeitung sowie intelligenter Linkanalyse. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' unterstützt die Kreativität Ihres Teams und hält Prozesse organisiert und umsetzbar.',
         'f_reminders' => 'Intelligente Speicherung & Anlagenverwaltung',
-        'f_reminders_desc' => 'Laden Sie Anhänge hoch, analysieren Sie sie und durchsuchen Sie sie mühelos. BigManage bietet ein sicheres, intelligentes Speichersystem, das Ihre Dateien organisiert, zugänglich und nutzbar hält, wann immer Sie sie benötigen.',
+        'f_reminders_desc' => 'Laden Sie Anhänge hoch, analysieren Sie sie und durchsuchen Sie sie mühelos. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' bietet ein sicheres, intelligentes Speichersystem, das Ihre Dateien organisiert, zugänglich und nutzbar hält, wann immer Sie sie benötigen.',
 
         'about_title' => 'Über BigManage',
-        'about_p1' => 'BigManage ist sofort über Instagram, Meta Messenger, WhatsApp, Discord, Telegram und E-Mail zugänglich — so können Sie mit den Tools beginnen, die Sie bereits nutzen, ohne eine neue Oberfläche zu lernen. Da BigManage per Chatbefehlen statt über Menübildschirme arbeitet, verstehen die meisten Menschen die Bedienung in unter einer Stunde.',
-        'about_p2' => 'BigManage ist wie ein hilfreicher Kollege: Es versteht Ihre Nachrichten, leitet sie an die richtige Stelle weiter und verwandelt einfache Anfragen in komplexe Aktionen. Wir gestalten Support persönlich: Sie können uns per E-Mail oder Telefon kontaktieren, schnelle Antworten erwarten und wir arrangieren bei Bedarf Anrufe oder Treffen. Falls wir Sie einmal nicht erreichen, melden wir uns schnell, um das Problem zu verstehen und die beste Lösung zu finden.',
+        'about_p1' => BigManageVariable::APPLICATION_SHORT_NAME . ' ist sofort über Instagram, Meta Messenger, WhatsApp, Discord, Telegram und E-Mail zugänglich — so können Sie mit den Tools beginnen, die Sie bereits nutzen, ohne eine neue Oberfläche zu lernen. Da ' . BigManageVariable::APPLICATION_SHORT_NAME . ' per Chatbefehlen statt über Menübildschirme arbeitet, verstehen die meisten Menschen die Bedienung in unter einer Stunde.',
+        'about_p2' => BigManageVariable::APPLICATION_SHORT_NAME . ' ist wie ein hilfreicher Kollege: Es versteht Ihre Nachrichten, leitet sie an die richtige Stelle weiter und verwandelt einfache Anfragen in komplexe Aktionen. Wir gestalten Support persönlich: Sie können uns per E-Mail oder Telefon kontaktieren, schnelle Antworten erwarten und wir arrangieren bei Bedarf Anrufe oder Treffen. Falls wir Sie einmal nicht erreichen, melden wir uns schnell, um das Problem zu verstehen und die beste Lösung zu finden.',
 
         'how_title' => 'Wie es funktioniert — im einfachen Chat',
-        'how_desc' => 'Geben Sie natürliche Anweisungen ein oder sprechen Sie sie — BigManage extrahiert die Absicht, identifiziert das Ziel (Firma/Position/Person) und führt Aktionen aus oder bestätigt sie.',
+        'how_desc' => 'Geben Sie natürliche Anweisungen ein oder sprechen Sie sie — ' . BigManageVariable::APPLICATION_SHORT_NAME . ' extrahiert die Absicht, identifiziert das Ziel (Firma/Position/Person) und führt Aktionen aus oder bestätigt sie.',
         'how_create' => 'Firmen erstellen',
         'how_create_desc' => 'Beispiel: „Erstelle eine Firma namens HorizonTech.“',
         'how_add' => 'Members hinzufügen & Positionen zuweisen',
@@ -330,9 +331,9 @@ $translations = [
         'how_reminders_desc' => 'Beispiel: „Erstelle eine Erinnerung namens ‚Monatsbericht‘, die in 60 Sekunden startet und jede Stunde wiederholt wird.“',
 
         'contact_title' => 'Kontakt',
-        'contact_desc' => 'Möchten Sie eine Demo, Preisinformationen oder BigManage in Ihre Infrastruktur integrieren? Senden Sie uns eine Nachricht und unser Team meldet sich bei Ihnen.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => 'Möchten Sie eine Demo, Preisinformationen oder ' . BigManageVariable::APPLICATION_SHORT_NAME . ' in Ihre Infrastruktur integrieren? Senden Sie uns eine Nachricht und unser Team meldet sich bei Ihnen.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europa, Estland',
         'label_name' => 'Name',
         'placeholder_name' => 'Ihr Name',
@@ -368,7 +369,7 @@ $translations = [
     ],
 
     'italian' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Home',
         'nav_features' => 'Funzionalità',
         'nav_usecases' => 'Come funziona',
@@ -378,7 +379,7 @@ $translations = [
         'label_dark' => 'Scuro',
 
         'h1' => 'Controlla la tua azienda con la chat naturale — niente menu, niente attrito.',
-        'lead' => 'BigManage consente ai team di controllare la propria azienda tramite chat naturale — senza menu o attriti. Gestisci posizioni, promemoria, accessi, clienti e workflow via WhatsApp, Telegram, Discord, email e altro.',
+        'lead' => BigManageVariable::APPLICATION_SHORT_NAME . ' consente ai team di controllare la propria azienda tramite chat naturale — senza menu o attriti. Gestisci posizioni, promemoria, accessi, clienti e workflow via WhatsApp, Telegram, Discord, email e altro.',
         'pill_1_title' => 'Multi-piattaforma',
         'pill_1_desc' => 'funziona su chat & email',
         'pill_2_title' => 'Conversazionale',
@@ -389,24 +390,24 @@ $translations = [
         'features_title' => 'Funzionalità potenti pensate per i team',
         'features_desc' => 'Tutto ciò di cui hai bisogno per gestire aziende, members, posizioni, accessi e pianificazione tramite comandi in chat naturale — direttamente dalle piattaforme che già usi.',
         'f_company' => 'Struttura organizzativa snella',
-        'f_company_desc' => 'Definisci con facilità ruoli, dipartimenti, manager, casi, obiettivi e liste. BigManage ti permette di mappare l’intera organizzazione in modo chiaro, assicurando che tutti conoscano responsabilità e obiettivi per la massima efficienza.',
+        'f_company_desc' => 'Definisci con facilità ruoli, dipartimenti, manager, casi, obiettivi e liste. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' ti permette di mappare l’intera organizzazione in modo chiaro, assicurando che tutti conoscano responsabilità e obiettivi per la massima efficienza.',
         'f_employees' => 'Consapevolezza intelligente dei compiti',
-        'f_employees_desc' => 'Tieni sotto controllo il lavoro con promemoria, scadenze e notifiche automatiche. BigManage garantisce che il tuo team non perda mai un compito o una milestone importante, mantenendo le operazioni fluide e puntuali.',
+        'f_employees_desc' => 'Tieni sotto controllo il lavoro con promemoria, scadenze e notifiche automatiche. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' garantisce che il tuo team non perda mai un compito o una milestone importante, mantenendo le operazioni fluide e puntuali.',
         'f_positions' => 'Controllo finanziario completo',
-        'f_positions_desc' => 'Monitora fornitori, investitori, azionisti, partner, beni, servizi e ricavi da vendite o abbonamenti con semplicità. BigManage consolida tutti i dati finanziari in un’unica piattaforma facile da gestire per decisioni aziendali più intelligenti.',
+        'f_positions_desc' => 'Monitora fornitori, investitori, azionisti, partner, beni, servizi e ricavi da vendite o abbonamenti con semplicità. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' consolida tutti i dati finanziari in un’unica piattaforma facile da gestire per decisioni aziendali più intelligenti.',
         'f_departments' => 'Controllo accessi avanzato',
-        'f_departments_desc' => 'Proteggi la tua azienda con opzioni di sicurezza personalizzabili, incluse accessi generali, accessi basati sul tempo e permessi specifici per i giorni della settimana. BigManage garantisce che i dati sensibili siano accessibili solo alle persone giuste al momento giusto.',
+        'f_departments_desc' => 'Proteggi la tua azienda con opzioni di sicurezza personalizzabili, incluse accessi generali, accessi basati sul tempo e permessi specifici per i giorni della settimana. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' garantisce che i dati sensibili siano accessibili solo alle persone giuste al momento giusto.',
         'f_access' => 'Strumenti creativi potenziati',
-        'f_access_desc' => 'Stimola l’innovazione con strumenti per la creazione di immagini, la creazione e modifica di file e l’analisi intelligente dei link. BigManage supporta la creatività del tuo team mantenendo processi organizzati e concretamente utilizzabili.',
+        'f_access_desc' => 'Stimola l’innovazione con strumenti per la creazione di immagini, la creazione e modifica di file e l’analisi intelligente dei link. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' supporta la creatività del tuo team mantenendo processi organizzati e concretamente utilizzabili.',
         'f_reminders' => 'Archiviazione intelligente e gestione allegati',
-        'f_reminders_desc' => 'Carica, analizza e cerca allegati con facilità. BigManage offre un sistema di archiviazione sicuro e intelligente che mantiene i tuoi file organizzati, accessibili e utilizzabili quando ne hai bisogno.',
+        'f_reminders_desc' => 'Carica, analizza e cerca allegati con facilità. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' offre un sistema di archiviazione sicuro e intelligente che mantiene i tuoi file organizzati, accessibili e utilizzabili quando ne hai bisogno.',
 
         'about_title' => 'Informazioni su BigManage',
-        'about_p1' => 'BigManage è immediatamente accessibile tramite Instagram, Meta Messenger, WhatsApp, Discord, Telegram ed email — così puoi iniziare a usare il servizio dagli strumenti che già utilizzi, senza imparare una nuova interfaccia. Poiché BigManage funziona tramite comandi in chat anziché schermate a menu, la maggior parte delle persone lo capisce in meno di un\'ora.',
-        'about_p2' => 'BigManage è come un collega disponibile: comprende i tuoi messaggi, li instrada al posto giusto e trasforma richieste semplici in azioni complesse. Offriamo supporto personale: puoi contattarci via email o telefono, aspettarti risposte rapide e organizzeremo chiamate o incontri se necessario. Se non ti raggiungiamo, ti ricontatteremo rapidamente per comprendere il problema e trovare la soluzione migliore.',
+        'about_p1' => BigManageVariable::APPLICATION_SHORT_NAME . ' è immediatamente accessibile tramite Instagram, Meta Messenger, WhatsApp, Discord, Telegram ed email — così puoi iniziare a usare il servizio dagli strumenti che già utilizzi, senza imparare una nuova interfaccia. Poiché ' . BigManageVariable::APPLICATION_SHORT_NAME . ' funziona tramite comandi in chat anziché schermate a menu, la maggior parte delle persone lo capisce in meno di un\'ora.',
+        'about_p2' => BigManageVariable::APPLICATION_SHORT_NAME . ' è come un collega disponibile: comprende i tuoi messaggi, li instrada al posto giusto e trasforma richieste semplici in azioni complesse. Offriamo supporto personale: puoi contattarci via email o telefono, aspettarti risposte rapide e organizzeremo chiamate o incontri se necessario. Se non ti raggiungiamo, ti ricontatteremo rapidamente per comprendere il problema e trovare la soluzione migliore.',
 
         'how_title' => 'Come funziona — in chat semplice',
-        'how_desc' => 'Digita o pronuncia istruzioni naturali — BigManage estrae l\'intento, individua l\'obiettivo (azienda/posizione/persona) ed esegue o conferma le azioni.',
+        'how_desc' => 'Digita o pronuncia istruzioni naturali — ' . BigManageVariable::APPLICATION_SHORT_NAME . ' estrae l\'intento, individua l\'obiettivo (azienda/posizione/persona) ed esegue o conferma le azioni.',
         'how_create' => 'Crea aziende',
         'how_create_desc' => 'Esempio: “Crea un\'azienda chiamata HorizonTech.”',
         'how_add' => 'Aggiungi members & assegna posizioni',
@@ -419,9 +420,9 @@ $translations = [
         'how_reminders_desc' => 'Esempio: “Crea un promemoria chiamato \'Report Mensile\' che inizi tra 60 secondi e si ripeta ogni ora.”',
 
         'contact_title' => 'Contattaci',
-        'contact_desc' => 'Vuoi una demo, dettagli sui prezzi o integrare BigManage nella tua infrastruttura? Invia un messaggio e il nostro team ti ricontatterà.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => 'Vuoi una demo, dettagli sui prezzi o integrare ' . BigManageVariable::APPLICATION_SHORT_NAME . ' nella tua infrastruttura? Invia un messaggio e il nostro team ti ricontatterà.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europa, Estonia',
         'label_name' => 'Nome',
         'placeholder_name' => 'Il tuo nome',
@@ -457,7 +458,7 @@ $translations = [
     ],
 
     'french' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Accueil',
         'nav_features' => 'Fonctionnalités',
         'nav_usecases' => 'Comment ça marche',
@@ -467,7 +468,7 @@ $translations = [
         'label_dark' => 'Sombre',
 
         'h1' => 'Contrôlez votre entreprise par chat naturel — sans menus, sans friction.',
-        'lead' => 'BigManage permet aux équipes de piloter leur entreprise via un chat naturel — sans menus ni friction. Gérez postes, rappels, accès, clients et workflows via WhatsApp, Telegram, Discord, email et plus.',
+        'lead' => BigManageVariable::APPLICATION_SHORT_NAME . ' permet aux équipes de piloter leur entreprise via un chat naturel — sans menus ni friction. Gérez postes, rappels, accès, clients et workflows via WhatsApp, Telegram, Discord, email et plus.',
         'pill_1_title' => 'Multi-plateforme',
         'pill_1_desc' => 'fonctionne via chat & email',
         'pill_2_title' => 'Conversationnel',
@@ -478,24 +479,24 @@ $translations = [
         'features_title' => 'Fonctionnalités puissantes conçues pour les équipes',
         'features_desc' => 'Tout ce dont vous avez besoin pour gérer sociétés, members, postes, accès et planification via des commandes de chat naturel — directement depuis les plateformes que vous utilisez déjà.',
         'f_company' => 'Structure organisationnelle simplifiée',
-        'f_company_desc' => 'Définissez facilement les rôles, départements, managers, cas, objectifs et listes. BigManage vous permet de cartographier l’ensemble de votre organisation de manière claire, afin que chacun connaisse ses responsabilités et objectifs pour une efficacité maximale.',
+        'f_company_desc' => 'Définissez facilement les rôles, départements, managers, cas, objectifs et listes. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' vous permet de cartographier l’ensemble de votre organisation de manière claire, afin que chacun connaisse ses responsabilités et objectifs pour une efficacité maximale.',
         'f_employees' => 'Gestion intelligente des tâches',
-        'f_employees_desc' => 'Restez à jour grâce aux rappels automatisés, échéances et notifications. BigManage garantit que votre équipe ne manque jamais une tâche ou une étape importante, assurant des opérations fluides et ponctuelles.',
+        'f_employees_desc' => 'Restez à jour grâce aux rappels automatisés, échéances et notifications. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' garantit que votre équipe ne manque jamais une tâche ou une étape importante, assurant des opérations fluides et ponctuelles.',
         'f_positions' => 'Supervision financière complète',
-        'f_positions_desc' => 'Suivez facilement les fournisseurs, investisseurs, actionnaires, partenaires, biens, services et revenus provenant des ventes ou abonnements. BigManage consolide toutes les données financières sur une seule plateforme facile à gérer pour des décisions plus intelligentes.',
+        'f_positions_desc' => 'Suivez facilement les fournisseurs, investisseurs, actionnaires, partenaires, biens, services et revenus provenant des ventes ou abonnements. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' consolide toutes les données financières sur une seule plateforme facile à gérer pour des décisions plus intelligentes.',
         'f_departments' => 'Contrôle d’accès avancé',
-        'f_departments_desc' => 'Protégez votre entreprise grâce à des options de sécurité personnalisables, incluant l’accès général, l’accès basé sur le temps et des permissions spécifiques aux jours de la semaine. BigManage garantit que les données sensibles sont accessibles uniquement aux bonnes personnes au bon moment.',
+        'f_departments_desc' => 'Protégez votre entreprise grâce à des options de sécurité personnalisables, incluant l’accès général, l’accès basé sur le temps et des permissions spécifiques aux jours de la semaine. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' garantit que les données sensibles sont accessibles uniquement aux bonnes personnes au bon moment.',
         'f_access' => 'Outils créatifs optimisés',
-        'f_access_desc' => 'Stimulez l’innovation avec des outils pour la création d’images, la création et modification de fichiers et l’analyse intelligente des liens. BigManage soutient la créativité de votre équipe tout en maintenant des processus organisés et exploitables.',
+        'f_access_desc' => 'Stimulez l’innovation avec des outils pour la création d’images, la création et modification de fichiers et l’analyse intelligente des liens. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' soutient la créativité de votre équipe tout en maintenant des processus organisés et exploitables.',
         'f_reminders' => 'Stockage intelligent et gestion des pièces jointes',
-        'f_reminders_desc' => 'Téléchargez, analysez et recherchez des pièces jointes facilement. BigManage fournit un système de stockage sécurisé et intelligent, garantissant que vos fichiers restent organisés, accessibles et exploitables quand vous en avez besoin.',
+        'f_reminders_desc' => 'Téléchargez, analysez et recherchez des pièces jointes facilement. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' fournit un système de stockage sécurisé et intelligent, garantissant que vos fichiers restent organisés, accessibles et exploitables quand vous en avez besoin.',
 
         'about_title' => 'À propos de BigManage',
-        'about_p1' => 'BigManage est immédiatement accessible via Instagram, Meta Messenger, WhatsApp, Discord, Telegram et email — vous pouvez commencer depuis les outils que vous utilisez déjà, sans apprendre une nouvelle interface. Comme BigManage fonctionne via des commandes de chat plutôt que des écrans à menus, la plupart des utilisateurs comprennent comment l\'utiliser en moins d\'une heure.',
-        'about_p2' => 'BigManage est comme un collègue utile : il comprend vos messages, les achemine vers le bon endroit et transforme de simples requêtes en actions complexes. Nous gardons le support personnel : vous pouvez nous envoyer un email ou nous appeler directement, attendre des réponses rapides, et nous organiserons des appels ou réunions si nécessaire. Si nous ne vous atteignons pas, nous vous recontacterons rapidement pour comprendre le problème et trouver la meilleure solution.',
+        'about_p1' => BigManageVariable::APPLICATION_SHORT_NAME . ' est immédiatement accessible via Instagram, Meta Messenger, WhatsApp, Discord, Telegram et email — vous pouvez commencer depuis les outils que vous utilisez déjà, sans apprendre une nouvelle interface. Comme ' . BigManageVariable::APPLICATION_SHORT_NAME . ' fonctionne via des commandes de chat plutôt que des écrans à menus, la plupart des utilisateurs comprennent comment l\'utiliser en moins d\'une heure.',
+        'about_p2' => BigManageVariable::APPLICATION_SHORT_NAME . ' est comme un collègue utile : il comprend vos messages, les achemine vers le bon endroit et transforme de simples requêtes en actions complexes. Nous gardons le support personnel : vous pouvez nous envoyer un email ou nous appeler directement, attendre des réponses rapides, et nous organiserons des appels ou réunions si nécessaire. Si nous ne vous atteignons pas, nous vous recontacterons rapidement pour comprendre le problème et trouver la meilleure solution.',
 
         'how_title' => 'Comment ça marche — en chat simple',
-        'how_desc' => 'Tapez ou prononcez des instructions naturelles — BigManage extrait l\'intention, identifie la cible (société/poste/personne) et exécute ou confirme les actions.',
+        'how_desc' => 'Tapez ou prononcez des instructions naturelles — ' . BigManageVariable::APPLICATION_SHORT_NAME . ' extrait l\'intention, identifie la cible (société/poste/personne) et exécute ou confirme les actions.',
         'how_create' => 'Créer des sociétés',
         'how_create_desc' => 'Exemple : « Créez une société nommée HorizonTech. »',
         'how_add' => 'Ajouter des members & attribuer des postes',
@@ -508,9 +509,9 @@ $translations = [
         'how_reminders_desc' => 'Exemple : « Créez un rappel nommé “Rapport mensuel” commençant dans 60 secondes, répété toutes les heures. »',
 
         'contact_title' => 'Contactez-nous',
-        'contact_desc' => 'Vous voulez une démo, des détails tarifaires ou intégrer BigManage à votre stack ? Envoyez un message et notre équipe vous répondra.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => 'Vous voulez une démo, des détails tarifaires ou intégrer ' . BigManageVariable::APPLICATION_SHORT_NAME . ' à votre stack ? Envoyez un message et notre équipe vous répondra.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europe, Estonie',
         'label_name' => 'Nom',
         'placeholder_name' => 'Votre nom',
@@ -546,7 +547,7 @@ $translations = [
     ],
 
     'portuguese' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Início',
         'nav_features' => 'Recursos',
         'nav_usecases' => 'Como funciona',
@@ -556,7 +557,7 @@ $translations = [
         'label_dark' => 'Escuro',
 
         'h1' => 'Controle sua empresa com chat natural — sem menus, sem atrito.',
-        'lead' => 'O BigManage permite que equipes controlem sua empresa usando chat natural — sem menus ou atrito. Gerencie cargos, lembretes, acessos, clientes e fluxos de trabalho via WhatsApp, Telegram, Discord, email e mais.',
+        'lead' => 'O ' . BigManageVariable::APPLICATION_SHORT_NAME . ' permite que equipes controlem sua empresa usando chat natural — sem menus ou atrito. Gerencie cargos, lembretes, acessos, clientes e fluxos de trabalho via WhatsApp, Telegram, Discord, email e mais.',
         'pill_1_title' => 'Multiplataforma',
         'pill_1_desc' => 'funciona via chat & email',
         'pill_2_title' => 'Conversacional',
@@ -567,24 +568,24 @@ $translations = [
         'features_title' => 'Recursos poderosos projetados para equipes',
         'features_desc' => 'Tudo o que você precisa para gerenciar empresas, members, cargos, acessos e agendamento por comandos de chat natural — diretamente das plataformas que você já usa.',
         'f_company' => 'Estrutura organizacional simplificada',
-        'f_company_desc' => 'Defina facilmente funções, departamentos, gestores, casos, objetivos e listas. BigManage permite mapear toda a sua organização de forma clara, garantindo que todos conheçam as suas responsabilidades e objetivos para máxima eficiência.',
+        'f_company_desc' => 'Defina facilmente funções, departamentos, gestores, casos, objetivos e listas. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' permite mapear toda a sua organização de forma clara, garantindo que todos conheçam as suas responsabilidades e objetivos para máxima eficiência.',
         'f_employees' => 'Gestão inteligente de tarefas',
-        'f_employees_desc' => 'Mantenha o controlo do trabalho com lembretes automáticos, prazos e notificações. BigManage garante que a sua equipa nunca perde uma tarefa ou marco importante, mantendo as operações fluidas e pontuais.',
+        'f_employees_desc' => 'Mantenha o controlo do trabalho com lembretes automáticos, prazos e notificações. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' garante que a sua equipa nunca perde uma tarefa ou marco importante, mantendo as operações fluidas e pontuais.',
         'f_positions' => 'Supervisão financeira abrangente',
-        'f_positions_desc' => 'Monitorize fornecedores, investidores, acionistas, parceiros, bens, serviços e receitas de vendas ou assinaturas sem esforço. BigManage consolida todos os dados financeiros numa plataforma única e fácil de gerir para decisões mais inteligentes.',
+        'f_positions_desc' => 'Monitorize fornecedores, investidores, acionistas, parceiros, bens, serviços e receitas de vendas ou assinaturas sem esforço. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' consolida todos os dados financeiros numa plataforma única e fácil de gerir para decisões mais inteligentes.',
         'f_departments' => 'Controlo de acesso avançado',
-        'f_departments_desc' => 'Proteja a sua empresa com opções de segurança personalizáveis, incluindo acesso geral, acesso baseado no tempo e permissões específicas por dia da semana. BigManage assegura que dados sensíveis são acessíveis apenas às pessoas certas no momento certo.',
+        'f_departments_desc' => 'Proteja a sua empresa com opções de segurança personalizáveis, incluindo acesso geral, acesso baseado no tempo e permissões específicas por dia da semana. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' assegura que dados sensíveis são acessíveis apenas às pessoas certas no momento certo.',
         'f_access' => 'Ferramentas criativas potenciadas',
-        'f_access_desc' => 'Estimule a inovação com ferramentas para criação de imagens, criação e modificação de ficheiros e análise inteligente de links. BigManage apoia a criatividade da sua equipa, mantendo os processos organizados e acionáveis.',
+        'f_access_desc' => 'Estimule a inovação com ferramentas para criação de imagens, criação e modificação de ficheiros e análise inteligente de links. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' apoia a criatividade da sua equipa, mantendo os processos organizados e acionáveis.',
         'f_reminders' => 'Armazenamento inteligente e gestão de anexos',
-        'f_reminders_desc' => 'Carregue, analise e pesquise anexos sem esforço. BigManage fornece um sistema de armazenamento seguro e inteligente que garante que os seus ficheiros estão organizados, acessíveis e prontos a usar sempre que precisar.',
+        'f_reminders_desc' => 'Carregue, analise e pesquise anexos sem esforço. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' fornece um sistema de armazenamento seguro e inteligente que garante que os seus ficheiros estão organizados, acessíveis e prontos a usar sempre que precisar.',
 
         'about_title' => 'Sobre o BigManage',
-        'about_p1' => 'O BigManage é imediatamente acessível via Instagram, Meta Messenger, WhatsApp, Discord, Telegram e email — então você pode começar a usar com as ferramentas que já usa, sem aprender uma nova interface. Como o BigManage opera por prompts de chat em vez de telas com menus, a maioria das pessoas aprende a usar em menos de uma hora.',
-        'about_p2' => 'O BigManage é como um colega prestativo: suas mensagens são analisadas, encaminhadas para o local certo e transformadas em ações complexas. Mantemos o suporte pessoal: você pode nos enviar email ou ligar diretamente, esperar respostas rápidas, e organizaremos chamadas ou reuniões quando necessário. Se não conseguirmos contactá-lo, retornaremos rapidamente para entender o problema e ajudar a encontrar a melhor solução.',
+        'about_p1' => 'O ' . BigManageVariable::APPLICATION_SHORT_NAME . ' é imediatamente acessível via Instagram, Meta Messenger, WhatsApp, Discord, Telegram e email — então você pode começar a usar com as ferramentas que já usa, sem aprender uma nova interface. Como o ' . BigManageVariable::APPLICATION_SHORT_NAME . ' opera por prompts de chat em vez de telas com menus, a maioria das pessoas aprende a usar em menos de uma hora.',
+        'about_p2' => 'O ' . BigManageVariable::APPLICATION_SHORT_NAME . ' é como um colega prestativo: suas mensagens são analisadas, encaminhadas para o local certo e transformadas em ações complexas. Mantemos o suporte pessoal: você pode nos enviar email ou ligar diretamente, esperar respostas rápidas, e organizaremos chamadas ou reuniões quando necessário. Se não conseguirmos contactá-lo, retornaremos rapidamente para entender o problema e ajudar a encontrar a melhor solução.',
 
         'how_title' => 'Como funciona — em chat simples',
-        'how_desc' => 'Digite ou fale instruções naturais — o BigManage extrai a intenção, identifica o alvo (empresa/cargo/pessoa) e executa ou confirma ações.',
+        'how_desc' => 'Digite ou fale instruções naturais — o ' . BigManageVariable::APPLICATION_SHORT_NAME . ' extrai a intenção, identifica o alvo (empresa/cargo/pessoa) e executa ou confirma ações.',
         'how_create' => 'Criar empresas',
         'how_create_desc' => 'Exemplo: "Crie uma empresa chamada HorizonTech."',
         'how_add' => 'Adicionar members & atribuir cargos',
@@ -597,9 +598,9 @@ $translations = [
         'how_reminders_desc' => 'Exemplo: "Crie um lembrete chamado \'Relatório Mensal\' para iniciar em 60 segundos, repetir a cada hora."',
 
         'contact_title' => 'Contacte-nos',
-        'contact_desc' => 'Quer uma demo, detalhes de preços ou integrar o BigManage na sua stack? Envie uma mensagem e a nossa equipa responderá.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => 'Quer uma demo, detalhes de preços ou integrar o ' . BigManageVariable::APPLICATION_SHORT_NAME . ' na sua stack? Envie uma mensagem e a nossa equipa responderá.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europa, Estónia',
         'label_name' => 'Nome',
         'placeholder_name' => 'O seu nome',
@@ -635,7 +636,7 @@ $translations = [
     ],
 
     'spanish' => [
-        'brand' => 'Idealistic: BigManage',
+        'brand' => BigManageVariable::APPLICATION_FULL_NAME,
         'nav_home' => 'Inicio',
         'nav_features' => 'Funciones',
         'nav_usecases' => 'Cómo funciona',
@@ -645,7 +646,7 @@ $translations = [
         'label_dark' => 'Oscuro',
 
         'h1' => 'Controle su empresa con chat natural — sin menús, sin fricción.',
-        'lead' => 'BigManage permite a los equipos controlar su empresa mediante chat natural — sin menús ni fricción. Gestione puestos, recordatorios, accesos, clientes y flujos de trabajo a través de WhatsApp, Telegram, Discord, correo electrónico y más.',
+        'lead' => BigManageVariable::APPLICATION_SHORT_NAME . ' permite a los equipos controlar su empresa mediante chat natural — sin menús ni fricción. Gestione puestos, recordatorios, accesos, clientes y flujos de trabajo a través de WhatsApp, Telegram, Discord, correo electrónico y más.',
         'pill_1_title' => 'Multiplataforma',
         'pill_1_desc' => 'funciona por chat & correo',
         'pill_2_title' => 'Conversacional',
@@ -656,24 +657,24 @@ $translations = [
         'features_title' => 'Funciones potentes diseñadas para equipos',
         'features_desc' => 'Todo lo que necesita para gestionar empresas, members, puestos, accesos y planificación mediante comandos de chat natural — directamente desde las plataformas que ya utiliza.',
         'f_company' => 'Estructura organizativa optimizada',
-        'f_company_desc' => 'Define roles, departamentos, managers, casos, objetivos y listas con facilidad. BigManage te permite mapear toda la organización de forma clara, asegurando que todos conozcan sus responsabilidades y objetivos para lograr la máxima eficiencia.',
+        'f_company_desc' => 'Define roles, departamentos, managers, casos, objetivos y listas con facilidad. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' te permite mapear toda la organización de forma clara, asegurando que todos conozcan sus responsabilidades y objetivos para lograr la máxima eficiencia.',
         'f_employees' => 'Conciencia inteligente de tareas',
-        'f_employees_desc' => 'Mantente al tanto del trabajo con recordatorios automáticos, plazos y notificaciones. BigManage asegura que tu equipo nunca pase por alto una tarea o hito importante, manteniendo las operaciones fluidas y puntuales.',
+        'f_employees_desc' => 'Mantente al tanto del trabajo con recordatorios automáticos, plazos y notificaciones. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' asegura que tu equipo nunca pase por alto una tarea o hito importante, manteniendo las operaciones fluidas y puntuales.',
         'f_positions' => 'Visión financiera integral',
-        'f_positions_desc' => 'Monitorea proveedores, inversores, accionistas, socios, bienes, servicios e ingresos por ventas o suscripciones sin esfuerzo. BigManage consolida todos los datos financieros en una única plataforma fácil de gestionar para tomar decisiones más inteligentes.',
+        'f_positions_desc' => 'Monitorea proveedores, inversores, accionistas, socios, bienes, servicios e ingresos por ventas o suscripciones sin esfuerzo. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' consolida todos los datos financieros en una única plataforma fácil de gestionar para tomar decisiones más inteligentes.',
         'f_departments' => 'Control de acceso avanzado',
-        'f_departments_desc' => 'Protege tu empresa con opciones de seguridad personalizáveis, incluyendo acceso general, acceso basado en tiempo y permisos específicos por días de la semana. BigManage garantiza que los datos sensibles estén accesibles solo para las personas adecuadas en el momento adecuado.',
+        'f_departments_desc' => 'Protege tu empresa con opciones de seguridad personalizáveis, incluyendo acceso general, acceso basado en tiempo y permisos específicos por días de la semana. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' garantiza que los datos sensibles estén accesibles solo para las personas adecuadas en el momento adecuado.',
         'f_access' => 'Herramientas creativas potentes',
-        'f_access_desc' => 'Potencia la innovación con herramientas para creación de imágenes, creación y modificación de archivos y análisis inteligente de enlaces. BigManage respalda la creatividad de tu equipo mientras mantiene los procesos organizados y accionables.',
+        'f_access_desc' => 'Potencia la innovación con herramientas para creación de imágenes, creación y modificación de archivos y análisis inteligente de enlaces. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' respalda la creatividad de tu equipo mientras mantiene los procesos organizados y accionables.',
         'f_reminders' => 'Almacenamiento inteligente y gestión de adjuntos',
-        'f_reminders_desc' => 'Sube, analiza y busca adjuntos sin esfuerzo. BigManage ofrece un sistema de almacenamiento seguro e inteligente que garantiza que tus archivos estén organizados, accesibles y listos para usarse cuando los necesites.',
+        'f_reminders_desc' => 'Sube, analiza y busca adjuntos sin esfuerzo. ' . BigManageVariable::APPLICATION_SHORT_NAME . ' ofrece un sistema de almacenamiento seguro e inteligente que garantiza que tus archivos estén organizados, accesibles y listos para usarse cuando los necesites.',
 
         'about_title' => 'Acerca de BigManage',
-        'about_p1' => 'BigManage es accesible de inmediato vía Instagram, Meta Messenger, WhatsApp, Discord, Telegram y correo electrónico — por lo que puede comenzar a usarlo desde las herramientas que ya utiliza, sin aprender una nueva interfaz. Dado que BigManage funciona mediante prompts de chat en lugar de pantallas de menú, la mayoría aprende a usarlo en menos de una hora.',
-        'about_p2' => 'BigManage es como un colega útil: sus mensajes se analizan, enrutan a la parte correcta del sistema y convierten solicitudes simples en acciones complejas. Mantenemos el soporte personal: puede enviarnos un correo o llamarnos directamente, esperar respuestas rápidas, y organizaremos llamadas o reuniones si es necesario. Si no le localizamos, le devolveremos la llamada rápidamente para entender el problema y encontrar la mejor solución.',
+        'about_p1' => BigManageVariable::APPLICATION_SHORT_NAME . ' es accesible de inmediato vía Instagram, Meta Messenger, WhatsApp, Discord, Telegram y correo electrónico — por lo que puede comenzar a usarlo desde las herramientas que ya utiliza, sin aprender una nueva interfaz. Dado que ' . BigManageVariable::APPLICATION_SHORT_NAME . ' funciona mediante prompts de chat en lugar de pantallas de menú, la mayoría aprende a usarlo en menos de una hora.',
+        'about_p2' => BigManageVariable::APPLICATION_SHORT_NAME . ' es como un colega útil: sus mensajes se analizan, enrutan a la parte correcta del sistema y convierten solicitudes simples en acciones complejas. Mantenemos el soporte personal: puede enviarnos un correo o llamarnos directamente, esperar respuestas rápidas, y organizaremos llamadas o reuniones si es necesario. Si no le localizamos, le devolveremos la llamada rápidamente para entender el problema y encontrar la mejor solución.',
 
         'how_title' => 'Cómo funciona — en chat simple',
-        'how_desc' => 'Escriba o diga instrucciones naturales — BigManage extrae la intención, identifica el objetivo (empresa/puesto/persona) y ejecuta o confirma acciones.',
+        'how_desc' => 'Escriba o diga instrucciones naturales — ' . BigManageVariable::APPLICATION_SHORT_NAME . ' extrae la intención, identifica el objetivo (empresa/puesto/persona) y ejecuta o confirma acciones.',
         'how_create' => 'Crear empresas',
         'how_create_desc' => 'Ejemplo: “Crea una empresa llamada HorizonTech.”',
         'how_add' => 'Añadir members & asignar puestos',
@@ -686,9 +687,9 @@ $translations = [
         'how_reminders_desc' => 'Ejemplo: “Crea un recordatorio llamado \'Informe Mensual\' que empiece en 60 segundos y se repita cada hora.”',
 
         'contact_title' => 'Contacto',
-        'contact_desc' => '¿Quiere una demo, detalles de precios o integrar BigManage en su stack? Envíe un mensaje y nuestro equipo le responderá.',
-        'contact_email' => 'contact@idealistic.ai',
-        'contact_site' => 'https://www.idealistic.ai',
+        'contact_desc' => '¿Quiere una demo, detalles de precios o integrar ' . BigManageVariable::APPLICATION_SHORT_NAME . ' en su stack? Envíe un mensaje y nuestro equipo le responderá.',
+        'contact_email' => BigManageVariable::SUPPORT_EMAIL,
+        'contact_site' => BigManageVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europa, Estonia',
         'label_name' => 'Nombre',
         'placeholder_name' => 'Su nombre',
@@ -725,11 +726,7 @@ $translations = [
 ];
 
 if (!isset($lang)) {
-    if (isset($_GET['language'])) {
-        $lang = strtolower(trim($_GET['language']));
-    } else {
-        $lang = 'english';
-    }
+    $lang = get_form_get('language', 'english');
 }
 if (!in_array($lang, ['english', 'greek', 'spanish', 'french', 'german', 'italian', 'portuguese', 'dutch'], true)) {
     $lang = 'english';
@@ -777,9 +774,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
         $errors[] = $t['err_captcha'];
     }
 
-    $name = trim((string)($_POST['name'] ?? ''));
-    $email = strtolower(trim((string)($_POST['email'] ?? '')));
-    $message = trim((string)($_POST['message'] ?? ''));
+    $name = trim((string)(get_form_post('name', '')));
+    $email = strtolower(trim((string)((get_form_post('email', '')))));
+    $message = trim((string)(get_form_post('message', '')));
 
     if ($name === '') {
         $errors[] = $t['err_name_required'];
@@ -841,7 +838,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     <title>BigManage — Idealistic</title>
 
     <meta name="description"
-          content="BigManage by Idealistic — manage companies, positions, reminders and access through natural chat across WhatsApp, Telegram, Discord and email.">
+          content="<?php echo BigManageVariable::APPLICATION_SHORT_NAME ?> by Idealistic — manage companies, positions, reminders and access through natural chat across WhatsApp, Telegram, Discord and email.">
     <meta name="robots" content="index,follow">
     <link rel="canonical" href="https://www.idealistic.ai">
 
@@ -1532,7 +1529,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-3 py-2">
             <img src="https://www.idealistic.ai/.images/logoCircular.png" alt="logo" height="32">
-            <small class="muted">© 2025 Idealistic — BigManage</small>
+            <small class="muted">© 2025 Idealistic — <?php echo BigManageVariable::APPLICATION_SHORT_NAME ?></small>
         </div>
 
         <div class="py-2 footer-links d-flex align-items-center gap-3 flex-wrap">
