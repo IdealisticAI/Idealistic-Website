@@ -1557,7 +1557,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
             <a class="d-flex align-items-center gap-2" href="https://discord.com/invite/kmFJWcRtSP" target="_blank"
                rel="noopener"><i class="bi bi-discord"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_discord'], ENT_QUOTES, 'UTF-8'); ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://t.me/idealisticBigManageBot" target="_blank"
+            <a class="d-flex align-items-center gap-2" href="https://t.me/idealisticBot" target="_blank"
                rel="noopener"><i class="bi bi-telegram"></i><span
                         class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_telegram'], ENT_QUOTES, 'UTF-8'); ?></span></a>
         </div>
