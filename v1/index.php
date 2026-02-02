@@ -29,7 +29,7 @@ $translations = [
         'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'If you can text, you can use it',
         'pill_3_title' => 'Private', 'pill_3_desc' => 'Enterprise-grade security',
 
-        // Feature Names (Must match Step Names below)
+        // Features
         'features_title' => 'It replaces your dashboard.',
         'features_desc' => 'Don\'t buy expensive software you won\'t use. Do it all in the chat.',
         'f_company' => 'Team Roster', 'f_company_desc' => 'Add or remove employees instantly. See who is in which department.',
@@ -43,7 +43,7 @@ $translations = [
         'about_p1' => 'Traditional software is cluttered. You spend more time managing the tool than doing the work. ' . $appName . ' strips that away.',
         'about_p2' => 'We treat your company like a conversation. You tell us what to do, and it gets done. No menus, no loading screens, no "I forgot my password." It\'s just work, simplified.',
 
-        // Steps (Names matched exactly to Features)
+        // Steps
         'how_title' => 'It takes seconds.',
         'how_desc' => 'Text your commands like you\'re talking to an assistant.',
 
@@ -70,7 +70,10 @@ $translations = [
         'success_received' => 'Received. We will reply shortly.',
         'failure_received' => 'Error sending message.',
         'submission_problem' => 'Please fix errors:',
-        'ft_terms' => 'Terms', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registry', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Pricing', 'modal_captcha_title' => 'Security', 'modal_captcha_close' => 'Close',
+        'ft_terms' => 'Terms', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registry',
+        'ft_doc_text' => 'Text Docs', 'ft_doc_visual' => 'Visual Docs', 'ft_pricing' => 'Pricing',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram',
+        'modal_captcha_title' => 'Security', 'modal_captcha_close' => 'Close',
     ],
 
     'greek' => [
@@ -103,7 +106,9 @@ $translations = [
         'how_step_5' => 'Αναζήτηση Εγγράφων', 'how_step_5_desc' => '«Βρες όλα τα τιμολόγια που ανέβασαν μέλη τον Μάρτιο.»',
 
         'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'john@company.com', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
-        'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Τιμολόγηση', 'err_captcha' => 'Αποτυχία Captcha.', 'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
+        'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο',
+        'ft_doc_text' => 'Text Docs', 'ft_doc_visual' => 'Visual Docs', 'ft_pricing' => 'Τιμολόγηση',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
     ],
 
     'dutch' => [
@@ -130,7 +135,9 @@ $translations = [
         'how_step_5' => 'Documenten Zoeken', 'how_step_5_desc' => '“Vind alle facturen geüpload door leden in maart.”',
 
         'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'jan@bedrijf.nl', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
-        'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Prijzen', 'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
+        'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register',
+        'ft_doc_text' => 'Tekst Docs', 'ft_doc_visual' => 'Visuele Docs', 'ft_pricing' => 'Prijzen',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
     ],
 
     'german' => [
@@ -156,7 +163,9 @@ $translations = [
         'how_step_5' => 'Dokumentensuche', 'how_step_5_desc' => '„Finde alle Rechnungen, die im März hochgeladen wurden.“',
 
         'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'max@firma.de', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
-        'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register', 'ft_doc' => 'Doku', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Preise', 'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
+        'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register',
+        'ft_doc_text' => 'Text Docs', 'ft_doc_visual' => 'Visuelle Docs', 'ft_pricing' => 'Preise',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
     ],
 
     'italian' => [
@@ -181,7 +190,9 @@ $translations = [
         'how_step_4' => 'Permessi', 'how_step_4_desc' => '“Blocca accesso al team dopo le 18:00.”',
         'how_step_5' => 'Ricerca Documenti', 'how_step_5_desc' => '“Trova tutte le fatture caricate dai membri a marzo.”',
 
-        'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'mario@azienda.it', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Prezzi', 'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
+        'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'mario@azienda.it', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro',
+        'ft_doc_text' => 'Doc Testuali', 'ft_doc_visual' => 'Doc Visivi', 'ft_pricing' => 'Prezzi',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
     ],
 
     'french' => [
@@ -206,7 +217,9 @@ $translations = [
         'how_step_4' => 'Permissions', 'how_step_4_desc' => '« Bloque accès à l\'équipe après 18h. »',
         'how_step_5' => 'Recherche Documents', 'how_step_5_desc' => '« Trouve toutes les factures chargées par les membres en mars. »',
 
-        'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'jean@societe.com', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Tarifs', 'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
+        'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'jean@societe.com', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre',
+        'ft_doc_text' => 'Docs Texte', 'ft_doc_visual' => 'Docs Visuels', 'ft_pricing' => 'Tarifs',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
     ],
 
     'portuguese' => [
@@ -231,7 +244,9 @@ $translations = [
         'how_step_4' => 'Permissões', 'how_step_4_desc' => '“Bloqueie acesso à equipe após as 18h.”',
         'how_step_5' => 'Busca Documentos', 'how_step_5_desc' => '“Encontre todas as faturas enviadas por membros em março.”',
 
-        'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'joao@empresa.com', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Preços', 'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
+        'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'joao@empresa.com', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro',
+        'ft_doc_text' => 'Docs Texto', 'ft_doc_visual' => 'Docs Visuais', 'ft_pricing' => 'Preços',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
     ],
 
     'spanish' => [
@@ -256,7 +271,9 @@ $translations = [
         'how_step_4' => 'Permisos', 'how_step_4_desc' => '“Bloquee acceso al equipo tras las 18:00.”',
         'how_step_5' => 'Búsqueda Documentos', 'how_step_5_desc' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
 
-        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quiero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Precios', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
+        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quiero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
+        'ft_doc_text' => 'Docs Texto', 'ft_doc_visual' => 'Docs Visuales', 'ft_pricing' => 'Precios',
+        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
     ],
 ];
 
@@ -512,7 +529,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                             <?php foreach ($langCodes as $langName => $code): ?>
                                 <li><a class="dropdown-item"
                                        href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY . '/' . $code . '/'; ?>">
-                                        <span class="me-2"><?php echo $flags[$langName]; ?></span> <?php echo ucfirst($langName); ?>
+                                        <span class="me-2"><?php echo $flags[$langName]; ?></span>
                                     </a></li>
                             <?php endforeach; ?>
                         </ul>
@@ -680,10 +697,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                href="https://ariregister.rik.ee/eng/company/17320016/Idealistic-OÜ"
                target="_blank"><i class="bi bi-building-check"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_registry']; ?></span></a>
+
             <a class="d-flex align-items-center gap-2"
-               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/<?php echo $langCodes[$lang] ?? ''; ?>"
+               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/text"
                target="_blank"><i class="bi bi-file-earmark-text"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_doc']; ?></span></a>
+                        class="d-none d-md-inline"><?php echo $t['ft_doc_text']; ?></span></a>
+            <a class="d-flex align-items-center gap-2"
+               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/visual"
+               target="_blank"><i class="bi bi-images"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_doc_visual']; ?></span></a>
+            <a class="d-flex align-items-center gap-2"
+               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/pricing"
+               target="_blank"><i class="bi bi-tag"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_pricing']; ?></span></a>
             <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"><i
                         class="bi bi-instagram"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_instagram']; ?></span></a>
