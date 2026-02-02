@@ -1,1086 +1,478 @@
 <?php
 require '/var/www/.structure/library/base/form.php';
 require '/var/www/.structure/library/idealistic_office/init.php';
-$recaptcha_secret_key_data = get_keys_from_file("google_recaptcha", 1);
 
-if ($recaptcha_secret_key_data === null) {
-    $recaptcha_secret_key = "";
-} else {
-    $recaptcha_secret_key = $recaptcha_secret_key_data[0];
-}
+// Key Handling
+$recaptcha_secret_key_data = get_keys_from_file("google_recaptcha", 1);
+$recaptcha_secret_key = ($recaptcha_secret_key_data === null) ? "" : $recaptcha_secret_key_data[0];
 $recaptcha_site_key = '6Lf_zyQUAAAAAAxfpHY5Io2l23ay3lSWgRzi_l6B';
 
+// Helper
+$appName = IdealisticOfficeVariable::APPLICATION_NAME;
+
+// Flag Mapping
+$flags = [
+    'english' => '🇬🇧', 'greek' => '🇬🇷', 'spanish' => '🇪🇸', 'french' => '🇫🇷',
+    'german' => '🇩🇪', 'italian' => '🇮🇹', 'portuguese' => '🇵🇹', 'dutch' => '🇳🇱'
+];
+
 $translations = [
-
     'english' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Home',
-        'nav_features' => 'Features',
-        'nav_usecases' => 'How it works',
-        'nav_contact' => 'Contact Us',
-        'cta_request' => 'Request Demo',
-        'cta_explore' => 'Explore Features',
-        'label_dark' => 'Dark',
+        'brand' => $appName,
+        'nav_home' => 'Home', 'nav_features' => 'Tools', 'nav_usecases' => 'Demo', 'nav_contact' => 'Login / Contact',
+        'cta_request' => 'Start Now', 'cta_explore' => 'How it works', 'label_dark' => 'Dark Mode',
 
-        'h1' => 'Control your company with natural chat — no menus, no friction.',
-        'lead' => IdealisticOfficeVariable::APPLICATION_NAME . ' lets teams control their company using natural chat — without menus or friction. Manage positions, reminders, access, clients and workflows across WhatsApp, Telegram, Discord, email and more.',
-        'pill_1_title' => 'Multi-platform',
-        'pill_1_desc' => 'works across chat & email',
-        'pill_2_title' => 'Conversational',
-        'pill_2_desc' => 'natural language commands',
-        'pill_3_title' => 'Secure',
-        'pill_3_desc' => 'encrypted & isolated',
+        'h1' => 'Your office is now a chat room.',
+        'lead' => 'Stop clicking through complex dashboards. Manage your team, track sales, and assign tasks directly inside WhatsApp, Telegram, or Discord.',
 
-        'features_title' => 'Powerful features designed for teams',
-        'features_desc' => 'Everything you need to manage companies, members, positions, access and scheduling through natural chat prompts — directly from platforms you already use.',
-        'f_company' => 'Streamlined Organizational Structure',
-        'f_company_desc' => 'Define roles, departments, managers, cases, targets, and lists with ease. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' lets you map your entire organization clearly, ensuring everyone knows their responsibilities and objectives for maximum efficiency.',
-        'f_employees' => 'Intelligent Task Awareness',
-        'f_employees_desc' => 'Stay on top of your work with automated reminders, deadlines, and notifications. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' ensures your team never misses an important task or milestone, keeping operations smooth and timely.',
-        'f_positions' => 'Comprehensive Financial Oversight',
-        'f_positions_desc' => 'Monitor suppliers, investors, shareholders, partners, goods, services, and sales or subscription revenue effortlessly. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' consolidates all financial data into a single, easy-to-manage platform for smarter business decisions.',
-        'f_departments' => 'Advanced Access Control',
-        'f_departments_desc' => 'Protect your company with customizable security options, including general access, time-based access, and weekday-specific permissions. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' ensures that sensitive data is only accessible to the right people at the right time.',
-        'f_access' => 'Empowered Creative Tools',
-        'f_access_desc' => 'Boost innovation with tools for image creation, file creation and modification, and intelligent link analysis. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' supports your team’s creativity while keeping processes organized and actionable.',
-        'f_reminders' => 'Smart Storage & Attachment Management',
-        'f_reminders_desc' => 'Upload, analyze, and search attachments effortlessly. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' provides a secure, intelligent storage system that ensures your files are organized, accessible, and actionable whenever you need them.',
+        'pill_1_title' => 'Works Everywhere', 'pill_1_desc' => 'WhatsApp, Telegram, Email',
+        'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'If you can text, you can use it',
+        'pill_3_title' => 'Private', 'pill_3_desc' => 'Enterprise-grade security',
 
-        'about_title' => 'About ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => IdealisticOfficeVariable::APPLICATION_NAME . ' is immediately accessible via Instagram, Meta Messenger, WhatsApp, Discord, Telegram and email — so you can start using the service from tools you already use, without learning a new interface. Because ' . IdealisticOfficeVariable::APPLICATION_NAME . ' operates through chat prompts rather than menu-driven screens, most people understand how to use it in under an hour.',
-        'about_p2' => IdealisticOfficeVariable::APPLICATION_NAME . ' is like a helpful colleague — it understands your messages, routes them to the right place, and turns simple requests into complex actions. We keep support personal: you can email or call us directly, expect quick responses, and we’ll arrange calls or meetings if needed. If we miss you, we’ll get back fast to understand the issue and help find the best solution.',
+        // Feature Names (Must match Step Names below)
+        'features_title' => 'It replaces your dashboard.',
+        'features_desc' => 'Don\'t buy expensive software you won\'t use. Do it all in the chat.',
+        'f_company' => 'Team Roster', 'f_company_desc' => 'Add or remove employees instantly. See who is in which department.',
+        'f_employees' => 'Tasks & Deadlines', 'f_employees_desc' => 'Assign tasks via text. We nag your team about deadlines so you don\'t have to.',
+        'f_positions' => 'Client Database', 'f_positions_desc' => 'Pull up client details, history, and active deals without leaving the chat.',
+        'f_departments' => 'Permissions', 'f_departments_desc' => 'Lock down sensitive data. Control exactly who sees what and when.',
+        'f_access' => 'File Generator', 'f_access_desc' => 'Create images, edit documents, and analyze links on the fly.',
+        'f_reminders' => 'Document Search', 'f_reminders_desc' => 'Find that one contract from last year by asking. We search inside the files.',
 
-        'how_title' => 'How it works — in plain chat',
-        'how_desc' => 'Type or speak natural instructions — ' . IdealisticOfficeVariable::APPLICATION_NAME . ' extracts intent, identifies the target (company/position/person) and executes or confirms actions.',
-        'how_create' => 'Create companies',
-        'how_create_desc' => 'Example: “Create a company named HorizonTech.”',
-        'how_add' => 'Add members & assign positions',
-        'how_add_desc' => 'Example: “Add a new member with email john.doe@example.com.”',
-        'how_positions' => 'Create and manage positions',
-        'how_positions_desc' => 'Example: “Create a Marketing Manager position.”',
-        'how_access' => 'Access & time access',
-        'how_access_desc' => 'Example: “Set the company’s time access from 08:00 to 18:00.”',
-        'how_reminders' => 'Reminders',
-        'how_reminders_desc' => 'Example: “Create a reminder called ‘Monthly Report’ to start in 60 seconds, repeat every one hour.”',
+        'about_title' => 'Why ' . $appName . '?',
+        'about_p1' => 'Traditional software is cluttered. You spend more time managing the tool than doing the work. ' . $appName . ' strips that away.',
+        'about_p2' => 'We treat your company like a conversation. You tell us what to do, and it gets done. No menus, no loading screens, no "I forgot my password." It\'s just work, simplified.',
 
-        'contact_title' => 'Contact Us',
-        'contact_desc' => 'Want a demo, pricing details or to integrate ' . IdealisticOfficeVariable::APPLICATION_NAME . ' with your stack? Drop a message and our team will get back to you.',
+        // Steps (Names matched exactly to Features)
+        'how_title' => 'It takes seconds.',
+        'how_desc' => 'Text your commands like you\'re talking to an assistant.',
+
+        'how_step_1' => 'Team Roster', 'how_step_1_desc' => '“Add John (john@example.com) to the team.”',
+        'how_step_2' => 'Tasks & Deadlines', 'how_step_2_desc' => '“Task for John: Finish the report by Friday.”',
+        'how_step_3' => 'Client Database', 'how_step_3_desc' => '“Show me the contact info for Client X.”',
+        'how_step_4' => 'Permissions', 'how_step_4_desc' => '“Block access to the team after 6 PM.”',
+        'how_step_5' => 'Document Search', 'how_step_5_desc' => '“Find all invoice files uploaded by members in last March.”',
+
+        'contact_title' => 'Get Started', 'contact_desc' => 'Ready to simplify? Send us a message.',
         'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
         'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europe, Estonia',
-        'label_name' => 'Name',
-        'placeholder_name' => 'Your name',
-        'label_email' => 'Work Email',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'How can we help?',
-        'placeholder_message' => 'Tell us briefly about your use-case...',
-        'btn_submit' => 'Request Demo',
+        'label_name' => 'Name', 'placeholder_name' => 'John Smith',
+        'label_email' => 'Work Email', 'placeholder_email' => 'john@company.com',
+        'label_message' => 'Message', 'placeholder_message' => 'I want to integrate this with...',
+        'btn_submit' => 'Send Message',
 
-        'err_name_required' => 'Name is required.',
-        'err_name_length' => 'Name must be between 2 and 128 characters.',
-        'err_email_required' => 'A valid email is required.',
-        'err_email_length' => 'Email must be between 5 and 384 characters.',
-        'err_message_required' => 'Message cannot be empty.',
-        'err_message_length' => 'Message must be between 32 and 1024 characters.',
-        'err_rate_limit' => 'You are sending messages too quickly. Please wait a moment and try again.',
-        'err_captcha' => 'Captcha verification failed. Please try again.',
-        'success_received' => 'Thanks — your message was received. We will contact you as soon as possible.',
-        'failure_received' => 'Your message failed to be received. Please try again later.',
-        'submission_problem' => 'There was a problem submitting the form:',
-
-        'ft_terms' => 'Terms of Use',
-        'ft_privacy' => 'Privacy Policy',
-        'ft_doc' => 'Documentation',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Pricing',
-        'modal_captcha_title' => 'Security Check',
-        'modal_captcha_close' => 'Close',
+        'err_name_required' => 'Name is missing.', 'err_name_length' => 'Name too short/long.',
+        'err_email_required' => 'Email is missing.', 'err_email_length' => 'Email invalid.',
+        'err_message_required' => 'Message is missing.', 'err_message_length' => 'Message invalid.',
+        'err_rate_limit' => 'Too fast. Wait a moment.',
+        'err_captcha' => 'Security check failed.',
+        'success_received' => 'Received. We will reply shortly.',
+        'failure_received' => 'Error sending message.',
+        'submission_problem' => 'Please fix errors:',
+        'ft_terms' => 'Terms', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registry', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Pricing', 'modal_captcha_title' => 'Security', 'modal_captcha_close' => 'Close',
     ],
 
     'greek' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Αρχική',
-        'nav_features' => 'Χαρακτηριστικά',
-        'nav_usecases' => 'Πώς λειτουργεί',
-        'nav_contact' => 'Επικοινωνία',
-        'cta_request' => 'Ζητήστε επίδειξη',
-        'cta_explore' => 'Δείτε περισσότερα',
-        'label_dark' => 'Σκοτεινή',
+        'brand' => $appName,
+        'nav_home' => 'Αρχική', 'nav_features' => 'Εργαλεία', 'nav_usecases' => 'Επίδειξη', 'nav_contact' => 'Επικοινωνία',
+        'cta_request' => 'Ξεκινήστε', 'cta_explore' => 'Λειτουργία', 'label_dark' => 'Σκοτεινή',
+        'h1' => 'Το γραφείο σας, τώρα σε chat.',
+        'lead' => 'Διαχειριστείτε την ομάδα και τις πωλήσεις σας απευθείας από το WhatsApp ή το Telegram.',
+        'pill_1_title' => 'Παντού', 'pill_1_desc' => 'WhatsApp, Telegram, Email',
+        'pill_2_title' => 'Χωρίς Εκπαίδευση', 'pill_2_desc' => 'Απλά στείλτε μήνυμα',
+        'pill_3_title' => 'Ιδιωτικό', 'pill_3_desc' => 'Ασφάλεια δεδομένων',
+        'features_title' => 'Αντικαθιστά το dashboard σας.',
+        'features_desc' => 'Κάντε τη δουλειά σας μέσα από τη συνομιλία.',
+        'f_company' => 'Ομάδα', 'f_company_desc' => 'Προσθέστε ή αφαιρέστε υπαλλήλους άμεσα.',
+        'f_employees' => 'Εργασίες & Προθεσμίες', 'f_employees_desc' => 'Αναθέστε εργασίες με μήνυμα. Εμείς υπενθυμίζουμε τις προθεσμίες.',
+        'f_positions' => 'Πελατολόγιο', 'f_positions_desc' => 'Βρείτε στοιχεία πελατών χωρίς να βγείτε από το chat.',
+        'f_departments' => 'Δικαιώματα', 'f_departments_desc' => 'Ελέγξτε ποιος βλέπει τι και πότε.',
+        'f_access' => 'Αρχεία', 'f_access_desc' => 'Δημιουργήστε εικόνες και έγγραφα άμεσα.',
+        'f_reminders' => 'Αναζήτηση Εγγράφων', 'f_reminders_desc' => 'Βρείτε παλιά συμβόλαια ψάχνοντας το περιεχόμενο τους.',
+        'about_title' => 'Γιατί ' . $appName . ';',
+        'about_p1' => 'Το κλασικό λογισμικό είναι αργό. Το ' . $appName . ' είναι γρήγορο σαν μήνυμα.',
+        'about_p2' => 'Δώστε εντολή και εκτελείται.',
+        'how_title' => 'Παίρνει δευτερόλεπτα.',
+        'how_desc' => 'Γράψτε εντολές όπως μιλάτε σε έναν βοηθό.',
 
-        'h1' => 'Διαχειριστείτε την εταιρεία σας με φυσική συνομιλία — χωρίς μενού, χωρίς τριβές.',
-        'lead' => 'Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' επιτρέπει στις ομάδες να διαχειρίζονται την εταιρεία τους μέσω φυσικής συνομιλίας — χωρίς μενού ή περιττή πολυπλοκότητα. Διαχειριστείτε θέσεις, υπενθυμίσεις, πρόσβαση, πελάτες και ροές εργασίας μέσω WhatsApp, Telegram, Discord, email και άλλων.',
-        'pill_1_title' => 'Πολλαπλές πλατφόρμες',
-        'pill_1_desc' => 'λειτουργεί σε chat & email',
-        'pill_2_title' => 'Συνομιλητικό',
-        'pill_2_desc' => 'φυσικές εντολές κειμένου',
-        'pill_3_title' => 'Ασφαλές',
-        'pill_3_desc' => 'κρυπτογραφημένο και απομονωμένο',
+        'how_step_1' => 'Ομάδα', 'how_step_1_desc' => '«Πρόσθεσε τον Γιάννη (john@example.com) στην ομάδα.»',
+        'how_step_2' => 'Εργασίες & Προθεσμίες', 'how_step_2_desc' => '«Εργασία για Γιάννη: Τελείωσε την αναφορά ως την Παρασκευή.»',
+        'how_step_3' => 'Πελατολόγιο', 'how_step_3_desc' => '«Δείξε μου τα στοιχεία του Πελάτη Χ.»',
+        'how_step_4' => 'Δικαιώματα', 'how_step_4_desc' => '«Κλείδωσε την πρόσβαση στην ομάδα μετά τις 6μμ.»',
+        'how_step_5' => 'Αναζήτηση Εγγράφων', 'how_step_5_desc' => '«Βρες όλα τα τιμολόγια που ανέβασαν μέλη τον Μάρτιο.»',
 
-        'features_title' => 'Ισχυρές δυνατότητες σχεδιασμένες για ομάδες',
-        'features_desc' => 'Όλα όσα χρειάζεστε για να διαχειρίζεστε εταιρείες, members, θέσεις, πρόσβαση και προγραμματισμό μέσω φυσικών εντολών συνομιλίας — απευθείας από τα εργαλεία που ήδη χρησιμοποιείτε.',
-        'f_company' => 'Αποτελεσματική Οργανωτική Δομή',
-        'f_company_desc' => 'Ορίστε εύκολα ρόλους, τμήματα, διευθυντές, περιπτώσεις, στόχους και λίστες. Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' σας επιτρέπει να χαρτογραφήσετε ολόκληρο τον οργανισμό με σαφήνεια, ώστε όλοι να γνωρίζουν τις ευθύνες και τους στόχους τους για μέγιστη αποτελεσματικότητα.',
-        'f_employees' => 'Έξυπνη Παρακολούθηση Εργασιών',
-        'f_employees_desc' => 'Μείνετε ενημερωμένοι με αυτόματες υπενθυμίσεις, προθεσμίες και ειδοποιήσεις. Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' διασφαλίζει ότι η ομάδα σας δεν χάνει ποτέ σημαντική εργασία ή ορόσημο, διατηρώντας τις λειτουργίες ομαλές και έγκαιρες.',
-        'f_positions' => 'Ολοκληρωμένη Οικονομική Εποπτεία',
-        'f_positions_desc' => 'Παρακολουθήστε προμηθευτές, επενδυτές, μετόχους, συνεργάτες, αγαθά, υπηρεσίες και έσοδα από πωλήσεις ή συνδρομές εύκολα. Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' συγκεντρώνει όλα τα οικονομικά δεδομένα σε μια ενιαία πλατφόρμα για πιο έξυπνες επιχειρηματικές αποφάσεις.',
-        'f_departments' => 'Προηγμένος Έλεγχος Πρόσβασης',
-        'f_departments_desc' => 'Προστατέψτε την εταιρεία σας με προσαρμοσμένες επιλογές ασφάλειας, όπως γενική πρόσβαση, χρονικά περιορισμένη πρόσβαση και δικαιώματα ανά ημέρα της εβδομάδας. Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' εξασφαλίζει ότι τα ευαίσθητα δεδομένα είναι προσβάσιμα μόνο από τα κατάλληλα άτομα τη σωστή στιγμή.',
-        'f_access' => 'Δυναμικά Δημιουργικά Εργαλεία',
-        'f_access_desc' => 'Ενισχύστε τη δημιουργικότητα με εργαλεία για δημιουργία εικόνων, δημιουργία και τροποποίηση αρχείων και έξυπνη ανάλυση συνδέσμων. Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' υποστηρίζει τη δημιουργικότητα της ομάδας σας, διατηρώντας παράλληλα οργανωμένες και εφαρμόσιμες διαδικασίες.',
-        'f_reminders' => 'Έξυπνη Αποθήκευση & Διαχείριση Συνημμένων',
-        'f_reminders_desc' => 'Ανεβάστε, αναλύστε και αναζητήστε συνημμένα με ευκολία. Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' παρέχει ένα ασφαλές και έξυπνο σύστημα αποθήκευσης που διασφαλίζει ότι τα αρχεία σας είναι οργανωμένα, προσβάσιμα και άμεσα χρησιμοποιήσιμα όποτε τα χρειάζεστε.',
-
-        'about_title' => 'Σχετικά με το ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => 'Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' είναι άμεσα προσβάσιμο μέσω Instagram, Meta Messenger, WhatsApp, Discord, Telegram και email — οπότε μπορείτε να ξεκινήσετε άμεσα από εργαλεία που ήδη χρησιμοποιείτε, χωρίς να μάθετε νέο περιβάλλον. Επειδή το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' λειτουργεί με εντολές συνομιλίας αντί για μενού, οι περισσότεροι χρήστες το κατανοούν άμεσα.',
-        'about_p2' => 'Το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' είναι σαν έναν χρήσιμο συνάδελφο — καταλαβαίνει τα μηνύματά σας, τα κατευθύνει στο σωστό σημείο και μετατρέπει απλά αιτήματα σε πολύπλοκες ενέργειες. Διατηρούμε την υποστήριξη προσωπική: μπορείτε να μας στείλετε email ή να μας καλέσετε απευθείας, να περιμένετε γρήγορες απαντήσεις και θα κανονίσουμε κλήσεις ή συναντήσεις αν χρειαστεί. Αν μας χάσετε, θα επικοινωνήσουμε σύντομα για να κατανοήσουμε το ζήτημα και να βρούμε την καλύτερη λύση.',
-
-        'how_title' => 'Πώς λειτουργεί — με απλή συνομιλία',
-        'how_desc' => 'Πληκτρολογήστε ή μιλήστε φυσικές εντολές — το ' . IdealisticOfficeVariable::APPLICATION_NAME . ' εξάγει την πρόθεση, εντοπίζει τον στόχο (εταιρεία/θέση/άτομο) και εκτελεί ή επιβεβαιώνει τις ενέργειες.',
-        'how_create' => 'Δημιουργία εταιρειών',
-        'how_create_desc' => 'Παράδειγμα: «Δημιούργησε την εταιρεία HorizonTech.»',
-        'how_add' => 'Προσθήκη members & ανάθεση θέσεων',
-        'how_add_desc' => 'Παράδειγμα: «Πρόσθεσε νέο member με email john.doe@example.com»',
-        'how_positions' => 'Δημιουργία και διαχείριση θέσεων',
-        'how_positions_desc' => 'Παράδειγμα: «Δημιούργησε θέση Marketing Manager.»',
-        'how_access' => 'Πρόσβαση & χρονικοί περιορισμοί',
-        'how_access_desc' => 'Παράδειγμα: «Ορισμός πρόσβασης εταιρείας από 08:00 έως 18:00.»',
-        'how_reminders' => 'Υπενθυμίσεις',
-        'how_reminders_desc' => 'Παράδειγμα: «Δημιούργησε υπενθύμιση ‘Μηνιαία Αναφορά’ να ξεκινήσει σε 60 δευτερόλεπτα, επανάληψη κάθε μια ώρα».',
-
-        'contact_title' => 'Επικοινωνήστε μαζί μας',
-        'contact_desc' => 'Θέλετε επίδειξη, πληροφορίες τιμολόγησης ή κάτι άλλο; Στείλτε μήνυμα και η ομάδα μας θα επικοινωνήσει μαζί σας.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Ευρώπη, Αθήνα',
-        'label_name' => 'Όνομα',
-        'placeholder_name' => 'Το όνομά σας',
-        'label_email' => 'Εργασιακό Email',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'Πώς μπορούμε να βοηθήσουμε;',
-        'placeholder_message' => 'Πείτε μας σύντομα τη περίπτωση χρήσης σας...',
-        'btn_submit' => 'Ζητήστε επίδειξη',
-
-        'err_name_required' => 'Το όνομα είναι υποχρεωτικό.',
-        'err_name_length' => 'Το όνομα πρέπει να είναι μεταξύ 2 και 128 χαρακτήρων.',
-        'err_email_required' => 'Απαιτείται έγκυρο email.',
-        'err_email_length' => 'Το email πρέπει να είναι μεταξύ 5 και 384 χαρακτήρων.',
-        'err_message_required' => 'Το μήνυμα δεν μπορεί να είναι κενό.',
-        'err_message_length' => 'Το μήνυμα πρέπει να έχει μεταξύ 32 και 1024 χαρακτήρων.',
-        'err_rate_limit' => 'Στέλνετε μηνύματα πολύ γρήγορα. Περιμένετε λίγο και δοκιμάστε ξανά.',
-        'success_received' => 'Ευχαριστούμε — το μήνυμά σας λήφθηκε. Θα επικοινωνήσουμε το συντομότερο δυνατό.',
-        'failure_received' => 'Το μήνυμά σας δεν παραλήφθηκε. Παρακαλώ δοκιμάστε αργότερα.',
-        'submission_problem' => 'Υπήρξε πρόβλημα με την υποβολή της φόρμας:',
-
-        'ft_terms' => 'Όροι Χρήσης',
-        'ft_privacy' => 'Πολιτική Απορρήτου',
-        'ft_doc' => 'Τεκμηρίωση',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Τιμολόγηση',
-        'err_captcha' => 'Η επαλήθευση Captcha απέτυχε.',
-        'modal_captcha_title' => 'Έλεγχος Ασφαλείας',
-        'modal_captcha_close' => 'Κλείσιμο',
+        'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'john@company.com', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
+        'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Τιμολόγηση', 'err_captcha' => 'Αποτυχία Captcha.', 'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
     ],
 
     'dutch' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Home',
-        'nav_features' => 'Functies',
-        'nav_usecases' => 'Hoe het werkt',
-        'nav_contact' => 'Contact',
-        'cta_request' => 'Vraag demo aan',
-        'cta_explore' => 'Bekijk functies',
-        'label_dark' => 'Donker',
+        'brand' => $appName,
+        'nav_home' => 'Home', 'nav_features' => 'Tools', 'nav_usecases' => 'Demonstratie', 'nav_contact' => 'Contact',
+        'cta_request' => 'Start Nu', 'cta_explore' => 'Hoe werkt het', 'label_dark' => 'Donker',
+        'h1' => 'Uw kantoor is nu een chatroom.',
+        'lead' => 'Beheer uw team, verkoop en taken direct in WhatsApp of Telegram.',
+        'pill_1_title' => 'Overal', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Geen Training', 'pill_2_desc' => 'Zo simpel als sms\'en', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Veilige data',
+        'features_title' => 'Vervangt uw dashboard.', 'features_desc' => 'Doe al het werk in de chat.',
+        'f_company' => 'Teamlijst', 'f_company_desc' => 'Voeg medewerkers direct toe of verwijder ze.',
+        'f_employees' => 'Taken & Deadlines', 'f_employees_desc' => 'Wijs taken toe via tekst. Wij herinneren uw team aan deadlines.',
+        'f_positions' => 'Klanten', 'f_positions_desc' => 'Bekijk klantgegevens zonder de chat te verlaten.',
+        'f_departments' => 'Rechten', 'f_departments_desc' => 'Beheer wie wat ziet en wanneer.',
+        'f_access' => 'Bestanden', 'f_access_desc' => 'Maak afbeeldingen en documenten direct aan.',
+        'f_reminders' => 'Documenten Zoeken', 'f_reminders_desc' => 'Vind contracten door in de inhoud te zoeken.',
+        'about_title' => 'Waarom ' . $appName . '?', 'about_p1' => 'Traditionele software is traag. ' . $appName . ' is snel en direct.', 'about_p2' => 'Geen menu\'s, gewoon werk.',
+        'how_title' => 'Het duurt seconden.', 'how_desc' => 'Typ commando\'s alsof u met een assistent praat.',
 
-        'h1' => 'Beheer uw bedrijf met natuurlijke chat — geen menu\'s, geen wrijving.',
-        'lead' => IdealisticOfficeVariable::APPLICATION_NAME . ' laat teams hun bedrijf beheren via natuurlijke chat — zonder menu\'s of frictie. Beheer posities, herinneringen, toegang, klanten en workflows via WhatsApp, Telegram, Discord, e-mail en meer.',
-        'pill_1_title' => 'Multi-platform',
-        'pill_1_desc' => 'werkt via chat & e-mail',
-        'pill_2_title' => 'Conversatie',
-        'pill_2_desc' => 'natuurlijke taalcommando\'s',
-        'pill_3_title' => 'Veilig',
-        'pill_3_desc' => 'versleuteld & geïsoleerd',
+        'how_step_1' => 'Teamlijst', 'how_step_1_desc' => '“Voeg Jan (jan@example.com) toe aan het team.”',
+        'how_step_2' => 'Taken & Deadlines', 'how_step_2_desc' => '“Taak voor Jan: Rapport afmaken voor vrijdag.”',
+        'how_step_3' => 'Klanten', 'how_step_3_desc' => '“Toon contactinfo voor Klant X.”',
+        'how_step_4' => 'Rechten', 'how_step_4_desc' => '“Blokkeer toegang tot het team na 18:00.”',
+        'how_step_5' => 'Documenten Zoeken', 'how_step_5_desc' => '“Vind alle facturen geüpload door leden in maart.”',
 
-        'features_title' => 'Krachtige functies ontworpen voor teams',
-        'features_desc' => 'Alles wat u nodig hebt om bedrijven, members, posities, toegang en planning te beheren via natuurlijke chatopdrachten — direct vanuit de platforms die u al gebruikt.',
-        'f_company' => 'Gestroomlijnde organisatiestructuur',
-        'f_company_desc' => 'Definieer eenvoudig rollen, afdelingen, managers, cases, targets en lijsten. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' laat je de hele organisatie helder in kaart brengen, zodat iedereen zijn verantwoordelijkheden en doelstellingen kent voor maximale efficiëntie.',
-        'f_employees' => 'Intelligente taakbewaking',
-        'f_employees_desc' => 'Blijf op de hoogte met geautomatiseerde herinneringen, deadlines en meldingen. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' zorgt ervoor dat je team nooit een belangrijke taak of mijlpaal mist, waardoor de werkzaamheden soepel en op tijd verlopen.',
-        'f_positions' => 'Uitgebreid financieel overzicht',
-        'f_positions_desc' => 'Houd leveranciers, investeerders, aandeelhouders, partners, goederen, diensten en verkoop- of abonnementsinkomsten moeiteloos bij. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' consolideert alle financiële gegevens in één gebruiksvriendelijk platform voor slimmere beslissingen.',
-        'f_departments' => 'Geavanceerde toegangscontrole',
-        'f_departments_desc' => 'Bescherm je bedrijf met aanpasbare beveiligingsopties, waaronder algemene toegang, tijdgebonden toegang en weekdag-specifieke machtigingen. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' zorgt dat gevoelige gegevens alleen toegankelijk zijn voor de juiste mensen op het juiste moment.',
-        'f_access' => 'Krachtige creatieve tools',
-        'f_access_desc' => 'Stimuleer innovatie met tools voor afbeeldingen, het aanmaken en bewerken van bestanden en intelligente linkanalyse. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' ondersteunt de creativiteit van je team en houdt processen georganiseerd en uitvoerbaar.',
-        'f_reminders' => 'Slim opslag- en bijlagebeheer',
-        'f_reminders_desc' => 'Upload, analyseer en doorzoek bijlagen moeiteloos. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' biedt een veilige, intelligente opslagoplossing die je bestanden georganiseerd, toegankelijk en inzetbaar houdt wanneer je ze nodig hebt.',
-
-        'about_title' => 'Over ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => IdealisticOfficeVariable::APPLICATION_NAME . ' is direct toegankelijk via Instagram, Meta Messenger, WhatsApp, Discord, Telegram en e-mail — zodat u kunt beginnen met de tools die u al gebruikt, zonder een nieuwe interface te hoeven leren. Omdat ' . IdealisticOfficeVariable::APPLICATION_NAME . ' werkt via chatopdrachten in plaats van menu\'s, begrijpen de meeste mensen het binnen een uur.',
-        'about_p2' => IdealisticOfficeVariable::APPLICATION_NAME . ' is als een behulpzame collega: het begrijpt uw berichten, leidt ze naar de juiste plek en zet eenvoudige verzoeken om in complexe acties. We houden ondersteuning persoonlijk: u kunt ons mailen of bellen, snelle reacties verwachten en we regelen gesprekken of afspraken indien nodig. Als we u even missen, nemen we snel contact op om het probleem te begrijpen en een oplossing te vinden.',
-
-        'how_title' => 'Hoe het werkt — in eenvoudige chat',
-        'how_desc' => 'Typ of spreek natuurlijke instructies — ' . IdealisticOfficeVariable::APPLICATION_NAME . ' haalt intentie eruit, identificeert het doel (bedrijf/positie/persoon) en voert acties uit of bevestigt ze.',
-        'how_create' => 'Bedrijven aanmaken',
-        'how_create_desc' => 'Voorbeeld: “Maak een bedrijf genaamd HorizonTech.”',
-        'how_add' => 'Members toevoegen & posities toewijzen',
-        'how_add_desc' => 'Voorbeeld: “Voeg een nieuw member toe met e-mail john.doe@example.com.”',
-        'how_positions' => 'Posities aanmaken en beheren',
-        'how_positions_desc' => 'Voorbeeld: “Maak een Marketing Manager positie.”',
-        'how_access' => 'Toegang & tijdsinstellingen',
-        'how_access_desc' => 'Voorbeeld: “Stel de bedrijfs toegang in van 08:00 tot 18:00.”',
-        'how_reminders' => 'Herinneringen',
-        'how_reminders_desc' => 'Voorbeeld: “Maak een herinnering genaamd \'Maandelijkse Rapport\' die start over 60 seconden, herhaal elk uur.”',
-
-        'contact_title' => 'Contact',
-        'contact_desc' => 'Wilt u een demo, prijsinformatie of ' . IdealisticOfficeVariable::APPLICATION_NAME . ' integreren met uw stack? Stuur een bericht en ons team neemt contact op.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Europa, Estland',
-        'label_name' => 'Naam',
-        'placeholder_name' => 'Uw naam',
-        'label_email' => 'Werk e-mail',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'Hoe kunnen we helpen?',
-        'placeholder_message' => 'Vertel kort uw use-case...',
-        'btn_submit' => 'Vraag demo aan',
-
-        'err_name_required' => 'Naam is verplicht.',
-        'err_name_length' => 'Naam moet tussen 2 en 128 tekens zijn.',
-        'err_email_required' => 'Een geldig e-mailadres is vereist.',
-        'err_email_length' => 'E-mail moet tussen 5 en 384 tekens zijn.',
-        'err_message_required' => 'Bericht mag niet leeg zijn.',
-        'err_message_length' => 'Bericht moet tussen 32 en 1024 tekens zijn.',
-        'err_rate_limit' => 'U verzendt te snel berichten. Wacht even en probeer het opnieuw.',
-        'success_received' => 'Dank — uw bericht is ontvangen. We nemen zo snel mogelijk contact met u op.',
-        'failure_received' => 'Uw bericht kon niet worden ontvangen. Probeer het later opnieuw.',
-        'submission_problem' => 'Er was een probleem bij het indienen van het formulier:',
-
-        'ft_terms' => 'Gebruiksvoorwaarden',
-        'ft_privacy' => 'Privacybeleid',
-        'ft_doc' => 'Documentatie',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Prijzen',
-        'err_captcha' => 'Captcha-verificatie mislukt.',
-        'modal_captcha_title' => 'Veiligheidscontrole',
-        'modal_captcha_close' => 'Sluiten',
+        'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'jan@bedrijf.nl', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
+        'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Prijzen', 'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
     ],
 
     'german' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Start',
-        'nav_features' => 'Funktionen',
-        'nav_usecases' => 'So funktioniert es',
-        'nav_contact' => 'Kontakt',
-        'cta_request' => 'Demo anfordern',
-        'cta_explore' => 'Funktionen entdecken',
-        'label_dark' => 'Dunkel',
+        'brand' => $appName,
+        'nav_home' => 'Start', 'nav_features' => 'Tools', 'nav_usecases' => 'Demo', 'nav_contact' => 'Kontakt',
+        'cta_request' => 'Loslegen', 'cta_explore' => 'Funktion', 'label_dark' => 'Dunkel',
+        'h1' => 'Ihr Büro ist jetzt ein Chat.', 'lead' => 'Verwalten Sie Teams, Verkäufe und Aufgaben direkt in WhatsApp oder Telegram.',
+        'pill_1_title' => 'Überall', 'pill_1_desc' => 'WhatsApp, Telegram, E-Mail', 'pill_2_title' => 'Kein Training', 'pill_2_desc' => 'Einfach wie SMS', 'pill_3_title' => 'Privat', 'pill_3_desc' => 'Sichere Daten',
+        'features_title' => 'Ersetzt Ihr Dashboard.', 'features_desc' => 'Erledigen Sie alles im Chat.',
+        'f_company' => 'Teamliste', 'f_company_desc' => 'Mitarbeiter sofort hinzufügen oder entfernen.',
+        'f_employees' => 'Aufgaben & Fristen', 'f_employees_desc' => 'Aufgaben per Text zuweisen. Wir erinnern Ihr Team an Fristen.',
+        'f_positions' => 'Kundendatenbank', 'f_positions_desc' => 'Kundendetails abrufen, ohne den Chat zu verlassen.',
+        'f_departments' => 'Berechtigungen', 'f_departments_desc' => 'Steuern Sie genau, wer was sieht.',
+        'f_access' => 'Dateien', 'f_access_desc' => 'Erstellen Sie Bilder und Dokumente sofort.',
+        'f_reminders' => 'Dokumentensuche', 'f_reminders_desc' => 'Finden Sie Verträge, indem Sie den Inhalt durchsuchen.',
+        'about_title' => 'Warum ' . $appName . '?', 'about_p1' => 'Klassische Software ist langsam. ' . $appName . ' ist schnell und direkt.', 'about_p2' => 'Befehl eingeben, erledigt.',
+        'how_title' => 'Dauert Sekunden.', 'how_desc' => 'Schreiben Sie Befehle wie an einen Assistenten.',
 
-        'h1' => 'Steuern Sie Ihr Unternehmen per natürlichem Chat — keine Menüs, keine Reibung.',
-        'lead' => IdealisticOfficeVariable::APPLICATION_NAME . ' ermöglicht Teams die Steuerung ihres Unternehmens über natürlichen Chat — ohne Menüs oder Reibung. Verwalten Sie Positionen, Erinnerungen, Zugänge, Kunden und Workflows über WhatsApp, Telegram, Discord, E-Mail und mehr.',
-        'pill_1_title' => 'Plattformübergreifend',
-        'pill_1_desc' => 'funktioniert über Chat & E-Mail',
-        'pill_2_title' => 'Konversationell',
-        'pill_2_desc' => 'natürliche Sprachbefehle',
-        'pill_3_title' => 'Sicher',
-        'pill_3_desc' => 'verschlüsselt & isoliert',
+        'how_step_1' => 'Teamliste', 'how_step_1_desc' => '„Füge Max (max@example.com) zum Team hinzu.“',
+        'how_step_2' => 'Aufgaben & Fristen', 'how_step_2_desc' => '„Aufgabe für Max: Bericht bis Freitag fertigstellen.“',
+        'how_step_3' => 'Kundendatenbank', 'how_step_3_desc' => '„Zeige Kontaktinfos für Kunde X.“',
+        'how_step_4' => 'Berechtigungen', 'how_step_4_desc' => '„Sperre Zugriff auf das Team nach 18:00.“',
+        'how_step_5' => 'Dokumentensuche', 'how_step_5_desc' => '„Finde alle Rechnungen, die im März hochgeladen wurden.“',
 
-        'features_title' => 'Leistungsstarke Funktionen für Teams',
-        'features_desc' => 'Alles, was Sie benötigen, um Firmen, members, Positionen, Zugänge und Zeitplanung per natürlicher Chatsteuerung zu verwalten — direkt aus den Plattformen, die Sie bereits nutzen.',
-        'f_company' => 'Optimierte Organisationsstruktur',
-        'f_company_desc' => 'Definieren Sie Rollen, Abteilungen, Manager, Fälle, Ziele und Listen mit Leichtigkeit. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' ermöglicht es Ihnen, Ihre gesamte Organisation klar abzubilden, damit jeder seine Aufgaben und Ziele kennt — für maximale Effizienz.',
-        'f_employees' => 'Intelligentes Aufgabenbewusstsein',
-        'f_employees_desc' => 'Behalten Sie alles im Blick mit automatischen Erinnerungen, Fristen und Benachrichtigungen. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' stellt sicher, dass Ihr Team keine wichtige Aufgabe oder Meilenstein verpasst und Abläufe reibungslos und termingerecht bleiben.',
-        'f_positions' => 'Umfassende finanzielle Übersicht',
-        'f_positions_desc' => 'Überwachen Sie Lieferanten, Investoren, Aktionäre, Partner, Waren, Dienstleistungen sowie Verkaufs- oder Abonnementumsätze mühelos. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' konsolidiert alle finanziellen Daten auf einer einzigen, leicht zu verwaltenden Plattform für bessere Entscheidungen.',
-        'f_departments' => 'Erweiterte Zugriffskontrolle',
-        'f_departments_desc' => 'Schützen Sie Ihr Unternehmen mit anpassbaren Sicherheitsoptionen, einschließlich allgemeinem Zugriff, zeitbasiertem Zugriff und wochentagspezifischen Berechtigungen. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' sorgt dafür, dass sensible Daten nur zur richtigen Zeit für die richtigen Personen zugänglich sind.',
-        'f_access' => 'Leistungsstarke Kreativwerkzeuge',
-        'f_access_desc' => 'Fördern Sie Innovation mit Tools zur Bilderstellung, Dateierstellung und -bearbeitung sowie intelligenter Linkanalyse. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' unterstützt die Kreativität Ihres Teams und hält Prozesse organisiert und umsetzbar.',
-        'f_reminders' => 'Intelligente Speicherung & Anlagenverwaltung',
-        'f_reminders_desc' => 'Laden Sie Anhänge hoch, analysieren Sie sie und durchsuchen Sie sie mühelos. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' bietet ein sicheres, intelligentes Speichersystem, das Ihre Dateien organisiert, zugänglich und nutzbar hält, wann immer Sie sie benötigen.',
-
-        'about_title' => 'Über ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => IdealisticOfficeVariable::APPLICATION_NAME . ' ist sofort über Instagram, Meta Messenger, WhatsApp, Discord, Telegram und E-Mail zugänglich — so können Sie mit den Tools beginnen, die Sie bereits nutzen, ohne eine neue Oberfläche zu lernen. Da ' . IdealisticOfficeVariable::APPLICATION_NAME . ' per Chatbefehlen statt über Menübildschirme arbeitet, verstehen die meisten Menschen die Bedienung in unter einer Stunde.',
-        'about_p2' => IdealisticOfficeVariable::APPLICATION_NAME . ' ist wie ein hilfreicher Kollege: Es versteht Ihre Nachrichten, leitet sie an die richtige Stelle weiter und verwandelt einfache Anfragen in komplexe Aktionen. Wir gestalten Support persönlich: Sie können uns per E-Mail oder Telefon kontaktieren, schnelle Antworten erwarten und wir arrangieren bei Bedarf Anrufe oder Treffen. Falls wir Sie einmal nicht erreichen, melden wir uns schnell, um das Problem zu verstehen und die beste Lösung zu finden.',
-
-        'how_title' => 'Wie es funktioniert — im einfachen Chat',
-        'how_desc' => 'Geben Sie natürliche Anweisungen ein oder sprechen Sie sie — ' . IdealisticOfficeVariable::APPLICATION_NAME . ' extrahiert die Absicht, identifiziert das Ziel (Firma/Position/Person) und führt Aktionen aus oder bestätigt sie.',
-        'how_create' => 'Firmen erstellen',
-        'how_create_desc' => 'Beispiel: „Erstelle eine Firma namens HorizonTech.“',
-        'how_add' => 'Members hinzufügen & Positionen zuweisen',
-        'how_add_desc' => 'Beispiel: „Füge ein neues member mit E-Mail john.doe@example.com hinzu.“',
-        'how_positions' => 'Positionen erstellen und verwalten',
-        'how_positions_desc' => 'Beispiel: „Erstelle die Position Marketing Manager.“',
-        'how_access' => 'Zugriff & Zeitfenster',
-        'how_access_desc' => 'Beispiel: „Setze die Firmenzugriffszeit von 08:00 bis 18:00.“',
-        'how_reminders' => 'Erinnerungen',
-        'how_reminders_desc' => 'Beispiel: „Erstelle eine Erinnerung namens ‚Monatsbericht‘, die in 60 Sekunden startet und jede Stunde wiederholt wird.“',
-
-        'contact_title' => 'Kontakt',
-        'contact_desc' => 'Möchten Sie eine Demo, Preisinformationen oder ' . IdealisticOfficeVariable::APPLICATION_NAME . ' in Ihre Infrastruktur integrieren? Senden Sie uns eine Nachricht und unser Team meldet sich bei Ihnen.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Europa, Estland',
-        'label_name' => 'Name',
-        'placeholder_name' => 'Ihr Name',
-        'label_email' => 'Geschäftliche E-Mail',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'Wie können wir helfen?',
-        'placeholder_message' => 'Beschreiben Sie kurz Ihren Anwendungsfall...',
-        'btn_submit' => 'Demo anfordern',
-
-        'err_name_required' => 'Name ist erforderlich.',
-        'err_name_length' => 'Name muss zwischen 2 und 128 Zeichen lang sein.',
-        'err_email_required' => 'Eine gültige E-Mail ist erforderlich.',
-        'err_email_length' => 'E-Mail muss zwischen 5 und 384 Zeichen lang sein.',
-        'err_message_required' => 'Nachricht darf nicht leer sein.',
-        'err_message_length' => 'Nachricht muss zwischen 32 und 1024 Zeichen lang sein.',
-        'err_rate_limit' => 'Sie senden Nachrichten zu schnell. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
-        'success_received' => 'Danke — Ihre Nachricht wurde empfangen. Wir kontaktieren Sie so schnell wie möglich.',
-        'failure_received' => 'Ihre Nachricht konnte nicht empfangen werden. Bitte versuchen Sie es später erneut.',
-        'submission_problem' => 'Beim Absenden des Formulars ist ein Problem aufgetreten:',
-
-        'ft_terms' => 'Nutzungsbedingungen',
-        'ft_privacy' => 'Datenschutzrichtlinie',
-        'ft_doc' => 'Dokumentation',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Preise',
-        'err_captcha' => 'Captcha-Überprüfung fehlgeschlagen.',
-        'modal_captcha_title' => 'Sicherheitsüberprüfung',
-        'modal_captcha_close' => 'Schließen',
+        'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'max@firma.de', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
+        'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register', 'ft_doc' => 'Doku', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Preise', 'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
     ],
 
     'italian' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Home',
-        'nav_features' => 'Funzionalità',
-        'nav_usecases' => 'Come funziona',
-        'nav_contact' => 'Contattaci',
-        'cta_request' => 'Richiedi demo',
-        'cta_explore' => 'Esplora funzionalità',
-        'label_dark' => 'Scuro',
+        'brand' => $appName,
+        'nav_home' => 'Home', 'nav_features' => 'Strumenti', 'nav_usecases' => 'Demo', 'nav_contact' => 'Contatti',
+        'cta_request' => 'Inizia', 'cta_explore' => 'Come funziona', 'label_dark' => 'Scuro',
+        'h1' => 'Il tuo ufficio ora è una chat.', 'lead' => 'Gestisci team, vendite e compiti direttamente su WhatsApp o Telegram.',
+        'pill_1_title' => 'Ovunque', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'Facile come un SMS', 'pill_3_title' => 'Privato', 'pill_3_desc' => 'Dati sicuri',
+        'features_title' => 'Sostituisce la dashboard.', 'features_desc' => 'Fai tutto via chat.',
+        'f_company' => 'Team', 'f_company_desc' => 'Aggiungi o rimuovi dipendenti all\'istante.',
+        'f_employees' => 'Compiti & Scadenze', 'f_employees_desc' => 'Assegna compiti via testo. Noi ricordiamo le scadenze.',
+        'f_positions' => 'Clienti', 'f_positions_desc' => 'Vedi dettagli clienti senza uscire dalla chat.',
+        'f_departments' => 'Permessi', 'f_departments_desc' => 'Controlla chi vede cosa e quando.',
+        'f_access' => 'File', 'f_access_desc' => 'Crea immagini e documenti al volo.',
+        'f_reminders' => 'Ricerca Documenti', 'f_reminders_desc' => 'Trova contratti cercando nel contenuto.',
+        'about_title' => 'Perché ' . $appName . '?', 'about_p1' => 'Software classico è lento. ' . $appName . ' è immediato.', 'about_p2' => 'Dai un comando ed è fatto.',
+        'how_title' => 'Ci vogliono secondi.', 'how_desc' => 'Scrivi comandi come se parlassi a un assistente.',
 
-        'h1' => 'Controlla la tua azienda con la chat naturale — niente menu, niente attrito.',
-        'lead' => IdealisticOfficeVariable::APPLICATION_NAME . ' consente ai team di controllare la propria azienda tramite chat naturale — senza menu o attriti. Gestisci posizioni, promemoria, accessi, clienti e workflow via WhatsApp, Telegram, Discord, email e altro.',
-        'pill_1_title' => 'Multi-piattaforma',
-        'pill_1_desc' => 'funziona su chat & email',
-        'pill_2_title' => 'Conversazionale',
-        'pill_2_desc' => 'comandi in linguaggio naturale',
-        'pill_3_title' => 'Sicuro',
-        'pill_3_desc' => 'crittografato & isolato',
+        'how_step_1' => 'Team', 'how_step_1_desc' => '“Aggiungi Luca (luca@example.com) al team.”',
+        'how_step_2' => 'Compiti & Scadenze', 'how_step_2_desc' => '“Compito per Luca: Finire il report entro venerdì.”',
+        'how_step_3' => 'Clienti', 'how_step_3_desc' => '“Mostra info contatto per Cliente X.”',
+        'how_step_4' => 'Permessi', 'how_step_4_desc' => '“Blocca accesso al team dopo le 18:00.”',
+        'how_step_5' => 'Ricerca Documenti', 'how_step_5_desc' => '“Trova tutte le fatture caricate dai membri a marzo.”',
 
-        'features_title' => 'Funzionalità potenti pensate per i team',
-        'features_desc' => 'Tutto ciò di cui hai bisogno per gestire aziende, members, posizioni, accessi e pianificazione tramite comandi in chat naturale — direttamente dalle piattaforme che già usi.',
-        'f_company' => 'Struttura organizzativa snella',
-        'f_company_desc' => 'Definisci con facilità ruoli, dipartimenti, manager, casi, obiettivi e liste. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' ti permette di mappare l’intera organizzazione in modo chiaro, assicurando che tutti conoscano responsabilità e obiettivi per la massima efficienza.',
-        'f_employees' => 'Consapevolezza intelligente dei compiti',
-        'f_employees_desc' => 'Tieni sotto controllo il lavoro con promemoria, scadenze e notifiche automatiche. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' garantisce che il tuo team non perda mai un compito o una milestone importante, mantenendo le operazioni fluide e puntuali.',
-        'f_positions' => 'Controllo finanziario completo',
-        'f_positions_desc' => 'Monitora fornitori, investitori, azionisti, partner, beni, servizi e ricavi da vendite o abbonamenti con semplicità. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' consolida tutti i dati finanziari in un’unica piattaforma facile da gestire per decisioni aziendali più intelligenti.',
-        'f_departments' => 'Controllo accessi avanzato',
-        'f_departments_desc' => 'Proteggi la tua azienda con opzioni di sicurezza personalizzabili, incluse accessi generali, accessi basati sul tempo e permessi specifici per i giorni della settimana. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' garantisce che i dati sensibili siano accessibili solo alle persone giuste al momento giusto.',
-        'f_access' => 'Strumenti creativi potenziati',
-        'f_access_desc' => 'Stimola l’innovazione con strumenti per la creazione di immagini, la creazione e modifica di file e l’analisi intelligente dei link. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' supporta la creatività del tuo team mantenendo processi organizzati e concretamente utilizzabili.',
-        'f_reminders' => 'Archiviazione intelligente e gestione allegati',
-        'f_reminders_desc' => 'Carica, analizza e cerca allegati con facilità. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' offre un sistema di archiviazione sicuro e intelligente che mantiene i tuoi file organizzati, accessibili e utilizzabili quando ne hai bisogno.',
-
-        'about_title' => 'Informazioni su ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => IdealisticOfficeVariable::APPLICATION_NAME . ' è immediatamente accessibile tramite Instagram, Meta Messenger, WhatsApp, Discord, Telegram ed email — così puoi iniziare a usare il servizio dagli strumenti che già utilizzi, senza imparare una nuova interfaccia. Poiché ' . IdealisticOfficeVariable::APPLICATION_NAME . ' funziona tramite comandi in chat anziché schermate a menu, la maggior parte delle persone lo capisce in meno di un\'ora.',
-        'about_p2' => IdealisticOfficeVariable::APPLICATION_NAME . ' è come un collega disponibile: comprende i tuoi messaggi, li instrada al posto giusto e trasforma richieste semplici in azioni complesse. Offriamo supporto personale: puoi contattarci via email o telefono, aspettarti risposte rapide e organizzeremo chiamate o incontri se necessario. Se non ti raggiungiamo, ti ricontatteremo rapidamente per comprendere il problema e trovare la soluzione migliore.',
-
-        'how_title' => 'Come funziona — in chat semplice',
-        'how_desc' => 'Digita o pronuncia istruzioni naturali — ' . IdealisticOfficeVariable::APPLICATION_NAME . ' estrae l\'intento, individua l\'obiettivo (azienda/posizione/persona) ed esegue o conferma le azioni.',
-        'how_create' => 'Crea aziende',
-        'how_create_desc' => 'Esempio: “Crea un\'azienda chiamata HorizonTech.”',
-        'how_add' => 'Aggiungi members & assegna posizioni',
-        'how_add_desc' => 'Esempio: “Aggiungi un nuovo member con email john.doe@example.com.”',
-        'how_positions' => 'Crea e gestisci posizioni',
-        'how_positions_desc' => 'Esempio: “Crea una posizione Marketing Manager.”',
-        'how_access' => 'Accesso & intervalli orari',
-        'how_access_desc' => 'Esempio: “Imposta l\'accesso aziendale dalle 08:00 alle 18:00.”',
-        'how_reminders' => 'Promemoria',
-        'how_reminders_desc' => 'Esempio: “Crea un promemoria chiamato \'Report Mensile\' che inizi tra 60 secondi e si ripeta ogni ora.”',
-
-        'contact_title' => 'Contattaci',
-        'contact_desc' => 'Vuoi una demo, dettagli sui prezzi o integrare ' . IdealisticOfficeVariable::APPLICATION_NAME . ' nella tua infrastruttura? Invia un messaggio e il nostro team ti ricontatterà.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Europa, Estonia',
-        'label_name' => 'Nome',
-        'placeholder_name' => 'Il tuo nome',
-        'label_email' => 'Email lavoro',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'Come possiamo aiutare?',
-        'placeholder_message' => 'Descrivi brevemente il tuo caso d\'uso...',
-        'btn_submit' => 'Richiedi demo',
-
-        'err_name_required' => 'Il nome è obbligatorio.',
-        'err_name_length' => 'Il nome deve essere tra 2 e 128 caratteri.',
-        'err_email_required' => 'È richiesta un\'email valida.',
-        'err_email_length' => 'L\'email deve essere tra 5 e 384 caratteri.',
-        'err_message_required' => 'Il messaggio non può essere vuoto.',
-        'err_message_length' => 'Il messaggio deve essere tra 32 e 1024 caratteri.',
-        'err_rate_limit' => 'Stai inviando messaggi troppo velocemente. Attendi un momento e riprova.',
-        'success_received' => 'Grazie — il tuo messaggio è stato ricevuto. Ti contatteremo appena possibile.',
-        'failure_received' => 'Il tuo messaggio non è stato ricevuto. Riprovare più tardi.',
-        'submission_problem' => 'Si è verificato un problema con l\'invio del modulo:',
-
-        'ft_terms' => 'Termini di utilizzo',
-        'ft_privacy' => 'Informativa sulla privacy',
-        'ft_doc' => 'Documentazione',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Prezzi',
-        'err_captcha' => 'Verifica Captcha fallita.',
-        'modal_captcha_title' => 'Controllo di sicurezza',
-        'modal_captcha_close' => 'Chiudi',
+        'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'mario@azienda.it', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Prezzi', 'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
     ],
 
     'french' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Accueil',
-        'nav_features' => 'Fonctionnalités',
-        'nav_usecases' => 'Comment ça marche',
-        'nav_contact' => 'Contact',
-        'cta_request' => 'Demander une démo',
-        'cta_explore' => 'Découvrir les fonctionnalités',
-        'label_dark' => 'Sombre',
+        'brand' => $appName,
+        'nav_home' => 'Accueil', 'nav_features' => 'Outils', 'nav_usecases' => 'Démo', 'nav_contact' => 'Contact',
+        'cta_request' => 'Démarrer', 'cta_explore' => 'Fonctionnement', 'label_dark' => 'Sombre',
+        'h1' => 'Votre bureau est un chat.', 'lead' => 'Gérez votre équipe et vos tâches directement dans WhatsApp ou Telegram.',
+        'pill_1_title' => 'Partout', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Zéro Formation', 'pill_2_desc' => 'Aussi simple qu\'un SMS', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Données sécurisées',
+        'features_title' => 'Remplace votre dashboard.', 'features_desc' => 'Faites tout le travail dans le chat.',
+        'f_company' => 'Équipe', 'f_company_desc' => 'Ajoutez ou supprimez des employés instantanément.',
+        'f_employees' => 'Tâches & Délais', 'f_employees_desc' => 'Assignez des tâches par texto. Nous rappelons les délais.',
+        'f_positions' => 'Clients', 'f_positions_desc' => 'Consultez les infos clients sans quitter le chat.',
+        'f_departments' => 'Permissions', 'f_departments_desc' => 'Contrôlez qui voit quoi et quand.',
+        'f_access' => 'Fichiers', 'f_access_desc' => 'Créez images et documents à la volée.',
+        'f_reminders' => 'Recherche Documents', 'f_reminders_desc' => 'Trouvez des contrats en cherchant dans le contenu.',
+        'about_title' => 'Pourquoi ' . $appName . ' ?', 'about_p1' => 'Logiciel classique est lent. ' . $appName . ' est immédiat.', 'about_p2' => 'Donnez un ordre, c\'est fait.',
+        'how_title' => 'Ça prend des secondes.', 'how_desc' => 'Écrivez vos commandes comme à un assistant.',
 
-        'h1' => 'Contrôlez votre entreprise par chat naturel — sans menus, sans friction.',
-        'lead' => IdealisticOfficeVariable::APPLICATION_NAME . ' permet aux équipes de piloter leur entreprise via un chat naturel — sans menus ni friction. Gérez postes, rappels, accès, clients et workflows via WhatsApp, Telegram, Discord, email et plus.',
-        'pill_1_title' => 'Multi-plateforme',
-        'pill_1_desc' => 'fonctionne via chat & email',
-        'pill_2_title' => 'Conversationnel',
-        'pill_2_desc' => 'commandes en langage naturel',
-        'pill_3_title' => 'Sûr',
-        'pill_3_desc' => 'chiffré & isolé',
+        'how_step_1' => 'Équipe', 'how_step_1_desc' => '« Ajoute Jean (jean@example.com) à l\'équipe. »',
+        'how_step_2' => 'Tâches & Délais', 'how_step_2_desc' => '« Tâche pour Jean : Finir le rapport pour vendredi. »',
+        'how_step_3' => 'Clients', 'how_step_3_desc' => '« Montre-moi les infos du Client X. »',
+        'how_step_4' => 'Permissions', 'how_step_4_desc' => '« Bloque accès à l\'équipe après 18h. »',
+        'how_step_5' => 'Recherche Documents', 'how_step_5_desc' => '« Trouve toutes les factures chargées par les membres en mars. »',
 
-        'features_title' => 'Fonctionnalités puissantes conçues pour les équipes',
-        'features_desc' => 'Tout ce dont vous avez besoin pour gérer sociétés, members, postes, accès et planification via des commandes de chat naturel — directement depuis les plateformes que vous utilisez déjà.',
-        'f_company' => 'Structure organisationnelle simplifiée',
-        'f_company_desc' => 'Définissez facilement les rôles, départements, managers, cas, objectifs et listes. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' vous permet de cartographier l’ensemble de votre organisation de manière claire, afin que chacun connaisse ses responsabilités et objectifs pour une efficacité maximale.',
-        'f_employees' => 'Gestion intelligente des tâches',
-        'f_employees_desc' => 'Restez à jour grâce aux rappels automatisés, échéances et notifications. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' garantit que votre équipe ne manque jamais une tâche ou une étape importante, assurant des opérations fluides et ponctuelles.',
-        'f_positions' => 'Supervision financière complète',
-        'f_positions_desc' => 'Suivez facilement les fournisseurs, investisseurs, actionnaires, partenaires, biens, services et revenus provenant des ventes ou abonnements. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' consolide toutes les données financières sur une seule plateforme facile à gérer pour des décisions plus intelligentes.',
-        'f_departments' => 'Contrôle d’accès avancé',
-        'f_departments_desc' => 'Protégez votre entreprise grâce à des options de sécurité personnalisables, incluant l’accès général, l’accès basé sur le temps et des permissions spécifiques aux jours de la semaine. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' garantit que les données sensibles sont accessibles uniquement aux bonnes personnes au bon moment.',
-        'f_access' => 'Outils créatifs optimisés',
-        'f_access_desc' => 'Stimulez l’innovation avec des outils pour la création d’images, la création et modification de fichiers et l’analyse intelligente des liens. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' soutient la créativité de votre équipe tout en maintenant des processus organisés et exploitables.',
-        'f_reminders' => 'Stockage intelligent et gestion des pièces jointes',
-        'f_reminders_desc' => 'Téléchargez, analysez et recherchez des pièces jointes facilement. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' fournit un système de stockage sécurisé et intelligent, garantissant que vos fichiers restent organisés, accessibles et exploitables quand vous en avez besoin.',
-
-        'about_title' => 'À propos de ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => IdealisticOfficeVariable::APPLICATION_NAME . ' est immédiatement accessible via Instagram, Meta Messenger, WhatsApp, Discord, Telegram et email — vous pouvez commencer depuis les outils que vous utilisez déjà, sans apprendre une nouvelle interface. Comme ' . IdealisticOfficeVariable::APPLICATION_NAME . ' fonctionne via des commandes de chat plutôt que des écrans à menus, la plupart des utilisateurs comprennent comment l\'utiliser en moins d\'une heure.',
-        'about_p2' => IdealisticOfficeVariable::APPLICATION_NAME . ' est comme un collègue utile : il comprend vos messages, les achemine vers le bon endroit et transforme de simples requêtes en actions complexes. Nous gardons le support personnel : vous pouvez nous envoyer un email ou nous appeler directement, attendre des réponses rapides, et nous organiserons des appels ou réunions si nécessaire. Si nous ne vous atteignons pas, nous vous recontacterons rapidement pour comprendre le problème et trouver la meilleure solution.',
-
-        'how_title' => 'Comment ça marche — en chat simple',
-        'how_desc' => 'Tapez ou prononcez des instructions naturelles — ' . IdealisticOfficeVariable::APPLICATION_NAME . ' extrait l\'intention, identifie la cible (société/poste/personne) et exécute ou confirme les actions.',
-        'how_create' => 'Créer des sociétés',
-        'how_create_desc' => 'Exemple : « Créez une société nommée HorizonTech. »',
-        'how_add' => 'Ajouter des members & attribuer des postes',
-        'how_add_desc' => 'Exemple : « Ajoutez un nouvel member avec l\'email john.doe@example.com. »',
-        'how_positions' => 'Créer et gérer des postes',
-        'how_positions_desc' => 'Exemple : « Créez un poste Marketing Manager. »',
-        'how_access' => 'Accès & plages horaires',
-        'how_access_desc' => 'Exemple : « Définissez l\'accès de la société de 08:00 à 18:00. »',
-        'how_reminders' => 'Rappels',
-        'how_reminders_desc' => 'Exemple : « Créez un rappel nommé “Rapport mensuel” commençant dans 60 secondes, répété toutes les heures. »',
-
-        'contact_title' => 'Contactez-nous',
-        'contact_desc' => 'Vous voulez une démo, des détails tarifaires ou intégrer ' . IdealisticOfficeVariable::APPLICATION_NAME . ' à votre stack ? Envoyez un message et notre équipe vous répondra.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Europe, Estonie',
-        'label_name' => 'Nom',
-        'placeholder_name' => 'Votre nom',
-        'label_email' => 'Email professionnel',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'Comment pouvons-nous aider ?',
-        'placeholder_message' => 'Décrivez brièvement votre cas d\'utilisation...',
-        'btn_submit' => 'Demander une démo',
-
-        'err_name_required' => 'Le nom est requis.',
-        'err_name_length' => 'Le nom doit comporter entre 2 et 128 caractères.',
-        'err_email_required' => 'Un email valide est requis.',
-        'err_email_length' => 'L\'email doit comporter entre 5 et 384 caractères.',
-        'err_message_required' => 'Le message ne peut pas être vide.',
-        'err_message_length' => 'Le message doit comporter entre 32 et 1024 caractères.',
-        'err_rate_limit' => 'Vous envoyez des messages trop rapidement. Veuillez attendre un moment et réessayer.',
-        'success_received' => 'Merci — votre message a été reçu. Nous vous contacterons dès que possible.',
-        'failure_received' => 'Votre message n\'a pas pu être reçu. Veuillez réessayer plus tard.',
-        'submission_problem' => 'Un problème est survenu lors de l\'envoi du formulaire :',
-
-        'ft_terms' => 'Conditions d\'utilisation',
-        'ft_privacy' => 'Politique de confidentialité',
-        'ft_doc' => 'Documentation',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Tarification',
-        'err_captcha' => 'La vérification Captcha a échoué.',
-        'modal_captcha_title' => 'Contrôle de sécurité',
-        'modal_captcha_close' => 'Fermer',
+        'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'jean@societe.com', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Tarifs', 'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
     ],
 
     'portuguese' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Início',
-        'nav_features' => 'Recursos',
-        'nav_usecases' => 'Como funciona',
-        'nav_contact' => 'Contacte-nos',
-        'cta_request' => 'Solicitar demonstração',
-        'cta_explore' => 'Explorar recursos',
-        'label_dark' => 'Escuro',
+        'brand' => $appName,
+        'nav_home' => 'Início', 'nav_features' => 'Ferramentas', 'nav_usecases' => 'Demo', 'nav_contact' => 'Contato',
+        'cta_request' => 'Começar', 'cta_explore' => 'Como funciona', 'label_dark' => 'Escuro',
+        'h1' => 'Seu escritório agora é um chat.', 'lead' => 'Gerencie equipe e tarefas direto no WhatsApp ou Telegram.',
+        'pill_1_title' => 'Em todo lugar', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Zero Treino', 'pill_2_desc' => 'Simples como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Dados seguros',
+        'features_title' => 'Substitui seu painel.', 'features_desc' => 'Faça tudo pelo chat.',
+        'f_company' => 'Equipe', 'f_company_desc' => 'Adicione ou remova funcionários instantaneamente.',
+        'f_employees' => 'Tarefas & Prazos', 'f_employees_desc' => 'Designe tarefas por texto. Nós cobramos os prazos.',
+        'f_positions' => 'Clientes', 'f_positions_desc' => 'Veja dados de clientes sem sair do chat.',
+        'f_departments' => 'Permissões', 'f_departments_desc' => 'Controle quem vê o que e quando.',
+        'f_access' => 'Arquivos', 'f_access_desc' => 'Crie imagens e documentos na hora.',
+        'f_reminders' => 'Busca Documentos', 'f_reminders_desc' => 'Encontre contratos buscando pelo conteúdo.',
+        'about_title' => 'Por que ' . $appName . '?', 'about_p1' => 'Software tradicional é lento. ' . $appName . ' é imediato.', 'about_p2' => 'Dê o comando, e está feito.',
+        'how_title' => 'Leva segundos.', 'how_desc' => 'Escreva comandos como se falasse com um assistente.',
 
-        'h1' => 'Controle sua empresa com chat natural — sem menus, sem atrito.',
-        'lead' => 'O ' . IdealisticOfficeVariable::APPLICATION_NAME . ' permite que equipes controlem sua empresa usando chat natural — sem menus ou atrito. Gerencie cargos, lembretes, acessos, clientes e fluxos de trabalho via WhatsApp, Telegram, Discord, email e mais.',
-        'pill_1_title' => 'Multiplataforma',
-        'pill_1_desc' => 'funciona via chat & email',
-        'pill_2_title' => 'Conversacional',
-        'pill_2_desc' => 'comandos em linguagem natural',
-        'pill_3_title' => 'Seguro',
-        'pill_3_desc' => 'criptografado & isolado',
+        'how_step_1' => 'Equipe', 'how_step_1_desc' => '“Adicione João (joao@example.com) à equipe.”',
+        'how_step_2' => 'Tarefas & Prazos', 'how_step_2_desc' => '“Tarefa para João: Terminar o relatório até sexta.”',
+        'how_step_3' => 'Clientes', 'how_step_3_desc' => '“Mostre-me os dados do Cliente X.”',
+        'how_step_4' => 'Permissões', 'how_step_4_desc' => '“Bloqueie acesso à equipe após as 18h.”',
+        'how_step_5' => 'Busca Documentos', 'how_step_5_desc' => '“Encontre todas as faturas enviadas por membros em março.”',
 
-        'features_title' => 'Recursos poderosos projetados para equipes',
-        'features_desc' => 'Tudo o que você precisa para gerenciar empresas, members, cargos, acessos e agendamento por comandos de chat natural — diretamente das plataformas que você já usa.',
-        'f_company' => 'Estrutura organizacional simplificada',
-        'f_company_desc' => 'Defina facilmente funções, departamentos, gestores, casos, objetivos e listas. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' permite mapear toda a sua organização de forma clara, garantindo que todos conheçam as suas responsabilidades e objetivos para máxima eficiência.',
-        'f_employees' => 'Gestão inteligente de tarefas',
-        'f_employees_desc' => 'Mantenha o controlo do trabalho com lembretes automáticos, prazos e notificações. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' garante que a sua equipa nunca perde uma tarefa ou marco importante, mantendo as operações fluidas e pontuais.',
-        'f_positions' => 'Supervisão financeira abrangente',
-        'f_positions_desc' => 'Monitorize fornecedores, investidores, acionistas, parceiros, bens, serviços e receitas de vendas ou assinaturas sem esforço. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' consolida todos os dados financeiros numa plataforma única e fácil de gerir para decisões mais inteligentes.',
-        'f_departments' => 'Controlo de acesso avançado',
-        'f_departments_desc' => 'Proteja a sua empresa com opções de segurança personalizáveis, incluindo acesso geral, acesso baseado no tempo e permissões específicas por dia da semana. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' assegura que dados sensíveis são acessíveis apenas às pessoas certas no momento certo.',
-        'f_access' => 'Ferramentas criativas potenciadas',
-        'f_access_desc' => 'Estimule a inovação com ferramentas para criação de imagens, criação e modificação de ficheiros e análise inteligente de links. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' apoia a criatividade da sua equipa, mantendo os processos organizados e acionáveis.',
-        'f_reminders' => 'Armazenamento inteligente e gestão de anexos',
-        'f_reminders_desc' => 'Carregue, analise e pesquise anexos sem esforço. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' fornece um sistema de armazenamento seguro e inteligente que garante que os seus ficheiros estão organizados, acessíveis e prontos a usar sempre que precisar.',
-
-        'about_title' => 'Sobre o ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => 'O ' . IdealisticOfficeVariable::APPLICATION_NAME . ' é imediatamente acessível via Instagram, Meta Messenger, WhatsApp, Discord, Telegram e email — então você pode começar a usar com as ferramentas que já usa, sem aprender uma nova interface. Como o ' . IdealisticOfficeVariable::APPLICATION_NAME . ' opera por prompts de chat em vez de telas com menus, a maioria das pessoas aprende a usar em menos de uma hora.',
-        'about_p2' => 'O ' . IdealisticOfficeVariable::APPLICATION_NAME . ' é como um colega prestativo: suas mensagens são analisadas, encaminhadas para o local certo e transformadas em ações complexas. Mantemos o suporte pessoal: você pode nos enviar email ou ligar diretamente, esperar respostas rápidas, e organizaremos chamadas ou reuniões quando necessário. Se não conseguirmos contactá-lo, retornaremos rapidamente para entender o problema e ajudar a encontrar a melhor solução.',
-
-        'how_title' => 'Como funciona — em chat simples',
-        'how_desc' => 'Digite ou fale instruções naturais — o ' . IdealisticOfficeVariable::APPLICATION_NAME . ' extrai a intenção, identifica o alvo (empresa/cargo/pessoa) e executa ou confirma ações.',
-        'how_create' => 'Criar empresas',
-        'how_create_desc' => 'Exemplo: "Crie uma empresa chamada HorizonTech."',
-        'how_add' => 'Adicionar members & atribuir cargos',
-        'how_add_desc' => 'Exemplo: "Adicione um novo member com email john.doe@example.com."',
-        'how_positions' => 'Criar e gerenciar cargos',
-        'how_positions_desc' => 'Exemplo: "Crie o cargo Marketing Manager."',
-        'how_access' => 'Acesso & janelas de tempo',
-        'how_access_desc' => 'Exemplo: "Defina o acesso da empresa das 08:00 às 18:00."',
-        'how_reminders' => 'Lembretes',
-        'how_reminders_desc' => 'Exemplo: "Crie um lembrete chamado \'Relatório Mensal\' para iniciar em 60 segundos, repetir a cada hora."',
-
-        'contact_title' => 'Contacte-nos',
-        'contact_desc' => 'Quer uma demo, detalhes de preços ou integrar o ' . IdealisticOfficeVariable::APPLICATION_NAME . ' na sua stack? Envie uma mensagem e a nossa equipa responderá.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Europa, Estónia',
-        'label_name' => 'Nome',
-        'placeholder_name' => 'O seu nome',
-        'label_email' => 'Email profissional',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => 'Como podemos ajudar?',
-        'placeholder_message' => 'Descreva brevemente o seu caso de uso...',
-        'btn_submit' => 'Solicitar demonstração',
-
-        'err_name_required' => 'O nome é obrigatório.',
-        'err_name_length' => 'O nome deve ter entre 2 e 128 caracteres.',
-        'err_email_required' => 'É necessário um email válido.',
-        'err_email_length' => 'O email deve ter entre 5 e 384 caracteres.',
-        'err_message_required' => 'A mensagem não pode ficar vazia.',
-        'err_message_length' => 'A mensagem deve ter entre 32 e 1024 caracteres.',
-        'err_rate_limit' => 'Está a enviar mensagens demasiado rápido. Por favor aguarde um momento e tente novamente.',
-        'success_received' => 'Obrigado — a sua mensagem foi recebida. Contactaremos o mais breve possível.',
-        'failure_received' => 'A sua mensagem não foi recebida. Por favor tente novamente mais tarde.',
-        'submission_problem' => 'Ocorreu um problema ao submeter o formulário:',
-
-        'ft_terms' => 'Termos de Uso',
-        'ft_privacy' => 'Política de Privacidade',
-        'ft_doc' => 'Documentação',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Preços',
-        'err_captcha' => 'A verificação do Captcha falhou.',
-        'modal_captcha_title' => 'Verificação de segurança',
-        'modal_captcha_close' => 'Fechar',
+        'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'joao@empresa.com', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Preços', 'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
     ],
 
     'spanish' => [
-        'brand' => IdealisticOfficeVariable::APPLICATION_NAME,
-        'nav_home' => 'Inicio',
-        'nav_features' => 'Funciones',
-        'nav_usecases' => 'Cómo funciona',
-        'nav_contact' => 'Contacto',
-        'cta_request' => 'Solicitar demo',
-        'cta_explore' => 'Explorar funciones',
-        'label_dark' => 'Oscuro',
+        'brand' => $appName,
+        'nav_home' => 'Inicio', 'nav_features' => 'Herramientas', 'nav_usecases' => 'Demo', 'nav_contact' => 'Contacto',
+        'cta_request' => 'Empezar', 'cta_explore' => 'Cómo funciona', 'label_dark' => 'Oscuro',
+        'h1' => 'Su oficina ahora es un chat.', 'lead' => 'Gestione su equipo y tareas directo en WhatsApp o Telegram.',
+        'pill_1_title' => 'En todas partes', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Cero Formación', 'pill_2_desc' => 'Tan simple como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Datos seguros',
+        'features_title' => 'Reemplaza su panel.', 'features_desc' => 'Haga todo el trabajo en el chat.',
+        'f_company' => 'Equipo', 'f_company_desc' => 'Añada o elimine empleados al instante.',
+        'f_employees' => 'Tareas y Plazos', 'f_employees_desc' => 'Asigne tareas por texto. Recordamos los plazos.',
+        'f_positions' => 'Clientes', 'f_positions_desc' => 'Vea datos de clientes sin salir del chat.',
+        'f_departments' => 'Permisos', 'f_departments_desc' => 'Controle quién ve qué y cuándo.',
+        'f_access' => 'Archivos', 'f_access_desc' => 'Cree imágenes y documentos al vuelo.',
+        'f_reminders' => 'Búsqueda Documentos', 'f_reminders_desc' => 'Encuentre contratos buscando en el contenido.',
+        'about_title' => '¿Por qué ' . $appName . '?', 'about_p1' => 'El software clásico es lento. ' . $appName . ' es inmediato.', 'about_p2' => 'Dé una orden y listo.',
+        'how_title' => 'Toma segundos.', 'how_desc' => 'Escriba comandos como si hablara con un asistente.',
 
-        'h1' => 'Controle su empresa con chat natural — sin menús, sin fricción.',
-        'lead' => IdealisticOfficeVariable::APPLICATION_NAME . ' permite a los equipos controlar su empresa mediante chat natural — sin menús ni fricción. Gestione puestos, recordatorios, accesos, clientes y flujos de trabajo a través de WhatsApp, Telegram, Discord, correo electrónico y más.',
-        'pill_1_title' => 'Multiplataforma',
-        'pill_1_desc' => 'funciona por chat & correo',
-        'pill_2_title' => 'Conversacional',
-        'pill_2_desc' => 'comandos en lenguaje natural',
-        'pill_3_title' => 'Seguro',
-        'pill_3_desc' => 'cifrado & aislado',
+        'how_step_1' => 'Equipo', 'how_step_1_desc' => '“Añada a Juan (juan@example.com) al equipo.”',
+        'how_step_2' => 'Tareas y Plazos', 'how_step_2_desc' => '“Tarea para Juan: Terminar el informe para el viernes.”',
+        'how_step_3' => 'Clientes', 'how_step_3_desc' => '“Muestre la info de contacto del Cliente X.”',
+        'how_step_4' => 'Permisos', 'how_step_4_desc' => '“Bloquee acceso al equipo tras las 18:00.”',
+        'how_step_5' => 'Búsqueda Documentos', 'how_step_5_desc' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
 
-        'features_title' => 'Funciones potentes diseñadas para equipos',
-        'features_desc' => 'Todo lo que necesita para gestionar empresas, members, puestos, accesos y planificación mediante comandos de chat natural — directamente desde las plataformas que ya utiliza.',
-        'f_company' => 'Estructura organizativa optimizada',
-        'f_company_desc' => 'Define roles, departamentos, managers, casos, objetivos y listas con facilidad. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' te permite mapear toda la organización de forma clara, asegurando que todos conozcan sus responsabilidades y objetivos para lograr la máxima eficiencia.',
-        'f_employees' => 'Conciencia inteligente de tareas',
-        'f_employees_desc' => 'Mantente al tanto del trabajo con recordatorios automáticos, plazos y notificaciones. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' asegura que tu equipo nunca pase por alto una tarea o hito importante, manteniendo las operaciones fluidas y puntuales.',
-        'f_positions' => 'Visión financiera integral',
-        'f_positions_desc' => 'Monitorea proveedores, inversores, accionistas, socios, bienes, servicios e ingresos por ventas o suscripciones sin esfuerzo. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' consolida todos los datos financieros en una única plataforma fácil de gestionar para tomar decisiones más inteligentes.',
-        'f_departments' => 'Control de acceso avanzado',
-        'f_departments_desc' => 'Protege tu empresa con opciones de seguridad personalizáveis, incluyendo acceso general, acceso basado en tiempo y permisos específicos por días de la semana. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' garantiza que los datos sensibles estén accesibles solo para las personas adecuadas en el momento adecuado.',
-        'f_access' => 'Herramientas creativas potentes',
-        'f_access_desc' => 'Potencia la innovación con herramientas para creación de imágenes, creación y modificación de archivos y análisis inteligente de enlaces. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' respalda la creatividad de tu equipo mientras mantiene los procesos organizados y accionables.',
-        'f_reminders' => 'Almacenamiento inteligente y gestión de adjuntos',
-        'f_reminders_desc' => 'Sube, analiza y busca adjuntos sin esfuerzo. ' . IdealisticOfficeVariable::APPLICATION_NAME . ' ofrece un sistema de almacenamiento seguro e inteligente que garantiza que tus archivos estén organizados, accesibles y listos para usarse cuando los necesites.',
-
-        'about_title' => 'Acerca de ' . IdealisticOfficeVariable::APPLICATION_NAME,
-        'about_p1' => IdealisticOfficeVariable::APPLICATION_NAME . ' es accesible de inmediato vía Instagram, Meta Messenger, WhatsApp, Discord, Telegram y correo electrónico — por lo que puede comenzar a usarlo desde las herramientas que ya utiliza, sin aprender una nueva interfaz. Dado que ' . IdealisticOfficeVariable::APPLICATION_NAME . ' funciona mediante prompts de chat en lugar de pantallas de menú, la mayoría aprende a usarlo en menos de una hora.',
-        'about_p2' => IdealisticOfficeVariable::APPLICATION_NAME . ' es como un colega útil: sus mensajes se analizan, enrutan a la parte correcta del sistema y convierten solicitudes simples en acciones complejas. Mantenemos el soporte personal: puede enviarnos un correo o llamarnos directamente, esperar respuestas rápidas, y organizaremos llamadas o reuniones si es necesario. Si no le localizamos, le devolveremos la llamada rápidamente para entender el problema y encontrar la mejor solución.',
-
-        'how_title' => 'Cómo funciona — en chat simple',
-        'how_desc' => 'Escriba o diga instrucciones naturales — ' . IdealisticOfficeVariable::APPLICATION_NAME . ' extrae la intención, identifica el objetivo (empresa/puesto/persona) y ejecuta o confirma acciones.',
-        'how_create' => 'Crear empresas',
-        'how_create_desc' => 'Ejemplo: “Crea una empresa llamada HorizonTech.”',
-        'how_add' => 'Añadir members & asignar puestos',
-        'how_add_desc' => 'Ejemplo: “Añade un nuevo member con email john.doe@example.com.”',
-        'how_positions' => 'Crear y gestionar puestos',
-        'how_positions_desc' => 'Ejemplo: “Crea un puesto Marketing Manager.”',
-        'how_access' => 'Acceso & ventanas horarias',
-        'how_access_desc' => 'Ejemplo: “Configura el acceso de la empresa de 08:00 a 18:00.”',
-        'how_reminders' => 'Recordatorios',
-        'how_reminders_desc' => 'Ejemplo: “Crea un recordatorio llamado \'Informe Mensual\' que empiece en 60 segundos y se repita cada hora.”',
-
-        'contact_title' => 'Contacto',
-        'contact_desc' => '¿Quiere una demo, detalles de precios o integrar ' . IdealisticOfficeVariable::APPLICATION_NAME . ' en su stack? Envíe un mensaje y nuestro equipo le responderá.',
-        'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
-        'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
-        'contact_location' => 'Europa, Estonia',
-        'label_name' => 'Nombre',
-        'placeholder_name' => 'Su nombre',
-        'label_email' => 'Correo laboral',
-        'placeholder_email' => 'name@example.com',
-        'label_message' => '¿Cómo podemos ayudar?',
-        'placeholder_message' => 'Explique brevemente su caso de uso...',
-        'btn_submit' => 'Solicitar demo',
-
-        'err_name_required' => 'El nombre es obligatorio.',
-        'err_name_length' => 'El nombre debe tener entre 2 y 128 caracteres.',
-        'err_email_required' => 'Se requiere un correo válido.',
-        'err_email_length' => 'El correo debe tener entre 5 y 384 caracteres.',
-        'err_message_required' => 'El mensaje no puede estar vacío.',
-        'err_message_length' => 'El mensaje debe tener entre 32 y 1024 caracteres.',
-        'err_rate_limit' => 'Está enviando mensajes con demasiada frecuencia. Espere un momento e intente de nuevo.',
-        'success_received' => 'Gracias — su mensaje fue recibido. Nos pondremos en contacto lo antes posible.',
-        'failure_received' => 'Su mensaje no pudo ser recibido. Por favor intente nuevamente más tarde.',
-        'submission_problem' => 'Hubo un problema al enviar el formulario:',
-
-        'ft_terms' => 'Términos de uso',
-        'ft_privacy' => 'Política de privacidad',
-        'ft_doc' => 'Documentación',
-        'ft_instagram' => 'Instagram',
-        'ft_messenger' => 'Messenger',
-        'ft_whatsapp' => 'WhatsApp',
-        'ft_discord' => 'Discord',
-        'ft_telegram' => 'Telegram',
-        'ft_pricing' => 'Precios',
-        'err_captcha' => 'Verificación Captcha fallida.',
-        'modal_captcha_title' => 'Control de seguridad',
-        'modal_captcha_close' => 'Cerrar',
+        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quiero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro', 'ft_doc' => 'Docs', 'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'ft_pricing' => 'Precios', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
     ],
 ];
 
+// Fallback logic
+$languages = ['english', 'greek', 'dutch', 'german', 'italian', 'french', 'portuguese', 'spanish'];
+foreach ($languages as $l) {
+    if (!isset($translations[$l])) $translations[$l] = $translations['english'];
+}
+
+// Language Logic
 if (!isset($lang)) {
     $lang = get_form_get('language', 'english');
 }
-if (!in_array($lang, ['english', 'greek', 'spanish', 'french', 'german', 'italian', 'portuguese', 'dutch'], true)) {
+if (!in_array($lang, $languages, true)) {
     $lang = 'english';
 }
-$langCodes = array(
-    'english' => 'en',
-    'greek' => 'el',
-    'spanish' => 'es',
-    'french' => 'fr',
-    'german' => 'de',
-    'italian' => 'it',
-    'portuguese' => 'pt',
-    'dutch' => 'nl'
-);
+$langCodes = ['english' => 'en', 'greek' => 'el', 'dutch' => 'nl', 'german' => 'de', 'italian' => 'it', 'french' => 'fr', 'portuguese' => 'pt', 'spanish' => 'es'];
 $t = $translations[$lang];
 
+// Form Handling
 $errors = [];
 $name = '';
 $email = '';
 $message = '';
 $form_status = null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'
-    && isset($_POST['contact_form'])) {
-    $recaptcha_response = $_POST['g-recaptcha-response'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
     $user_ip = get_client_ip_address();
-    $verify_url = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = [
-        'secret' => $recaptcha_secret_key,
-        'response' => $recaptcha_response,
-        'remoteip' => $user_ip
-    ];
-    $options = [
-        'http' => [
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data)
-        ]
-    ];
-    $context = stream_context_create($options);
-    $verify_result = file_get_contents($verify_url, false, $context);
-    $json_result = json_decode($verify_result);
+    $verify = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, stream_context_create([
+        'http' => ['header' => "Content-type: application/x-www-form-urlencoded\r\n", 'method' => 'POST', 'content' => http_build_query(['secret' => $recaptcha_secret_key, 'response' => $_POST['g-recaptcha-response'] ?? '', 'remoteip' => $user_ip])]
+    ]));
+    if (!json_decode($verify)->success) $errors[] = $t['err_captcha'];
 
-    if (!$json_result->success) {
-        $errors[] = $t['err_captcha'];
-    }
+    $name = trim((string)get_form_post('name', ''));
+    $email = strtolower(trim((string)get_form_post('email', '')));
+    $message = trim((string)get_form_post('message', ''));
 
-    $name = trim((string)(get_form_post('name', '')));
-    $email = strtolower(trim((string)((get_form_post('email', '')))));
-    $message = trim((string)(get_form_post('message', '')));
-
-    if ($name === '') {
-        $errors[] = $t['err_name_required'];
-    } else if (strlen($name) < 2 || strlen($name) > 128) {
-        $errors[] = $t['err_name_length'];
-    }
-    if ($email === '' || !is_email($email)) {
-        $errors[] = $t['err_email_required'];
-    } else if (strlen($email) < 5 || strlen($email) > 384) {
-        $errors[] = $t['err_email_length'];
-    }
-    if ($message === '') {
-        $errors[] = $t['err_message_required'];
-    } else if (strlen($message) < 32 || strlen($message) > 1024) {
-        $errors[] = $t['err_message_length'];
-    }
+    if (strlen($name) < 2) $errors[] = $t['err_name_required'];
+    if (!is_email($email)) $errors[] = $t['err_email_required'];
+    if (strlen($message) < 10) $errors[] = $t['err_message_required'];
 
     if (empty($errors)) {
         require_once '/var/www/.structure/library/memory/init.php';
-        $cooldownTime = 60 * 30;
-        $dayTime = 60 * 60 * 24;
-        $maxPerEmail = 4;
-
-        $client_ip = get_client_ip_address();
-
-        if (has_memory_cooldown("idealistic_ai_contact_form", 3)
-            || has_memory_cooldown("idealistic_ai_contact_form=cooldown=" . strtolower($name), $cooldownTime)
-            || has_memory_limit("idealistic_ai_contact_form=limit=" . strtolower($name), $maxPerEmail, $dayTime)
-            || has_memory_cooldown("idealistic_ai_contact_form=cooldown=" . $email, $cooldownTime)
-            || has_memory_limit("idealistic_ai_contact_form=limit=" . $email, $maxPerEmail, $dayTime)
-            || has_memory_cooldown("idealistic_ai_contact_form=cooldown=" . $client_ip, $cooldownTime)
-            || has_memory_limit("idealistic_ai_contact_form=limit=" . $client_ip, $maxPerEmail, $dayTime)
-            || has_memory_cooldown("idealistic_ai_contact_form==cooldown" . string_to_integer(strtolower($message)), $cooldownTime)
-            || has_memory_limit("idealistic_ai_contact_form=limit=" . string_to_integer(strtolower($message)), $maxPerEmail, $dayTime)) {
+        require_once '/var/www/.structure/library/email/init.php';
+        $memKey = "idealistic_form_" . $user_ip;
+        if (has_memory_cooldown($memKey, 60)) {
             $errors[] = $t['err_rate_limit'];
         } else {
-            require_once '/var/www/.structure/library/email/init.php';
-            $id = random_number();
-            $services_email = services_self_email(
-                $email,
-                'Idealistic | Contact Form [ID: ' . $id . ']',
-                "ID: " . $id
-                . "\nName: " . $name
-                . "\nEmail: " . $email
-                . "\nIP: " . $client_ip
-                . "\nLanguage: " . ($langCodes[$lang] ?? "en")
-                . "\n\nMessage:\n" . $message
-            );
+            $services_email = services_self_email($email, 'Idealistic Office Inquiry', "Name: $name\nEmail: $email\nMsg: $message");
             $form_status = $services_email === true;
         }
     }
 }
-
-?><!doctype html>
-<html lang="<?php echo htmlspecialchars($langCodes[$lang] ?? "en", ENT_QUOTES, 'UTF-8'); ?>" data-theme="light">
+?>
+<!doctype html>
+<html lang="<?php echo $langCodes[$lang]; ?>" data-theme="light">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title><?php echo IdealisticOfficeVariable::COMPANY_NAME ?></title>
-
-    <meta name="description"
-          content="<?php echo IdealisticOfficeVariable::APPLICATION_NAME ?> by Idealistic — manage companies, positions, reminders and access through natural chat across WhatsApp, Telegram, Discord and email.">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="https://www.idealistic.ai">
-
-    <meta property="og:title" content="<?php echo IdealisticOfficeVariable::COMPANY_NAME ?>">
-    <meta property="og:description"
-          content="<?php echo htmlspecialchars($t['h1'], ENT_QUOTES, 'UTF-8'); ?>">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.idealistic.ai">
-    <meta property="og:image" content="/.images/logoTransparent.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo IdealisticOfficeVariable::COMPANY_NAME ?>">
-    <meta name="twitter:description" content="<?php echo htmlspecialchars($t['h1'], ENT_QUOTES, 'UTF-8'); ?>">
-    <meta name="twitter:image" content="/.images/logoTransparent.png">
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "<?php echo IdealisticOfficeVariable::APPLICATION_NAME ?>",
-            "operatingSystem": "Web",
-            "url": "https://www.idealistic.ai",
-            "description": "Manage companies, roles, reminders and access using natural chat across multiple platforms.",
-            "publisher": {
-                "@type": "Organization",
-                "name": "Idealistic",
-                "url": "https://www.idealistic.ai"
-            }
-        }
-    </script>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.idealistic.ai/.images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="https://www.idealistic.ai/.images/logo.png" sizes="any">
-    <link rel="mask-icon" href="https://www.idealistic.ai/.images/logo.svg" color="#0d6efd">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Manage your company via WhatsApp & Telegram. No menus, just chat.">
     <link href="https://www.idealistic.ai/.design/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
     <style>
+        /* Modern Theme Variables */
         :root {
-            --bg: #f7f9fc;
-            --surface: #fff;
-            --text: #0b2235;
-            --muted: #6c757d;
-            --accent: #0d6efd;
-            --card-radius: 18px;
-            --surface-border: rgba(11, 34, 53, 0.06);
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --text: #212529;
+            --text-muted: #6c757d;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --input-bg: #f8f9fa;
         }
 
         html[data-theme='dark'] {
-            --bg: #071023;
-            --surface: #0b1220;
-            --text: #e6eef8;
-            --muted: #9fb0c8;
-            --accent: #2ea6ff;
-            --surface-border: rgba(255, 255, 255, 0.04);
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --input-bg: #0f172a;
         }
 
-        html, body {
-            height: 100%;
-            margin: 0;
+        body {
             background: var(--bg);
             color: var(--text);
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial
+            font-family: 'Inter', sans-serif;
+            transition: background .3s;
         }
 
-        .navbar-brand img {
-            height: 36px;
-            width: auto
+        .bg-card {
+            background-color: var(--surface) !important;
         }
 
-        html[data-theme='dark'] .navbar .navbar-brand .fw-bold {
-            color: #ffffff !important;
+        .bg-section {
+            background-color: var(--bg) !important;
         }
 
-        .navbar {
-            background: var(--surface)
+        .text-body {
+            color: var(--text) !important;
         }
 
-        .navbar .nav-link {
-            color: var(--text) !important
-        }
-
-        .bg-surface {
-            background: var(--surface) !important
+        .text-secondary-theme {
+            color: var(--text-muted) !important;
         }
 
         .hero {
-            min-height: 85vh;
+            min-height: 75vh;
             display: flex;
             align-items: center;
-            padding: 6rem 0
-        }
-
-        .hero .lead {
-            font-size: 1.05rem;
-            color: var(--muted)
-        }
-
-        .hero-visual {
-            border-radius: 20px;
-            overflow: hidden;
-            background: transparent
-        }
-
-        .hero-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            background: transparent
-        }
-
-        section {
-            padding: 4.5rem 0
-        }
-
-        .section-title {
-            font-weight: 700;
-            letter-spacing: -0.02em
-        }
-
-        .muted {
-            color: var(--muted)
         }
 
         .feature-card {
-            border-radius: var(--card-radius);
-            transition: all .28s ease;
-            height: 100%;
-            display: flex;
-            align-items: flex-start;
             background: var(--surface);
-            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04)
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            transition: transform .2s;
         }
 
         html[data-theme='dark'] .feature-card {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6)
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .feature-card:hover {
-            transform: translateY(-6px)
+            transform: translateY(-5px);
         }
 
         .feature-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            display: grid;
-            place-items: center;
-            font-size: 22px;
-            background: transparent !important;
-            box-shadow: none !important;
-        }
-
-        .feature-card h3 {
-            font-size: 1.03rem;
-            margin-bottom: .35rem
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 1.75rem
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 14px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), rgba(13, 110, 253, 0.12));
-            border-radius: 2px
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
         }
 
         .timeline-item {
+            border-left: 2px solid #0d6efd;
+            padding-left: 1.5rem;
+            padding-bottom: 2rem;
             position: relative;
-            margin-bottom: 1.6rem;
-            padding-left: 2rem
         }
 
         .timeline-bullet {
+            width: 12px;
+            height: 12px;
+            background: #0d6efd;
+            border-radius: 50%;
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: grid;
-            place-items: center;
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            box-shadow: 0 6px 18px rgba(13, 110, 253, 0.06)
+            left: -7px;
+            top: 5px;
         }
 
-        .contact-card {
-            border-radius: 14px;
-            background: var(--surface);
-            box-shadow: 0 18px 40px rgba(11, 34, 53, 0.06)
+        .timeline-container, form {
+            border: 1px solid var(--border-color) !important;
         }
 
-        html[data-theme='dark'] .contact-card {
-            background: linear-gradient(180deg, var(--surface), rgba(255, 255, 255, 0.02));
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6)
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: none;
+        }
+
+        .navbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--text) !important;
+        }
+
+        footer {
+            background: var(--surface);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        footer a:hover {
+            color: var(--text);
         }
 
         .form-control {
-            background: transparent;
-            border: 1px solid rgba(11, 34, 53, 0.06);
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
             color: var(--text);
-            min-height: 44px
         }
 
-        html[data-theme='dark'] .form-control {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            color: var(--text)
+        .form-control:focus {
+            background-color: var(--input-bg);
+            color: var(--text);
+            border-color: #0d6efd;
+            box-shadow: none;
         }
 
         .form-control::placeholder {
-            color: var(--muted);
-            opacity: 1
+            color: var(--text-muted);
+            opacity: 0.7;
         }
 
-        textarea.form-control {
-            min-height: 140px;
-            resize: vertical;
-            overflow: auto
-        }
-
-        /* Modal tweaks for theme consistency */
         .modal-content {
             background-color: var(--surface);
             color: var(--text);
-            border: 1px solid var(--surface-border);
-        }
-
-        .modal-header, .modal-footer {
-            border-color: var(--surface-border);
+            border: 1px solid var(--border-color);
         }
 
         .btn-close {
@@ -1090,180 +482,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
         html[data-theme='dark'] .btn-close {
             filter: invert(1) grayscale(100%) brightness(200%);
         }
-
-        footer {
-            padding: 1.5rem 0;
-            background: var(--surface);
-            border-top: 1px solid var(--surface-border);
-            box-shadow: none
-        }
-
-        .footer-links a {
-            color: var(--muted);
-            text-decoration: none
-        }
-
-        .footer-links a:hover {
-            color: var(--text)
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity .6s ease, transform .6s cubic-bezier(.2, .9, .3, 1)
-        }
-
-        .reveal.in-view {
-            opacity: 1;
-            transform: none
-        }
-
-        .reveal.from-top {
-            transform: translateY(-12px)
-        }
-
-        .reveal.from-top.in-view {
-            transform: none
-        }
-
-        @media (max-width: 991px) {
-            .hero {
-                min-height: 62vh;
-                padding: 3.5rem 0
-            }
-
-            section {
-                padding: 2.5rem 0
-            }
-
-            .feature-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 20px
-            }
-
-            .footer-links span {
-                display: none
-            }
-
-            .timeline {
-                padding-left: 1rem
-            }
-
-            .timeline::before {
-                left: 8px
-            }
-
-            .timeline-bullet {
-                left: 4px
-            }
-
-            .contact-card {
-                padding: 1rem
-            }
-
-            .form-control {
-                min-height: 40px
-            }
-        }
-
-        @media (max-width: 575px) {
-            .hero {
-                min-height: 52vh
-            }
-
-            .hero-visual {
-                display: none
-            }
-
-            .footer-links {
-                gap: .75rem
-            }
-        }
     </style>
 </head>
-
 <body>
 
-<nav class="navbar navbar-expand-lg shadow-sm">
+<nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
-            <img src="https://www.idealistic.ai/.images/logoCircular.png"
-                 alt="<?php echo IdealisticOfficeVariable::COMPANY_NAME ?> logo">
-            <span class="fw-bold"><?php echo htmlspecialchars($t['brand'], ENT_QUOTES, 'UTF-8'); ?></span>
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+            <img src="https://www.idealistic.ai/.images/logoCircular.png" width="32" height="32" alt="Logo">
+            <span><?php echo htmlspecialchars($t['brand']); ?></span>
         </a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="filter: invert(var(--invert-icon, 0))"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navMain">
-            <ul class="navbar-nav ms-auto align-items-lg-center">
-                <li class="nav-item"><a class="nav-link active"
-                                        href="#home"><?php echo htmlspecialchars($t['nav_home'], ENT_QUOTES, 'UTF-8'); ?></a>
-                </li>
-                <li class="nav-item"><a class="nav-link"
-                                        href="#features"><?php echo htmlspecialchars($t['nav_features'], ENT_QUOTES, 'UTF-8'); ?></a>
-                </li>
-                <li class="nav-item"><a class="nav-link"
-                                        href="#usecases"><?php echo htmlspecialchars($t['nav_usecases'], ENT_QUOTES, 'UTF-8'); ?></a>
-                </li>
-                <li class="nav-item"><a class="nav-link"
-                                        href="#contact"><?php echo htmlspecialchars($t['nav_contact'], ENT_QUOTES, 'UTF-8'); ?></a>
-                </li>
-                <li class="nav-item ms-2 d-none d-lg-inline"><a class="btn btn-outline-primary btn-sm"
-                                                                href="#contact"><?php echo htmlspecialchars($t['cta_request'], ENT_QUOTES, 'UTF-8'); ?>
-                        <span class="visually-hidden"> for <?php echo IdealisticOfficeVariable::APPLICATION_NAME ?></span></a>
-                </li>
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="#features"><?php echo $t['nav_features']; ?></a></li>
+                <li class="nav-item"><a class="nav-link" href="#usecases"><?php echo $t['nav_usecases']; ?></a></li>
+                <li class="nav-item ms-3"><a class="btn btn-primary btn-sm rounded-pill px-3"
+                                             href="#contact"><?php echo $t['cta_request']; ?></a></li>
 
-                <li class="nav-item ms-2">
+                <li class="nav-item ms-3">
                     <div class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="languageDropdown"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-translate"></i>
+                        <a class="nav-link dropdown-toggle text-secondary-theme" href="#" role="button"
+                           data-bs-toggle="dropdown">
+                            <span class="me-1"><?php echo $flags[$lang]; ?></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/en/">🇬🇧
-                                    English</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/el/">🇬🇷
-                                    Greek</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/es/">🇪🇸
-                                    Spanish</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/fr/">🇫🇷
-                                    French</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/de/">🇩🇪
-                                    German</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/it/">🇮🇹
-                                    Italian</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/pt/">🇵🇹
-                                    Portuguese</a>
-                            </li>
-                            <li><a class="dropdown-item"
-                                   href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/nl/">🇳🇱
-                                    Dutch</a>
-                            </li>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <?php foreach ($langCodes as $langName => $code): ?>
+                                <li><a class="dropdown-item"
+                                       href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY . '/' . $code . '/'; ?>">
+                                        <span class="me-2"><?php echo $flags[$langName]; ?></span> <?php echo ucfirst($langName); ?>
+                                    </a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </li>
 
                 <li class="nav-item ms-3 d-flex align-items-center">
                     <div class="form-check form-switch mb-0">
-                        <input class="form-check-input" type="checkbox" id="themeToggle" aria-label="Toggle dark mode">
-                        <label class="form-check-label ms-2 d-none d-lg-inline"
-                               for="themeToggle"><?php echo htmlspecialchars($t['label_dark'], ENT_QUOTES, 'UTF-8'); ?></label>
+                        <input class="form-check-input" type="checkbox" role="switch" id="themeToggle"
+                               style="cursor: pointer;">
+                        <label class="form-check-label ms-1" for="themeToggle">
+                            <i class="bi bi-sun-fill" id="themeIcon"></i>
+                        </label>
                     </div>
                 </li>
             </ul>
@@ -1271,490 +533,256 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'
     </div>
 </nav>
 
-<header id="home" class="hero">
+<header class="hero">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-5 section-title reveal"><?php echo htmlspecialchars($t['h1'], ENT_QUOTES, 'UTF-8'); ?></h1>
-                <p class="lead mt-3 reveal"><?php echo htmlspecialchars($t['lead'], ENT_QUOTES, 'UTF-8'); ?></p>
-
-                <div class="d-flex gap-3 mt-4 flex-wrap reveal">
-                    <a href="#contact"
-                       class="btn btn-primary btn-lg"><?php echo htmlspecialchars($t['cta_request'], ENT_QUOTES, 'UTF-8'); ?>
-                        <span class="visually-hidden"> for <?php echo IdealisticOfficeVariable::APPLICATION_NAME ?></span></a>
+            <div class="col-lg-6 reveal">
+                <h1 class="display-4 fw-bold mb-3"><?php echo $t['h1']; ?></h1>
+                <p class="lead text-secondary-theme mb-4"><?php echo $t['lead']; ?></p>
+                <div class="d-flex gap-2">
+                    <a href="#contact" class="btn btn-primary btn-lg rounded-pill"><?php echo $t['cta_request']; ?></a>
                     <a href="#features"
-                       class="btn btn-outline-secondary btn-lg"><?php echo htmlspecialchars($t['cta_explore'], ENT_QUOTES, 'UTF-8'); ?></a>
+                       class="btn btn-outline-secondary btn-lg rounded-pill"><?php echo $t['cta_explore']; ?></a>
                 </div>
-
-                <ul class="list-unstyled mt-4 d-flex gap-4 flex-wrap muted reveal">
-                    <li><strong><?php echo htmlspecialchars($t['pill_1_title'], ENT_QUOTES, 'UTF-8'); ?></strong>
-                        — <?php echo htmlspecialchars($t['pill_1_desc'], ENT_QUOTES, 'UTF-8'); ?></li>
-                    <li><strong><?php echo htmlspecialchars($t['pill_2_title'], ENT_QUOTES, 'UTF-8'); ?></strong>
-                        — <?php echo htmlspecialchars($t['pill_2_desc'], ENT_QUOTES, 'UTF-8'); ?></li>
-                    <li><strong><?php echo htmlspecialchars($t['pill_3_title'], ENT_QUOTES, 'UTF-8'); ?></strong>
-                        — <?php echo htmlspecialchars($t['pill_3_desc'], ENT_QUOTES, 'UTF-8'); ?></li>
-                </ul>
+                <div class="mt-4 d-flex gap-4 text-secondary-theme small">
+                    <span><i class="bi bi-check-circle me-1"></i> <?php echo $t['pill_1_title']; ?></span>
+                    <span><i class="bi bi-check-circle me-1"></i> <?php echo $t['pill_2_title']; ?></span>
+                    <span><i class="bi bi-check-circle me-1"></i> <?php echo $t['pill_3_title']; ?></span>
+                </div>
             </div>
-
-            <div class="col-lg-5 offset-lg-1 d-none d-lg-block">
-                <div class="hero-visual p-2">
-                    <img id="heroMockup" src="https://www.idealistic.ai/.images/logoTransparent.png"
-                         alt="<?php echo IdealisticOfficeVariable::COMPANY_NAME ?> mockup (transparent)">
-                </div>
+            <div class="col-lg-6 d-none d-lg-block reveal text-center">
+                <img id="heroMockup" src="https://www.idealistic.ai/.images/logoTransparent.png" class="img-fluid"
+                     alt="App Preview" style="transition: opacity 0.3s ease;">
             </div>
         </div>
     </div>
 </header>
 
-<main>
-    <section id="features">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title reveal"><?php echo htmlspecialchars($t['features_title'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                    <p class="muted reveal"><?php echo htmlspecialchars($t['features_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-            </div>
-
-            <div class="row g-3 align-items-stretch">
-                <div class="col-md-6">
-                    <div class="p-3 contact-card feature-card h-100 d-flex reveal">
-                        <div class="feature-icon text-primary"><i class="bi bi-building" aria-hidden="true"></i></div>
-                        <div class="ms-3 flex-grow-1">
-                            <h3 class="mb-1"><?php echo htmlspecialchars($t['f_company'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <p class="muted mb-0"><?php echo htmlspecialchars($t['f_company_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="p-3 contact-card feature-card h-100 d-flex reveal">
-                        <div class="feature-icon text-success"><i class="bi bi-people-fill" aria-hidden="true"></i>
-                        </div>
-                        <div class="ms-3 flex-grow-1">
-                            <h3 class="mb-1"><?php echo htmlspecialchars($t['f_employees'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <p class="muted mb-0"><?php echo htmlspecialchars($t['f_employees_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="p-3 contact-card feature-card h-100 d-flex reveal">
-                        <div class="feature-icon text-warning"><i class="bi bi-person-badge" aria-hidden="true"></i>
-                        </div>
-                        <div class="ms-3 flex-grow-1">
-                            <h3 class="mb-1"><?php echo htmlspecialchars($t['f_positions'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <p class="muted mb-0"><?php echo htmlspecialchars($t['f_positions_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="p-3 contact-card feature-card h-100 d-flex reveal">
-                        <div class="feature-icon text-info"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
-                        <div class="ms-3 flex-grow-1">
-                            <h3 class="mb-1"><?php echo htmlspecialchars($t['f_departments'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <p class="muted mb-0"><?php echo htmlspecialchars($t['f_departments_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="p-3 contact-card feature-card h-100 d-flex reveal">
-                        <div class="feature-icon text-danger"><i class="bi bi-lock-fill" aria-hidden="true"></i></div>
-                        <div class="ms-3 flex-grow-1">
-                            <h3 class="mb-1"><?php echo htmlspecialchars($t['f_access'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <p class="muted mb-0"><?php echo htmlspecialchars($t['f_access_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="p-3 contact-card feature-card h-100 d-flex reveal">
-                        <div class="feature-icon text-secondary"><i class="bi bi-calendar-check" aria-hidden="true"></i>
-                        </div>
-                        <div class="ms-3 flex-grow-1">
-                            <h3 class="mb-1"><?php echo htmlspecialchars($t['f_reminders'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <p class="muted mb-0"><?php echo htmlspecialchars($t['f_reminders_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-lg-10 mx-auto">
-                    <h2 class="section-title"><?php echo htmlspecialchars($t['about_title'], ENT_QUOTES, 'UTF-8'); ?></h2>
-
-                    <p class="muted"><?php echo htmlspecialchars($t['about_p1'], ENT_QUOTES, 'UTF-8'); ?></p>
-
-                    <p class="muted"><?php echo htmlspecialchars($t['about_p2'], ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-            </div>
-
+<section id="features">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold"><?php echo $t['features_title']; ?></h2>
+            <p class="text-secondary-theme"><?php echo $t['features_desc']; ?></p>
         </div>
-    </section>
-
-    <section id="usecases">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title reveal"><?php echo htmlspecialchars($t['how_title'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                    <p class="muted reveal"><?php echo htmlspecialchars($t['how_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-8 mx-auto bg-surface p-3 rounded-3 shadow-sm reveal">
-                    <div class="timeline">
-
-                        <div class="timeline-item">
-                            <div class="timeline-bullet"><i class="bi bi-building" aria-hidden="true"></i></div>
-                            <div class="ps-3">
-                                <h3><?php echo htmlspecialchars($t['how_create'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                <p class="muted"><?php echo htmlspecialchars($t['how_create_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-bullet"><i class="bi bi-person-plus-fill" aria-hidden="true"></i></div>
-                            <div class="ps-3">
-                                <h3><?php echo htmlspecialchars($t['how_add'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                <p class="muted"><?php echo htmlspecialchars($t['how_add_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-bullet"><i class="bi bi-person-bounding-box" aria-hidden="true"></i>
-                            </div>
-                            <div class="ps-3">
-                                <h3><?php echo htmlspecialchars($t['how_positions'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                <p class="muted"><?php echo htmlspecialchars($t['how_positions_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-bullet"><i class="bi bi-lock-fill" aria-hidden="true"></i></div>
-                            <div class="ps-3">
-                                <h3><?php echo htmlspecialchars($t['how_access'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                <p class="muted"><?php echo htmlspecialchars($t['how_access_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-bullet"><i class="bi bi-calendar-check" aria-hidden="true"></i></div>
-                            <div class="ps-3">
-                                <h3><?php echo htmlspecialchars($t['how_reminders'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                <p class="muted"><?php echo htmlspecialchars($t['how_reminders_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            </div>
-                        </div>
-
+        <div class="row g-4">
+            <?php
+            $feats = ['company', 'employees', 'positions', 'departments', 'access', 'reminders'];
+            $icons = ['building', 'people', 'person-check', 'shield-lock', 'pencil-square', 'search'];
+            foreach ($feats as $k => $f): ?>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="feature-card">
+                        <i class="bi bi-<?php echo $icons[$k]; ?> feature-icon"></i>
+                        <h4 class="fw-bold"><?php echo $t['f_' . $f]; ?></h4>
+                        <p class="text-secondary-theme mb-0"><?php echo $t['f_' . $f . '_desc']; ?></p>
                     </div>
                 </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-section reveal">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-3"><?php echo $t['about_title']; ?></h2>
+                <p class="text-secondary-theme"><?php echo $t['about_p1']; ?></p>
+                <p class="text-secondary-theme"><?php echo $t['about_p2']; ?></p>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contact" class="py-6">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="section-title reveal"><?php echo htmlspecialchars($t['contact_title'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                    <p class="muted reveal"><?php echo htmlspecialchars($t['contact_desc'], ENT_QUOTES, 'UTF-8'); ?></p>
-
-                    <ul class="list-unstyled mt-4 muted reveal">
-                        <li>
-                            <i class="bi bi-envelope-fill me-2"></i><?php echo htmlspecialchars($t['contact_email'], ENT_QUOTES, 'UTF-8'); ?>
-                        </li>
-                        <li>
-                            <i class="bi bi-globe2 me-2"></i><a href="https://www.idealistic.ai"
-                                                                target="_blank"><?php echo htmlspecialchars($t['contact_site'], ENT_QUOTES, 'UTF-8'); ?></a>
-                        </li>
-                        <li>
-                            <i class="bi bi-geo-alt-fill me-2"></i><a
-                                    href="https://ariregister.rik.ee/eng/company/17320016/Idealistic-OÜ"
-                                    target="_blank"><?php echo htmlspecialchars($t['contact_location'], ENT_QUOTES, 'UTF-8'); ?></a>
-                        </li>
-                        <li>
-                            <i class="bi bi-currency-exchange me-2"></i><a
-                                    href="http://www.idealistic.ai<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/pricing"
-                                    target="_blank"><?php echo htmlspecialchars($t['ft_pricing'], ENT_QUOTES, 'UTF-8'); ?></a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-5 offset-lg-1">
+<section id="usecases">
+    <div class="container">
+        <div class="text-center mb-5 reveal">
+            <h2 class="fw-bold"><?php echo $t['how_title']; ?></h2>
+            <p class="text-secondary-theme"><?php echo $t['how_desc']; ?></p>
+        </div>
+        <div class="row justify-content-center reveal">
+            <div class="col-lg-8">
+                <div class="bg-card p-4 rounded-4 shadow-sm timeline-container">
                     <?php
-                    if (!empty($errors)) {
-                        echo '<div class="alert alert-danger">';
-                        echo '<strong>' . htmlspecialchars($t['submission_problem'], ENT_QUOTES, 'UTF-8') . '</strong><ul class="mb-0">';
-                        foreach ($errors as $e) {
-                            echo '<li>' . htmlspecialchars($e, ENT_QUOTES, 'UTF-8') . '</li>';
-                        }
-                        echo '</ul></div>';
-                    } else if ($form_status === true) {
-                        echo '<div class="alert alert-success">' . htmlspecialchars($t['success_received'], ENT_QUOTES, 'UTF-8') . '</div>';
-                    } else if ($form_status === false) {
-                        echo '<div class="alert alert-warning">' . htmlspecialchars($t['failure_received'], ENT_QUOTES, 'UTF-8') . '</div>';
-                    }
-                    ?>
-
-                    <form class="p-3 contact-card reveal" id="mainContactForm" method="post" action="#contact"
-                          novalidate>
-                        <input type="hidden" name="contact_form" value="1">
-
-                        <div style="display:none;position:absolute;left:-9999px;">
-                            <label>Website</label>
-                            <input name="website" type="text" tabindex="-1" autocomplete="off"/>
+                    $steps = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5'];
+                    foreach ($steps as $s): ?>
+                        <div class="timeline-item">
+                            <div class="timeline-bullet"></div>
+                            <h5 class="fw-bold mb-1"><?php echo $t['how_' . $s]; ?></h5>
+                            <code class="text-primary bg-section px-2 py-1 rounded d-block mt-1"><?php echo $t['how_' . $s . '_desc']; ?></code>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label"><?php echo htmlspecialchars($t['label_name'], ENT_QUOTES, 'UTF-8'); ?></label>
-                            <input class="form-control" id="contact-name" name="name"
-                                   minlength="2" maxlength="128"
-                                   value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>"
-                                   placeholder="<?php echo htmlspecialchars($t['placeholder_name'], ENT_QUOTES, 'UTF-8'); ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label"><?php echo htmlspecialchars($t['label_email'], ENT_QUOTES, 'UTF-8'); ?></label>
-                            <input type="email" class="form-control" id="contact-email" name="email"
-                                   min="5" max="384"
-                                   value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>"
-                                   placeholder="<?php echo htmlspecialchars($t['placeholder_email'], ENT_QUOTES, 'UTF-8'); ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label"><?php echo htmlspecialchars($t['label_message'], ENT_QUOTES, 'UTF-8'); ?></label>
-                            <textarea class="form-control" id="contact-message" name="message" data-autoresize rows="4"
-                                      minlength="32" maxlength="1024"
-                                      placeholder="<?php echo htmlspecialchars($t['placeholder_message'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></textarea>
-                        </div>
-
-                        <div id="recaptcha-token-container"></div>
-
-                        <div class="d-grid">
-                            <button class="btn btn-primary btn-lg"
-                                    type="submit"><?php echo htmlspecialchars($t['btn_submit'], ENT_QUOTES, 'UTF-8'); ?></button>
-                        </div>
-                    </form>
+                    <?php endforeach; ?>
                 </div>
-
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="row justify-content-center pt-5">
+            <div class="col-lg-6 text-center mb-4 reveal">
+                <h2 class="fw-bold"><?php echo $t['contact_title']; ?></h2>
+                <p class="text-secondary-theme"><?php echo $t['contact_desc']; ?></p>
+            </div>
+        </div>
+        <div class="row justify-content-center reveal">
+            <div class="col-lg-5">
+                <?php if ($errors): ?>
+                    <div class="alert alert-danger"><?php echo implode('<br>', $errors); ?></div><?php endif; ?>
+                <?php if ($form_status === true): ?>
+                    <div class="alert alert-success"><?php echo $t['success_received']; ?></div><?php endif; ?>
+
+                <form method="post" id="contactForm" class="bg-card p-4 rounded-4 shadow-sm">
+                    <input type="hidden" name="contact_form" value="1">
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase fw-bold text-secondary-theme"><?php echo $t['label_name']; ?></label>
+                        <input name="name" class="form-control" placeholder="<?php echo $t['placeholder_name']; ?>"
+                               value="<?php echo htmlspecialchars($name); ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase fw-bold text-secondary-theme"><?php echo $t['label_email']; ?></label>
+                        <input name="email" type="email" class="form-control"
+                               placeholder="<?php echo $t['placeholder_email']; ?>"
+                               value="<?php echo htmlspecialchars($email); ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase fw-bold text-secondary-theme"><?php echo $t['label_message']; ?></label>
+                        <textarea name="message" rows="3" class="form-control"
+                                  placeholder="<?php echo $t['placeholder_message']; ?>"><?php echo htmlspecialchars($message); ?></textarea>
+                    </div>
+                    <button class="btn btn-primary w-100 py-2 rounded-pill fw-bold"><?php echo $t['btn_submit']; ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-3 py-2">
             <img src="https://www.idealistic.ai/.images/logoCircular.png" alt="logo" height="32">
-            <small class="muted">© 2025 <?php echo IdealisticOfficeVariable::COMPANY_NAME ?></small>
+            <small class="text-secondary-theme">© 2026 <?php echo IdealisticOfficeVariable::COMPANY_NAME ?></small>
         </div>
 
-        <div class="py-2 footer-links d-flex align-items-center gap-3 flex-wrap">
+        <div class="py-2 d-flex align-items-center gap-3 flex-wrap">
             <a class="d-flex align-items-center gap-2"
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/terms/terms_of_use/"
-               target="_blank" rel="noopener"><i class="bi bi-journal-text"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_terms'], ENT_QUOTES, 'UTF-8'); ?></span></a>
+               target="_blank"><i class="bi bi-journal-text"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_terms']; ?></span></a>
             <a class="d-flex align-items-center gap-2"
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/policies/privacy_policy/"
-               target="_blank" rel="noopener"><i class="bi bi-shield-lock"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_privacy'], ENT_QUOTES, 'UTF-8'); ?></span></a>
+               target="_blank"><i class="bi bi-shield-lock"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_privacy']; ?></span></a>
+            <a class="d-flex align-items-center gap-2"
+               href="https://ariregister.rik.ee/eng/company/17320016/Idealistic-OÜ"
+               target="_blank"><i class="bi bi-building-check"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_registry']; ?></span></a>
             <a class="d-flex align-items-center gap-2"
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/<?php echo $langCodes[$lang] ?? ''; ?>"
-               target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_doc'], ENT_QUOTES, 'UTF-8'); ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"
-               rel="noopener"><i class="bi bi-instagram"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_instagram'], ENT_QUOTES, 'UTF-8'); ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://www.facebook.com/idealisticai" target="_blank"
-               rel="noopener"><i class="bi bi-messenger"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_messenger'], ENT_QUOTES, 'UTF-8'); ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://wa.me/message/YA5Z4B5YULQZA1" target="_blank"
-               rel="noopener"><i class="bi bi-whatsapp"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_whatsapp'], ENT_QUOTES, 'UTF-8'); ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://discord.com/invite/kmFJWcRtSP" target="_blank"
-               rel="noopener"><i class="bi bi-discord"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_discord'], ENT_QUOTES, 'UTF-8'); ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://t.me/idealisticBot" target="_blank"
-               rel="noopener"><i class="bi bi-telegram"></i><span
-                        class="d-none d-md-inline"><?php echo htmlspecialchars($t['ft_telegram'], ENT_QUOTES, 'UTF-8'); ?></span></a>
+               target="_blank"><i class="bi bi-file-earmark-text"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_doc']; ?></span></a>
+            <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"><i
+                        class="bi bi-instagram"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_instagram']; ?></span></a>
+            <a class="d-flex align-items-center gap-2" href="https://www.facebook.com/idealisticai" target="_blank"><i
+                        class="bi bi-messenger"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_messenger']; ?></span></a>
+            <a class="d-flex align-items-center gap-2" href="https://wa.me/message/YA5Z4B5YULQZA1" target="_blank"><i
+                        class="bi bi-whatsapp"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_whatsapp']; ?></span></a>
+            <a class="d-flex align-items-center gap-2" href="https://discord.com/invite/kmFJWcRtSP" target="_blank"><i
+                        class="bi bi-discord"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_discord']; ?></span></a>
+            <a class="d-flex align-items-center gap-2" href="https://t.me/idealisticBot" target="_blank"><i
+                        class="bi bi-telegram"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_telegram']; ?></span></a>
         </div>
     </div>
 </footer>
 
-<div class="modal fade" id="captchaModal" tabindex="-1" aria-labelledby="captchaModalLabel" aria-hidden="true"
-     data-bs-backdrop="static">
+<div class="modal fade" id="captchaModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"
-                    id="captchaModalLabel"><?php echo htmlspecialchars($t['modal_captcha_title'], ENT_QUOTES, 'UTF-8'); ?></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex justify-content-center py-4">
-                <div class="g-recaptcha" data-sitekey="<?php echo $recaptcha_site_key; ?>"
-                     data-callback="onCaptchaSolved"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                        data-bs-dismiss="modal"><?php echo htmlspecialchars($t['modal_captcha_close'], ENT_QUOTES, 'UTF-8'); ?></button>
+            <div class="modal-body text-center p-4">
+                <h5 class="mb-3"><?php echo $t['modal_captcha_title']; ?></h5>
+                <div class="g-recaptcha d-inline-block" data-sitekey="<?php echo $recaptcha_site_key; ?>"
+                     data-callback="captchaSolved"></div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="https://www.idealistic.ai/.scripts/bootstrap.bundle.min.js"></script>
 <script>
-    function onCaptchaSolved(token) {
-        const form = document.getElementById('mainContactForm');
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'g-recaptcha-response';
-        input.value = token;
-        form.appendChild(input);
-        form.dataset.verified = 'true';
-        form.submit();
-        const modalEl = document.getElementById('captchaModal');
-        const modal = bootstrap.Modal.getInstance(modalEl);
-        if (modal) modal.hide();
+    // Theme Toggling Logic
+    const toggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const root = document.documentElement;
+    const heroImg = document.getElementById('heroMockup');
+
+    // Image sources
+    const lightMock = 'https://www.idealistic.ai/.images/logoTransparent.png';
+    const darkMock = 'https://www.idealistic.ai/.images/backgroundLogoTransparent.png';
+
+    function setTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+
+        // Update Icon
+        if (themeIcon) {
+            themeIcon.className = theme === 'dark' ? 'bi bi-moon-fill text-white' : 'bi bi-sun-fill text-warning';
+        }
+
+        // Update Navbar Toggler
+        const toggler = document.querySelector('.navbar-toggler-icon');
+        if (toggler) toggler.style.filter = theme === 'dark' ? 'invert(1)' : 'invert(0)';
+
+        // Swap Hero Logo
+        if (heroImg) {
+            heroImg.style.opacity = 0;
+            setTimeout(() => {
+                heroImg.src = theme === 'dark' ? darkMock : lightMock;
+                heroImg.style.opacity = 1;
+            }, 300);
+        }
     }
 
-    (function () {
-        const root = document.documentElement;
-        const toggle = document.getElementById('themeToggle');
-        const stored = localStorage.getItem('site-theme');
-        const heroImg = document.getElementById('heroMockup');
-        const lightMock = 'https://www.idealistic.ai/.images/logoTransparent.png';
-        const darkMock = 'https://www.idealistic.ai/.images/backgroundLogoTransparent.png';
+    // Init
+    if (localStorage.getItem('theme') === 'dark') {
+        toggle.checked = true;
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
 
-        function applyTheme(theme) {
-            root.setAttribute('data-theme', theme);
-            if (toggle) toggle.checked = (theme === 'dark');
-            if (heroImg) {
-                heroImg.src = (theme === 'dark') ? darkMock : lightMock;
-                heroImg.style.opacity = 0;
-                setTimeout(() => heroImg.style.transition = 'opacity .4s ease', 10);
-                setTimeout(() => heroImg.style.opacity = 1, 30);
-            }
+    toggle.addEventListener('change', () => {
+        setTheme(toggle.checked ? 'dark' : 'light');
+    });
 
-            document.querySelectorAll('.feature-icon').forEach(ic => {
-                ic.style.background = 'transparent';
-                ic.style.boxShadow = 'none';
-            });
-        }
+    // Reveal Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add('in-view'));
+    }, {threshold: 0.1});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        if (stored) {
-            applyTheme(stored);
-        } else {
-            applyTheme('light');
-        }
+    // Captcha Logic
+    function captchaSolved(token) {
+        const f = document.getElementById('contactForm');
+        const i = document.createElement('input');
+        i.type = 'hidden';
+        i.name = 'g-recaptcha-response';
+        i.value = token;
+        f.appendChild(i);
+        f.submit();
+    }
 
-        if (toggle) {
-            toggle.addEventListener('change', function () {
-                const newTheme = this.checked ? 'dark' : 'light';
-                applyTheme(newTheme);
-                localStorage.setItem('site-theme', newTheme);
-
-                revealObserver && revealObserver.disconnect();
-                initReveal();
-            });
-        }
-
-        document.querySelectorAll('textarea[data-autoresize]').forEach(el => {
-            el.style.height = Math.max(el.clientHeight, el.scrollHeight) + 'px';
-            el.addEventListener('input', function () {
-                if (this.scrollHeight > this.clientHeight) {
-                    this.style.height = this.scrollHeight + 'px';
-                }
-            });
-        });
-
-        function updateFormColors() {
-            const text = getComputedStyle(document.documentElement).getPropertyValue('--text');
-            const muted = getComputedStyle(document.documentElement).getPropertyValue('--muted');
-            document.querySelectorAll('.form-control').forEach(el => {
-                el.style.color = text;
-            });
-            document.querySelectorAll('.muted').forEach(el => {
-                el.style.color = muted;
-            });
-        }
-
-        updateFormColors();
-        if (toggle) toggle.addEventListener('change', updateFormColors);
-
-        let revealObserver;
-
-        function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            const options = {root: null, rootMargin: '0px', threshold: 0.12};
-
-            revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const el = entry.target;
-                    const elCenter = entry.boundingClientRect.top + entry.boundingClientRect.height / 2;
-                    const viewportCenter = window.innerHeight / 2;
-                    if (entry.isIntersecting) {
-                        if (elCenter > viewportCenter) {
-                            el.classList.remove('from-top');
-                            el.classList.add('from-bottom');
-                        } else {
-                            el.classList.remove('from-bottom');
-                            el.classList.add('from-top');
-                        }
-                        el.classList.add('in-view');
-                    } else {
-                        el.classList.remove('in-view');
-                    }
-                });
-            }, options);
-
-            reveals.forEach(r => {
-                r.classList.remove('in-view', 'from-top', 'from-bottom');
-                revealObserver.observe(r);
-            });
-        }
-
-        initReveal();
-
-        function adjustTimeline() {
-            const tl = document.querySelector('.timeline');
-            if (!tl) return;
-            if (window.innerWidth <= 991) {
-                tl.style.paddingLeft = '1rem';
-                tl.querySelectorAll('.timeline-bullet').forEach(b => b.style.left = '4px');
-            } else {
-                tl.style.paddingLeft = '';
-                tl.querySelectorAll('.timeline-bullet').forEach(b => b.style.left = '0');
-            }
-        }
-
-        window.addEventListener('resize', adjustTimeline);
-        adjustTimeline();
-        const mediaReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-        if (mediaReduce && mediaReduce.matches) {
-            document.querySelectorAll('.reveal').forEach(el => {
-                el.style.transition = 'none';
-                el.classList.add('in-view');
-            });
-        }
-        const contactForm = document.getElementById('mainContactForm');
-        contactForm.addEventListener('submit', function (e) {
-            if (this.dataset.verified === 'true') {
-                return;
-            }
-            e.preventDefault();
-            if (!this.checkValidity()) {
-                this.reportValidity();
-                return;
-            }
-            const captchaModal = new bootstrap.Modal(document.getElementById('captchaModal'));
-            captchaModal.show();
-        });
-
-    })();
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        new bootstrap.Modal(document.getElementById('captchaModal')).show();
+    });
 </script>
-
-<script src="https://www.idealistic.ai/.scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
