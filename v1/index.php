@@ -23,9 +23,9 @@ $translations = [
         'cta_request' => 'Start Now', 'cta_explore' => 'How it works', 'label_dark' => 'Dark Mode',
 
         'h1' => 'Your office is now a chat room.',
-        'lead' => 'Stop clicking through complex dashboards. Manage your team, track sales, and assign tasks directly inside WhatsApp, Telegram, or Discord.',
+        'lead' => 'Stop clicking through complex dashboards. Manage your team, find documents, and assign tasks directly inside Instagram, Messenger, WhatsApp, Discord, Telegram, or Email.',
 
-        'pill_1_title' => 'Works Everywhere', 'pill_1_desc' => 'WhatsApp, Telegram, Email',
+        'pill_1_title' => 'Works Everywhere', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'If you can text, you can use it',
         'pill_3_title' => 'Private', 'pill_3_desc' => 'Enterprise-grade security',
 
@@ -71,7 +71,7 @@ $translations = [
         'failure_received' => 'Error sending message.',
         'submission_problem' => 'Please fix errors:',
         'ft_terms' => 'Terms', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registry',
-        'ft_doc_text' => 'Text Docs', 'ft_doc_visual' => 'Visual Docs', 'ft_pricing' => 'Pricing',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Examples', 'ft_pricing' => 'Pricing',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram',
         'modal_captcha_title' => 'Security', 'modal_captcha_close' => 'Close',
     ],
@@ -81,8 +81,8 @@ $translations = [
         'nav_home' => 'Αρχική', 'nav_features' => 'Εργαλεία', 'nav_usecases' => 'Επίδειξη', 'nav_contact' => 'Επικοινωνία',
         'cta_request' => 'Ξεκινήστε', 'cta_explore' => 'Λειτουργία', 'label_dark' => 'Σκοτεινή',
         'h1' => 'Το γραφείο σας, τώρα σε chat.',
-        'lead' => 'Διαχειριστείτε την ομάδα και τις πωλήσεις σας απευθείας από το WhatsApp ή το Telegram.',
-        'pill_1_title' => 'Παντού', 'pill_1_desc' => 'WhatsApp, Telegram, Email',
+        'lead' => 'Διαχειριστείτε την ομάδα και τα έγγραφά σας απευθείας από το Instagram, Messenger, WhatsApp, Discord, Telegram ή Email.',
+        'pill_1_title' => 'Παντού', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Χωρίς Εκπαίδευση', 'pill_2_desc' => 'Απλά στείλτε μήνυμα',
         'pill_3_title' => 'Ιδιωτικό', 'pill_3_desc' => 'Ασφάλεια δεδομένων',
         'features_title' => 'Αντικαθιστά το dashboard σας.',
@@ -107,7 +107,7 @@ $translations = [
 
         'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'john@company.com', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
         'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο',
-        'ft_doc_text' => 'Text Docs', 'ft_doc_visual' => 'Visual Docs', 'ft_pricing' => 'Τιμολόγηση',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Παραδείγματα', 'ft_pricing' => 'Τιμολόγηση',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
     ],
 
@@ -116,8 +116,9 @@ $translations = [
         'nav_home' => 'Home', 'nav_features' => 'Tools', 'nav_usecases' => 'Demonstratie', 'nav_contact' => 'Contact',
         'cta_request' => 'Start Nu', 'cta_explore' => 'Hoe werkt het', 'label_dark' => 'Donker',
         'h1' => 'Uw kantoor is nu een chatroom.',
-        'lead' => 'Beheer uw team, verkoop en taken direct in WhatsApp of Telegram.',
-        'pill_1_title' => 'Overal', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Geen Training', 'pill_2_desc' => 'Zo simpel als sms\'en', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Veilige data',
+        'lead' => 'Beheer uw team, documenten en taken direct in Instagram, Messenger, WhatsApp, Discord, Telegram of Email.',
+        'pill_1_title' => 'Overal', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
+        'pill_2_title' => 'Geen Training', 'pill_2_desc' => 'Zo simpel als sms\'en', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Veilige data',
         'features_title' => 'Vervangt uw dashboard.', 'features_desc' => 'Doe al het werk in de chat.',
         'f_company' => 'Teamlijst', 'f_company_desc' => 'Voeg medewerkers direct toe of verwijder ze.',
         'f_employees' => 'Taken & Deadlines', 'f_employees_desc' => 'Wijs taken toe via tekst. Wij herinneren uw team aan deadlines.',
@@ -136,7 +137,7 @@ $translations = [
 
         'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'jan@bedrijf.nl', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
         'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register',
-        'ft_doc_text' => 'Tekst Docs', 'ft_doc_visual' => 'Visuele Docs', 'ft_pricing' => 'Prijzen',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Voorbeelden', 'ft_pricing' => 'Prijzen',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
     ],
 
@@ -144,8 +145,10 @@ $translations = [
         'brand' => $appName,
         'nav_home' => 'Start', 'nav_features' => 'Tools', 'nav_usecases' => 'Demo', 'nav_contact' => 'Kontakt',
         'cta_request' => 'Loslegen', 'cta_explore' => 'Funktion', 'label_dark' => 'Dunkel',
-        'h1' => 'Ihr Büro ist jetzt ein Chat.', 'lead' => 'Verwalten Sie Teams, Verkäufe und Aufgaben direkt in WhatsApp oder Telegram.',
-        'pill_1_title' => 'Überall', 'pill_1_desc' => 'WhatsApp, Telegram, E-Mail', 'pill_2_title' => 'Kein Training', 'pill_2_desc' => 'Einfach wie SMS', 'pill_3_title' => 'Privat', 'pill_3_desc' => 'Sichere Daten',
+        'h1' => 'Ihr Büro ist jetzt ein Chat.',
+        'lead' => 'Verwalten Sie Teams, Dokumente und Aufgaben direkt in Instagram, Messenger, WhatsApp, Discord, Telegram oder E-Mail.',
+        'pill_1_title' => 'Überall', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, E-Mail',
+        'pill_2_title' => 'Kein Training', 'pill_2_desc' => 'Einfach wie SMS', 'pill_3_title' => 'Privat', 'pill_3_desc' => 'Sichere Daten',
         'features_title' => 'Ersetzt Ihr Dashboard.', 'features_desc' => 'Erledigen Sie alles im Chat.',
         'f_company' => 'Teamliste', 'f_company_desc' => 'Mitarbeiter sofort hinzufügen oder entfernen.',
         'f_employees' => 'Aufgaben & Fristen', 'f_employees_desc' => 'Aufgaben per Text zuweisen. Wir erinnern Ihr Team an Fristen.',
@@ -164,7 +167,7 @@ $translations = [
 
         'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'max@firma.de', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
         'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register',
-        'ft_doc_text' => 'Text Docs', 'ft_doc_visual' => 'Visuelle Docs', 'ft_pricing' => 'Preise',
+        'ft_doc_visual' => 'Doku', 'ft_doc_text' => 'Beispiele', 'ft_pricing' => 'Preise',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
     ],
 
@@ -172,8 +175,10 @@ $translations = [
         'brand' => $appName,
         'nav_home' => 'Home', 'nav_features' => 'Strumenti', 'nav_usecases' => 'Demo', 'nav_contact' => 'Contatti',
         'cta_request' => 'Inizia', 'cta_explore' => 'Come funziona', 'label_dark' => 'Scuro',
-        'h1' => 'Il tuo ufficio ora è una chat.', 'lead' => 'Gestisci team, vendite e compiti direttamente su WhatsApp o Telegram.',
-        'pill_1_title' => 'Ovunque', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'Facile come un SMS', 'pill_3_title' => 'Privato', 'pill_3_desc' => 'Dati sicuri',
+        'h1' => 'Il tuo ufficio ora è una chat.',
+        'lead' => 'Gestisci team, documenti e compiti direttamente su Instagram, Messenger, WhatsApp, Discord, Telegram o Email.',
+        'pill_1_title' => 'Ovunque', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
+        'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'Facile come un SMS', 'pill_3_title' => 'Privato', 'pill_3_desc' => 'Dati sicuri',
         'features_title' => 'Sostituisce la dashboard.', 'features_desc' => 'Fai tutto via chat.',
         'f_company' => 'Team', 'f_company_desc' => 'Aggiungi o rimuovi dipendenti all\'istante.',
         'f_employees' => 'Compiti & Scadenze', 'f_employees_desc' => 'Assegna compiti via testo. Noi ricordiamo le scadenze.',
@@ -191,7 +196,7 @@ $translations = [
         'how_step_5' => 'Ricerca Documenti', 'how_step_5_desc' => '“Trova tutte le fatture caricate dai membri a marzo.”',
 
         'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'mario@azienda.it', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro',
-        'ft_doc_text' => 'Doc Testuali', 'ft_doc_visual' => 'Doc Visivi', 'ft_pricing' => 'Prezzi',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Esempi', 'ft_pricing' => 'Prezzi',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
     ],
 
@@ -199,8 +204,10 @@ $translations = [
         'brand' => $appName,
         'nav_home' => 'Accueil', 'nav_features' => 'Outils', 'nav_usecases' => 'Démo', 'nav_contact' => 'Contact',
         'cta_request' => 'Démarrer', 'cta_explore' => 'Fonctionnement', 'label_dark' => 'Sombre',
-        'h1' => 'Votre bureau est un chat.', 'lead' => 'Gérez votre équipe et vos tâches directement dans WhatsApp ou Telegram.',
-        'pill_1_title' => 'Partout', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Zéro Formation', 'pill_2_desc' => 'Aussi simple qu\'un SMS', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Données sécurisées',
+        'h1' => 'Votre bureau est un chat.',
+        'lead' => 'Gérez votre équipe, vos documents et vos tâches directement dans Instagram, Messenger, WhatsApp, Discord, Telegram ou Email.',
+        'pill_1_title' => 'Partout', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
+        'pill_2_title' => 'Zéro Formation', 'pill_2_desc' => 'Aussi simple qu\'un SMS', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Données sécurisées',
         'features_title' => 'Remplace votre dashboard.', 'features_desc' => 'Faites tout le travail dans le chat.',
         'f_company' => 'Équipe', 'f_company_desc' => 'Ajoutez ou supprimez des employés instantanément.',
         'f_employees' => 'Tâches & Délais', 'f_employees_desc' => 'Assignez des tâches par texto. Nous rappelons les délais.',
@@ -218,7 +225,7 @@ $translations = [
         'how_step_5' => 'Recherche Documents', 'how_step_5_desc' => '« Trouve toutes les factures chargées par les membres en mars. »',
 
         'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'jean@societe.com', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre',
-        'ft_doc_text' => 'Docs Texte', 'ft_doc_visual' => 'Docs Visuels', 'ft_pricing' => 'Tarifs',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemples', 'ft_pricing' => 'Tarifs',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
     ],
 
@@ -226,8 +233,10 @@ $translations = [
         'brand' => $appName,
         'nav_home' => 'Início', 'nav_features' => 'Ferramentas', 'nav_usecases' => 'Demo', 'nav_contact' => 'Contato',
         'cta_request' => 'Começar', 'cta_explore' => 'Como funciona', 'label_dark' => 'Escuro',
-        'h1' => 'Seu escritório agora é um chat.', 'lead' => 'Gerencie equipe e tarefas direto no WhatsApp ou Telegram.',
-        'pill_1_title' => 'Em todo lugar', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Zero Treino', 'pill_2_desc' => 'Simples como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Dados seguros',
+        'h1' => 'Seu escritório agora é um chat.',
+        'lead' => 'Gerencie equipe, documentos e tarefas direto no Instagram, Messenger, WhatsApp, Discord, Telegram ou Email.',
+        'pill_1_title' => 'Em todo lugar', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
+        'pill_2_title' => 'Zero Treino', 'pill_2_desc' => 'Simples como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Dados seguros',
         'features_title' => 'Substitui seu painel.', 'features_desc' => 'Faça tudo pelo chat.',
         'f_company' => 'Equipe', 'f_company_desc' => 'Adicione ou remova funcionários instantaneamente.',
         'f_employees' => 'Tarefas & Prazos', 'f_employees_desc' => 'Designe tarefas por texto. Nós cobramos os prazos.',
@@ -245,7 +254,7 @@ $translations = [
         'how_step_5' => 'Busca Documentos', 'how_step_5_desc' => '“Encontre todas as faturas enviadas por membros em março.”',
 
         'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'joao@empresa.com', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro',
-        'ft_doc_text' => 'Docs Texto', 'ft_doc_visual' => 'Docs Visuais', 'ft_pricing' => 'Preços',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemplos', 'ft_pricing' => 'Preços',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
     ],
 
@@ -253,8 +262,10 @@ $translations = [
         'brand' => $appName,
         'nav_home' => 'Inicio', 'nav_features' => 'Herramientas', 'nav_usecases' => 'Demo', 'nav_contact' => 'Contacto',
         'cta_request' => 'Empezar', 'cta_explore' => 'Cómo funciona', 'label_dark' => 'Oscuro',
-        'h1' => 'Su oficina ahora es un chat.', 'lead' => 'Gestione su equipo y tareas directo en WhatsApp o Telegram.',
-        'pill_1_title' => 'En todas partes', 'pill_1_desc' => 'WhatsApp, Telegram, Email', 'pill_2_title' => 'Cero Formación', 'pill_2_desc' => 'Tan simple como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Datos seguros',
+        'h1' => 'Su oficina ahora es un chat.',
+        'lead' => 'Gestione su equipo, documentos y tareas directo en Instagram, Messenger, WhatsApp, Discord, Telegram o Email.',
+        'pill_1_title' => 'En todas partes', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
+        'pill_2_title' => 'Cero Formación', 'pill_2_desc' => 'Tan simple como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Datos seguros',
         'features_title' => 'Reemplaza su panel.', 'features_desc' => 'Haga todo el trabajo en el chat.',
         'f_company' => 'Equipo', 'f_company_desc' => 'Añada o elimine empleados al instante.',
         'f_employees' => 'Tareas y Plazos', 'f_employees_desc' => 'Asigne tareas por texto. Recordamos los plazos.',
@@ -272,7 +283,7 @@ $translations = [
         'how_step_5' => 'Búsqueda Documentos', 'how_step_5_desc' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
 
         'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
-        'ft_doc_text' => 'Docs Texto', 'ft_doc_visual' => 'Docs Visuales', 'ft_pricing' => 'Precios',
+        'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Ejemplos', 'ft_pricing' => 'Precios',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
     ],
 ];
@@ -668,7 +679,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                     <div class="mb-3">
                         <label class="form-label small text-uppercase fw-bold text-secondary-theme"><?php echo $t['label_message']; ?></label>
                         <textarea name="message" rows="3" class="form-control"
-                                  placeholder="<?php echo $t['placeholder_message']; ?>"><?php echo htmlspecialchars($message); ?></textarea>
+                                  placeholder="<?php echo $t['placeholder_message']; ?>"
+                                  style="resize: vertical; min-height: 85px;"><?php echo htmlspecialchars($message); ?></textarea>
                     </div>
                     <button class="btn btn-primary w-100 py-2 rounded-pill fw-bold"><?php echo $t['btn_submit']; ?></button>
                 </form>
@@ -699,13 +711,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                         class="d-none d-md-inline"><?php echo $t['ft_registry']; ?></span></a>
 
             <a class="d-flex align-items-center gap-2"
-               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/text"
-               target="_blank"><i class="bi bi-file-earmark-text"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_doc_text']; ?></span></a>
-            <a class="d-flex align-items-center gap-2"
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/visual"
-               target="_blank"><i class="bi bi-images"></i><span
+               target="_blank"><i class="bi bi-book"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_doc_visual']; ?></span></a>
+            <a class="d-flex align-items-center gap-2"
+               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/text"
+               target="_blank"><i class="bi bi-lightbulb"></i><span
+                        class="d-none d-md-inline"><?php echo $t['ft_doc_text']; ?></span></a>
             <a class="d-flex align-items-center gap-2"
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/pricing"
                target="_blank"><i class="bi bi-tag"></i><span
