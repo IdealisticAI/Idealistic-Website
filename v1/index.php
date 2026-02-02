@@ -271,7 +271,7 @@ $translations = [
         'how_step_4' => 'Permisos', 'how_step_4_desc' => '“Bloquee acceso al equipo tras las 18:00.”',
         'how_step_5' => 'Búsqueda Documentos', 'how_step_5_desc' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
 
-        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quiero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
+        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
         'ft_doc_text' => 'Docs Texto', 'ft_doc_visual' => 'Docs Visuales', 'ft_pricing' => 'Precios',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
     ],
@@ -529,7 +529,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                             <?php foreach ($langCodes as $langName => $code): ?>
                                 <li><a class="dropdown-item"
                                        href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY . '/' . $code . '/'; ?>">
-                                        <span class="me-2"><?php echo $flags[$langName]; ?></span>
+                                        <span class="me-2"><?php echo $flags[$langName]; ?></span> <?php echo ucfirst($langName); ?>
                                     </a></li>
                             <?php endforeach; ?>
                         </ul>
