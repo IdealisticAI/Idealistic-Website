@@ -43,22 +43,36 @@ $translations = [
         'about_p1' => 'Traditional software is cluttered. You spend more time managing the tool than doing the work. ' . $appName . ' strips that away.',
         'about_p2' => 'We treat your company like a conversation. You tell us what to do, and it gets done. No menus, no loading screens, no "I forgot my password." It\'s just work, simplified.',
 
-        // Steps
+        // Steps (Typing Animation Data)
         'how_title' => 'It takes seconds.',
         'how_desc' => 'Text your commands like you\'re talking to an assistant.',
 
-        'how_step_1' => 'Team Roster', 'how_step_1_desc' => '“Add John (john@example.com) to the team.”',
-        'how_step_2' => 'Tasks & Deadlines', 'how_step_2_desc' => '“Task for John: Finish the report by Friday.”',
-        'how_step_3' => 'Client Database', 'how_step_3_desc' => '“Show me the contact info for Client X.”',
-        'how_step_4' => 'Permissions', 'how_step_4_desc' => '“Block access to the team after 6 PM.”',
-        'how_step_5' => 'Document Search', 'how_step_5_desc' => '“Find all invoice files uploaded by members in last March.”',
+        'how_step_1' => 'Team Roster',
+        'how_step_1_cmd' => '“Add John (john@example.com) to the team.”',
+        'how_step_1_reply' => '> New member \'John\' successfully created.',
+
+        'how_step_2' => 'Tasks & Deadlines',
+        'how_step_2_cmd' => '“Task for John: Finish the report by Friday.”',
+        'how_step_2_reply' => '> Deadline \'Friday Report\' successfully created with \'daily\' frequency and will expire in \'2 days\'.',
+
+        'how_step_3' => 'Client Database',
+        'how_step_3_cmd' => '“Show me the contact info for Client X.”',
+        'how_step_3_reply' => '> Retrieved details for \'Client X\'. Email: client.x@example.com, Phone: +1 555-0192.',
+
+        'how_step_4' => 'Permissions',
+        'how_step_4_cmd' => '“Block access to the team after 6 PM.”',
+        'how_step_4_reply' => '> Access rule updated. Team access is now blocked between 18:00 and 08:00.',
+
+        'how_step_5' => 'Document Search',
+        'how_step_5_cmd' => '“Find all invoice files uploaded by members in last March.”',
+        'how_step_5_reply' => '> Search complete. Found 4 files matching \'invoice\' uploaded between March 1st and March 31st.',
 
         'contact_title' => 'Get Started', 'contact_desc' => 'Ready to simplify? Send us a message.',
         'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
         'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europe, Estonia',
         'label_name' => 'Name', 'placeholder_name' => 'John Smith',
-        'label_email' => 'Work Email', 'placeholder_email' => 'john@company.com',
+        'label_email' => 'Work Email', 'placeholder_email' => 'contact@idealistic.ai',
         'label_message' => 'Message', 'placeholder_message' => 'I want to integrate this with...',
         'btn_submit' => 'Send Message',
 
@@ -99,13 +113,27 @@ $translations = [
         'how_title' => 'Παίρνει δευτερόλεπτα.',
         'how_desc' => 'Γράψτε εντολές όπως μιλάτε σε έναν βοηθό.',
 
-        'how_step_1' => 'Ομάδα', 'how_step_1_desc' => '«Πρόσθεσε τον Γιάννη (john@example.com) στην ομάδα.»',
-        'how_step_2' => 'Εργασίες & Προθεσμίες', 'how_step_2_desc' => '«Εργασία για Γιάννη: Τελείωσε την αναφορά ως την Παρασκευή.»',
-        'how_step_3' => 'Πελατολόγιο', 'how_step_3_desc' => '«Δείξε μου τα στοιχεία του Πελάτη Χ.»',
-        'how_step_4' => 'Δικαιώματα', 'how_step_4_desc' => '«Κλείδωσε την πρόσβαση στην ομάδα μετά τις 6μμ.»',
-        'how_step_5' => 'Αναζήτηση Εγγράφων', 'how_step_5_desc' => '«Βρες όλα τα τιμολόγια που ανέβασαν μέλη τον Μάρτιο.»',
+        'how_step_1' => 'Ομάδα',
+        'how_step_1_cmd' => '«Πρόσθεσε τον Γιάννη (john@example.com) στην ομάδα.»',
+        'how_step_1_reply' => '> Το νέο μέλος \'Γιάννης\' δημιουργήθηκε επιτυχώς.',
 
-        'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'john@company.com', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
+        'how_step_2' => 'Εργασίες & Προθεσμίες',
+        'how_step_2_cmd' => '«Εργασία για Γιάννη: Τελείωσε την αναφορά ως την Παρασκευή.»',
+        'how_step_2_reply' => '> Η προθεσμία \'Αναφορά Παρασκευής\' δημιουργήθηκε με \'καθημερινή\' συχνότητα και λήγει σε \'2 ημέρες\'.',
+
+        'how_step_3' => 'Πελατολόγιο',
+        'how_step_3_cmd' => '«Δείξε μου τα στοιχεία του Πελάτη Χ.»',
+        'how_step_3_reply' => '> Ανακτήθηκαν λεπτομέρειες για \'Πελάτη Χ\'. Email: client.x@example.com, Τηλ: +1 555-0192.',
+
+        'how_step_4' => 'Δικαιώματα',
+        'how_step_4_cmd' => '«Κλείδωσε την πρόσβαση στην ομάδα μετά τις 6μμ.»',
+        'how_step_4_reply' => '> Ο κανόνας ενημερώθηκε. Η πρόσβαση ομάδας είναι κλειδωμένη μεταξύ 18:00 και 08:00.',
+
+        'how_step_5' => 'Αναζήτηση Εγγράφων',
+        'how_step_5_cmd' => '«Βρες όλα τα τιμολόγια που ανέβασαν μέλη τον Μάρτιο.»',
+        'how_step_5_reply' => '> Η αναζήτηση ολοκληρώθηκε. Βρέθηκαν 4 αρχεία για \'τιμολόγιο\' που ανέβηκαν μεταξύ 1ης και 31ης Μαρτίου.',
+
+        'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
         'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Παραδείγματα', 'ft_pricing' => 'Τιμολόγηση',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
@@ -129,13 +157,27 @@ $translations = [
         'about_title' => 'Waarom ' . $appName . '?', 'about_p1' => 'Traditionele software is traag. ' . $appName . ' is snel en direct.', 'about_p2' => 'Geen menu\'s, gewoon werk.',
         'how_title' => 'Het duurt seconden.', 'how_desc' => 'Typ commando\'s alsof u met een assistent praat.',
 
-        'how_step_1' => 'Teamlijst', 'how_step_1_desc' => '“Voeg Jan (jan@example.com) toe aan het team.”',
-        'how_step_2' => 'Taken & Deadlines', 'how_step_2_desc' => '“Taak voor Jan: Rapport afmaken voor vrijdag.”',
-        'how_step_3' => 'Klanten', 'how_step_3_desc' => '“Toon contactinfo voor Klant X.”',
-        'how_step_4' => 'Rechten', 'how_step_4_desc' => '“Blokkeer toegang tot het team na 18:00.”',
-        'how_step_5' => 'Documenten Zoeken', 'how_step_5_desc' => '“Vind alle facturen geüpload door leden in maart.”',
+        'how_step_1' => 'Teamlijst',
+        'how_step_1_cmd' => '“Voeg Jan (jan@example.com) toe aan het team.”',
+        'how_step_1_reply' => '> Nieuw lid \'Jan\' succesvol aangemaakt.',
 
-        'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'jan@bedrijf.nl', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
+        'how_step_2' => 'Taken & Deadlines',
+        'how_step_2_cmd' => '“Taak voor Jan: Rapport afmaken voor vrijdag.”',
+        'how_step_2_reply' => '> Deadline \'Vrijdag Rapport\' succesvol aangemaakt met \'dagelijkse\' frequentie en verloopt in \'2 dagen\'.',
+
+        'how_step_3' => 'Klanten',
+        'how_step_3_cmd' => '“Toon contactinfo voor Klant X.”',
+        'how_step_3_reply' => '> Gegevens opgehaald voor \'Klant X\'. Email: client.x@example.com, Tel: +1 555-0192.',
+
+        'how_step_4' => 'Rechten',
+        'how_step_4_cmd' => '“Blokkeer toegang tot het team na 18:00.”',
+        'how_step_4_reply' => '> Toegangsregel bijgewerkt. Teamtoegang is nu geblokkeerd tussen 18:00 en 08:00.',
+
+        'how_step_5' => 'Documenten Zoeken',
+        'how_step_5_cmd' => '“Vind alle facturen geüpload door leden in maart.”',
+        'how_step_5_reply' => '> Zoekopdracht voltooid. 4 bestanden gevonden voor \'factuur\' geüpload tussen 1 en 31 maart.',
+
+        'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
         'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Voorbeelden', 'ft_pricing' => 'Prijzen',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
@@ -159,13 +201,27 @@ $translations = [
         'about_title' => 'Warum ' . $appName . '?', 'about_p1' => 'Klassische Software ist langsam. ' . $appName . ' ist schnell und direkt.', 'about_p2' => 'Befehl eingeben, erledigt.',
         'how_title' => 'Dauert Sekunden.', 'how_desc' => 'Schreiben Sie Befehle wie an einen Assistenten.',
 
-        'how_step_1' => 'Teamliste', 'how_step_1_desc' => '„Füge Max (max@example.com) zum Team hinzu.“',
-        'how_step_2' => 'Aufgaben & Fristen', 'how_step_2_desc' => '„Aufgabe für Max: Bericht bis Freitag fertigstellen.“',
-        'how_step_3' => 'Kundendatenbank', 'how_step_3_desc' => '„Zeige Kontaktinfos für Kunde X.“',
-        'how_step_4' => 'Berechtigungen', 'how_step_4_desc' => '„Sperre Zugriff auf das Team nach 18:00.“',
-        'how_step_5' => 'Dokumentensuche', 'how_step_5_desc' => '„Finde alle Rechnungen, die im März hochgeladen wurden.“',
+        'how_step_1' => 'Teamliste',
+        'how_step_1_cmd' => '„Füge Max (max@example.com) zum Team hinzu.“',
+        'how_step_1_reply' => '> Neues Mitglied \'Max\' erfolgreich erstellt.',
 
-        'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'max@firma.de', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
+        'how_step_2' => 'Aufgaben & Fristen',
+        'how_step_2_cmd' => '„Aufgabe für Max: Bericht bis Freitag fertigstellen.“',
+        'how_step_2_reply' => '> Frist \'Freitagsbericht\' erfolgreich erstellt (täglich), läuft in \'2 Tagen\' ab.',
+
+        'how_step_3' => 'Kundendatenbank',
+        'how_step_3_cmd' => '„Zeige Kontaktinfos für Kunde X.“',
+        'how_step_3_reply' => '> Details für \'Kunde X\' abgerufen. E-Mail: client.x@example.com, Tel: +1 555-0192.',
+
+        'how_step_4' => 'Berechtigungen',
+        'how_step_4_cmd' => '„Sperre Zugriff auf das Team nach 18:00.“',
+        'how_step_4_reply' => '> Zugriffsregel aktualisiert. Teamzugriff ist jetzt zwischen 18:00 und 08:00 Uhr gesperrt.',
+
+        'how_step_5' => 'Dokumentensuche',
+        'how_step_5_cmd' => '„Finde alle Rechnungen, die im März hochgeladen wurden.“',
+        'how_step_5_reply' => '> Suche abgeschlossen. 4 Dateien passend zu \'Rechnung\' vom 1. bis 31. März gefunden.',
+
+        'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
         'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register',
         'ft_doc_visual' => 'Doku', 'ft_doc_text' => 'Beispiele', 'ft_pricing' => 'Preise',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
@@ -189,13 +245,27 @@ $translations = [
         'about_title' => 'Perché ' . $appName . '?', 'about_p1' => 'Software classico è lento. ' . $appName . ' è immediato.', 'about_p2' => 'Dai un comando ed è fatto.',
         'how_title' => 'Ci vogliono secondi.', 'how_desc' => 'Scrivi comandi come se parlassi a un assistente.',
 
-        'how_step_1' => 'Team', 'how_step_1_desc' => '“Aggiungi Luca (luca@example.com) al team.”',
-        'how_step_2' => 'Compiti & Scadenze', 'how_step_2_desc' => '“Compito per Luca: Finire il report entro venerdì.”',
-        'how_step_3' => 'Clienti', 'how_step_3_desc' => '“Mostra info contatto per Cliente X.”',
-        'how_step_4' => 'Permessi', 'how_step_4_desc' => '“Blocca accesso al team dopo le 18:00.”',
-        'how_step_5' => 'Ricerca Documenti', 'how_step_5_desc' => '“Trova tutte le fatture caricate dai membri a marzo.”',
+        'how_step_1' => 'Team',
+        'how_step_1_cmd' => '“Aggiungi Luca (luca@example.com) al team.”',
+        'how_step_1_reply' => '> Nuovo membro \'Luca\' creato con successo.',
 
-        'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'mario@azienda.it', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro',
+        'how_step_2' => 'Compiti & Scadenze',
+        'how_step_2_cmd' => '“Compito per Luca: Finire il report entro venerdì.”',
+        'how_step_2_reply' => '> Scadenza \'Report Venerdì\' creata con frequenza \'giornaliera\', scade in \'2 giorni\'.',
+
+        'how_step_3' => 'Clienti',
+        'how_step_3_cmd' => '“Mostra info contatto per Cliente X.”',
+        'how_step_3_reply' => '> Dettagli recuperati per \'Cliente X\'. Email: client.x@example.com, Tel: +1 555-0192.',
+
+        'how_step_4' => 'Permessi',
+        'how_step_4_cmd' => '“Blocca accesso al team dopo le 18:00.”',
+        'how_step_4_reply' => '> Regola di accesso aggiornata. L\'accesso del team è ora bloccato tra le 18:00 e le 08:00.',
+
+        'how_step_5' => 'Ricerca Documenti',
+        'how_step_5_cmd' => '“Trova tutte le fatture caricate dai membri a marzo.”',
+        'how_step_5_reply' => '> Ricerca completata. Trovati 4 file corrispondenti a \'fattura\' caricati tra il 1° e il 31 marzo.',
+
+        'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Esempi', 'ft_pricing' => 'Prezzi',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
     ],
@@ -218,13 +288,27 @@ $translations = [
         'about_title' => 'Pourquoi ' . $appName . ' ?', 'about_p1' => 'Logiciel classique est lent. ' . $appName . ' est immédiat.', 'about_p2' => 'Donnez un ordre, c\'est fait.',
         'how_title' => 'Ça prend des secondes.', 'how_desc' => 'Écrivez vos commandes comme à un assistant.',
 
-        'how_step_1' => 'Équipe', 'how_step_1_desc' => '« Ajoute Jean (jean@example.com) à l\'équipe. »',
-        'how_step_2' => 'Tâches & Délais', 'how_step_2_desc' => '« Tâche pour Jean : Finir le rapport pour vendredi. »',
-        'how_step_3' => 'Clients', 'how_step_3_desc' => '« Montre-moi les infos du Client X. »',
-        'how_step_4' => 'Permissions', 'how_step_4_desc' => '« Bloque accès à l\'équipe après 18h. »',
-        'how_step_5' => 'Recherche Documents', 'how_step_5_desc' => '« Trouve toutes les factures chargées par les membres en mars. »',
+        'how_step_1' => 'Équipe',
+        'how_step_1_cmd' => '« Ajoute Jean (jean@example.com) à l\'équipe. »',
+        'how_step_1_reply' => '> Nouveau membre \'Jean\' créé avec succès.',
 
-        'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'jean@societe.com', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre',
+        'how_step_2' => 'Tâches & Délais',
+        'how_step_2_cmd' => '« Tâche pour Jean : Finir le rapport pour vendredi. »',
+        'how_step_2_reply' => '> Échéance \'Rapport Vendredi\' créée avec fréquence \'quotidienne\', expire dans \'2 jours\'.',
+
+        'how_step_3' => 'Clients',
+        'how_step_3_cmd' => '« Montre-moi les infos du Client X. »',
+        'how_step_3_reply' => '> Détails récupérés pour \'Client X\'. Email : client.x@example.com, Tél : +1 555-0192.',
+
+        'how_step_4' => 'Permissions',
+        'how_step_4_cmd' => '« Bloque accès à l\'équipe après 18h. »',
+        'how_step_4_reply' => '> Règle d\'accès mise à jour. L\'accès de l\'équipe est maintenant bloqué entre 18h00 et 08h00.',
+
+        'how_step_5' => 'Recherche Documents',
+        'how_step_5_cmd' => '« Trouve toutes les factures chargées par les membres en mars. »',
+        'how_step_5_reply' => '> Recherche terminée. 4 fichiers correspondant à \'facture\' trouvés entre le 1er et le 31 mars.',
+
+        'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemples', 'ft_pricing' => 'Tarifs',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
     ],
@@ -247,13 +331,27 @@ $translations = [
         'about_title' => 'Por que ' . $appName . '?', 'about_p1' => 'Software tradicional é lento. ' . $appName . ' é imediato.', 'about_p2' => 'Dê o comando, e está feito.',
         'how_title' => 'Leva segundos.', 'how_desc' => 'Escreva comandos como se falasse com um assistente.',
 
-        'how_step_1' => 'Equipe', 'how_step_1_desc' => '“Adicione João (joao@example.com) à equipe.”',
-        'how_step_2' => 'Tarefas & Prazos', 'how_step_2_desc' => '“Tarefa para João: Terminar o relatório até sexta.”',
-        'how_step_3' => 'Clientes', 'how_step_3_desc' => '“Mostre-me os dados do Cliente X.”',
-        'how_step_4' => 'Permissões', 'how_step_4_desc' => '“Bloqueie acesso à equipe após as 18h.”',
-        'how_step_5' => 'Busca Documentos', 'how_step_5_desc' => '“Encontre todas as faturas enviadas por membros em março.”',
+        'how_step_1' => 'Equipe',
+        'how_step_1_cmd' => '“Adicione João (joao@example.com) à equipe.”',
+        'how_step_1_reply' => '> Novo membro \'João\' criado com sucesso.',
 
-        'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'joao@empresa.com', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro',
+        'how_step_2' => 'Tarefas & Prazos',
+        'how_step_2_cmd' => '“Tarefa para João: Terminar o relatório até sexta.”',
+        'how_step_2_reply' => '> Prazo \'Relatório Sexta\' criado com frequência \'diária\', expira em \'2 dias\'.',
+
+        'how_step_3' => 'Clientes',
+        'how_step_3_cmd' => '“Mostre-me os dados do Cliente X.”',
+        'how_step_3_reply' => '> Dados recuperados para \'Cliente X\'. Email: client.x@example.com, Tel: +1 555-0192.',
+
+        'how_step_4' => 'Permissões',
+        'how_step_4_cmd' => '“Bloqueie acesso à equipe após as 18h.”',
+        'how_step_4_reply' => '> Regra de acesso atualizada. Acesso da equipe bloqueado entre 18:00 e 08:00.',
+
+        'how_step_5' => 'Busca Documentos',
+        'how_step_5_cmd' => '“Encontre todas as faturas enviadas por membros em março.”',
+        'how_step_5_reply' => '> Busca concluída. 4 arquivos correspondentes a \'fatura\' encontrados entre 1 e 31 de março.',
+
+        'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemplos', 'ft_pricing' => 'Preços',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
     ],
@@ -276,13 +374,27 @@ $translations = [
         'about_title' => '¿Por qué ' . $appName . '?', 'about_p1' => 'El software clásico es lento. ' . $appName . ' es inmediato.', 'about_p2' => 'Dé una orden y listo.',
         'how_title' => 'Toma segundos.', 'how_desc' => 'Escriba comandos como si hablara con un asistente.',
 
-        'how_step_1' => 'Equipo', 'how_step_1_desc' => '“Añada a Juan (juan@example.com) al equipo.”',
-        'how_step_2' => 'Tareas y Plazos', 'how_step_2_desc' => '“Tarea para Juan: Terminar el informe para el viernes.”',
-        'how_step_3' => 'Clientes', 'how_step_3_desc' => '“Muestre la info de contacto del Cliente X.”',
-        'how_step_4' => 'Permisos', 'how_step_4_desc' => '“Bloquee acceso al equipo tras las 18:00.”',
-        'how_step_5' => 'Búsqueda Documentos', 'how_step_5_desc' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
+        'how_step_1' => 'Equipo',
+        'how_step_1_cmd' => '“Añada a Juan (juan@example.com) al equipo.”',
+        'how_step_1_reply' => '> Nuevo miembro \'Juan\' creado con éxito.',
 
-        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'juan@empresa.com', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
+        'how_step_2' => 'Tareas y Plazos',
+        'how_step_2_cmd' => '“Tarea para Juan: Terminar el informe para el viernes.”',
+        'how_step_2_reply' => '> Plazo \'Informe Viernes\' creado con frecuencia \'diaria\', vence en \'2 días\'.',
+
+        'how_step_3' => 'Clientes',
+        'how_step_3_cmd' => '“Muestre la info de contacto del Cliente X.”',
+        'how_step_3_reply' => '> Detalles recuperados para \'Cliente X\'. Email: client.x@example.com, Tel: +1 555-0192.',
+
+        'how_step_4' => 'Permisos',
+        'how_step_4_cmd' => '“Bloquee acceso al equipo tras las 18:00.”',
+        'how_step_4_reply' => '> Regla de acceso actualizada. El acceso del equipo está bloqueado entre las 18:00 y las 08:00.',
+
+        'how_step_5' => 'Búsqueda Documentos',
+        'how_step_5_cmd' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
+        'how_step_5_reply' => '> Búsqueda completada. 4 archivos coincidentes con \'factura\' encontrados entre el 1 y el 31 de marzo.',
+
+        'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Ejemplos', 'ft_pricing' => 'Precios',
         'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
     ],
@@ -417,7 +529,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
 
         .feature-icon {
             font-size: 2rem;
-            margin-bottom: 1rem;
             color: #0d6efd;
         }
 
@@ -494,7 +605,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
 
         .form-control::placeholder {
             color: var(--text-muted);
-            opacity: 0.7;
+            opacity: 0.5;
         }
 
         .modal-content {
@@ -509,6 +620,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
 
         html[data-theme='dark'] .btn-close {
             filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
+        /* Typing cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -599,8 +722,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             foreach ($feats as $k => $f): ?>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="feature-card">
-                        <i class="bi bi-<?php echo $icons[$k]; ?> feature-icon"></i>
-                        <h4 class="fw-bold"><?php echo $t['f_' . $f]; ?></h4>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="bi bi-<?php echo $icons[$k]; ?> feature-icon"></i>
+                            <h4 class="fw-bold mb-0"><?php echo $t['f_' . $f]; ?></h4>
+                        </div>
                         <p class="text-secondary-theme mb-0"><?php echo $t['f_' . $f . '_desc']; ?></p>
                     </div>
                 </div>
@@ -632,14 +757,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         </div>
         <div class="row justify-content-center reveal">
             <div class="col-lg-8">
-                <div class="bg-card p-4 rounded-4 shadow-sm timeline-container">
+                <div class="bg-card p-4 rounded-4 shadow-sm timeline-container" id="timelineBox">
                     <?php
                     $steps = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5'];
                     foreach ($steps as $s): ?>
                         <div class="timeline-item">
                             <div class="timeline-bullet"></div>
-                            <h5 class="fw-bold mb-1"><?php echo $t['how_' . $s]; ?></h5>
-                            <code class="text-primary bg-section px-2 py-1 rounded d-block mt-1"><?php echo $t['how_' . $s . '_desc']; ?></code>
+                            <h5 class="fw-bold mb-2"><?php echo $t['how_' . $s]; ?></h5>
+                            <div class="type-container" data-step="<?php echo $s; ?>">
+                                <div class="text-primary mb-1 user-line fw-bold" style="min-height: 24px;"></div>
+                                <code class="d-block bg-section px-2 py-1 rounded system-line text-secondary-theme"
+                                      style="min-height: 28px; opacity: 0;"></code>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -715,13 +844,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                target="_blank"><i class="bi bi-book"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_doc_visual']; ?></span></a>
             <a class="d-flex align-items-center gap-2"
-               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/text"
+               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/examples"
                target="_blank"><i class="bi bi-lightbulb"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_doc_text']; ?></span></a>
             <a class="d-flex align-items-center gap-2"
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/pricing"
                target="_blank"><i class="bi bi-tag"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_pricing']; ?></span></a>
+
             <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"><i
                         class="bi bi-instagram"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_instagram']; ?></span></a>
@@ -753,6 +883,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
     </div>
 </div>
 
+<script>
+    const typingData = {
+        'step_1': {
+            user: <?php echo json_encode($t['how_step_1_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_1_reply']); ?> },
+        'step_2': {
+            user: <?php echo json_encode($t['how_step_2_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_2_reply']); ?> },
+        'step_3': {
+            user: <?php echo json_encode($t['how_step_3_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_3_reply']); ?> },
+        'step_4': {
+            user: <?php echo json_encode($t['how_step_4_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_4_reply']); ?> },
+        'step_5': {
+            user: <?php echo json_encode($t['how_step_5_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_5_reply']); ?> }
+    };
+</script>
+
 <script src="https://www.idealistic.ai/.scripts/bootstrap.bundle.min.js"></script>
 <script>
     // Theme Toggling Logic
@@ -769,16 +919,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         root.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
 
-        // Update Icon
         if (themeIcon) {
             themeIcon.className = theme === 'dark' ? 'bi bi-moon-fill text-white' : 'bi bi-sun-fill text-warning';
         }
-
-        // Update Navbar Toggler
         const toggler = document.querySelector('.navbar-toggler-icon');
         if (toggler) toggler.style.filter = theme === 'dark' ? 'invert(1)' : 'invert(0)';
 
-        // Swap Hero Logo
         if (heroImg) {
             heroImg.style.opacity = 0;
             setTimeout(() => {
@@ -788,7 +934,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         }
     }
 
-    // Init
     if (localStorage.getItem('theme') === 'dark') {
         toggle.checked = true;
         setTheme('dark');
@@ -821,6 +966,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         e.preventDefault();
         new bootstrap.Modal(document.getElementById('captchaModal')).show();
     });
+
+    // Typing Animation Logic
+    const timelineBox = document.getElementById('timelineBox');
+    let hasTyped = false;
+
+    async function typeText(element, text, speed = 25) {
+        element.classList.add('typing-cursor');
+        element.style.opacity = 1;
+        element.innerText = '';
+        for (let i = 0; i < text.length; i++) {
+            element.innerText += text.charAt(i);
+            await new Promise(r => setTimeout(r, speed));
+        }
+        element.classList.remove('typing-cursor');
+    }
+
+    async function runTypingSequence() {
+        if (hasTyped) return;
+        hasTyped = true;
+
+        const keys = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5'];
+
+        for (const key of keys) {
+            const container = document.querySelector(`.type-container[data-step="${key}"]`);
+            if (!container) continue;
+
+            const userElem = container.querySelector('.user-line');
+            const sysElem = container.querySelector('.system-line');
+            const data = typingData[key];
+
+            // Type User Command
+            await typeText(userElem, data.user, 30);
+            await new Promise(r => setTimeout(r, 300)); // Pause before reply
+
+            // Type System Reply
+            await typeText(sysElem, data.sys, 15); // Faster for system
+            await new Promise(r => setTimeout(r, 600)); // Pause before next step
+        }
+    }
+
+    const typeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                runTypingSequence();
+                typeObserver.disconnect();
+            }
+        });
+    }, {threshold: 0.3});
+
+    if (timelineBox) {
+        typeObserver.observe(timelineBox);
+    }
 </script>
 </body>
 </html>
