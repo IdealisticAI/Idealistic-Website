@@ -67,7 +67,13 @@ $translations = [
         'how_step_5_cmd' => '“Find all invoice files uploaded by members in last March.”',
         'how_step_5_reply' => '> Search complete. Found 4 files matching \'invoice\' uploaded between March 1st and March 31st.',
 
-        'contact_title' => 'Get Started', 'contact_desc' => 'Ready to simplify? Send us a message.',
+        // New Sections
+        'platforms_title' => 'Choose your platform',
+        'platforms_desc' => 'Start managing your team from your favorite app.',
+        'pricing_title' => 'Pricing Calculator',
+        'pricing_desc' => 'Adjust the slider to estimate your monthly cost.',
+
+        'contact_title' => 'Contact Us', 'contact_desc' => 'Ready to simplify? Send us a message.',
         'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
         'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL,
         'contact_location' => 'Europe, Estonia',
@@ -86,7 +92,6 @@ $translations = [
         'submission_problem' => 'Please fix errors:',
         'ft_terms' => 'Terms', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registry',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Examples', 'ft_pricing' => 'Pricing',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram',
         'modal_captcha_title' => 'Security', 'modal_captcha_close' => 'Close',
     ],
 
@@ -133,10 +138,15 @@ $translations = [
         'how_step_5_cmd' => '«Βρες όλα τα τιμολόγια που ανέβασαν μέλη τον Μάρτιο.»',
         'how_step_5_reply' => '> Η αναζήτηση ολοκληρώθηκε. Βρέθηκαν 4 αρχεία για \'τιμολόγιο\' που ανέβηκαν μεταξύ 1ης και 31ης Μαρτίου.',
 
+        'platforms_title' => 'Επιλέξτε πλατφόρμα',
+        'platforms_desc' => 'Διαχειριστείτε την ομάδα σας από την αγαπημένη σας εφαρμογή.',
+        'pricing_title' => 'Υπολογισμός Κόστους',
+        'pricing_desc' => 'Προσαρμόστε για να δείτε το μηνιαίο κόστος.',
+
         'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
         'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Παραδείγματα', 'ft_pricing' => 'Τιμολόγηση',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
+        'modal_captcha_title' => 'Ασφάλεια', 'modal_captcha_close' => 'Κλείσιμο',
     ],
 
     'dutch' => [
@@ -177,10 +187,15 @@ $translations = [
         'how_step_5_cmd' => '“Vind alle facturen geüpload door leden in maart.”',
         'how_step_5_reply' => '> Zoekopdracht voltooid. 4 bestanden gevonden voor \'factuur\' geüpload tussen 1 en 31 maart.',
 
+        'platforms_title' => 'Kies uw platform',
+        'platforms_desc' => 'Beheer uw team vanuit uw favoriete app.',
+        'pricing_title' => 'Prijscalculator',
+        'pricing_desc' => 'Pas de schuifregelaar aan om uw kosten te schatten.',
+
         'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
         'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Voorbeelden', 'ft_pricing' => 'Prijzen',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
+        'modal_captcha_title' => 'Beveiliging', 'modal_captcha_close' => 'Sluiten',
     ],
 
     'german' => [
@@ -221,10 +236,15 @@ $translations = [
         'how_step_5_cmd' => '„Finde alle Rechnungen, die im März hochgeladen wurden.“',
         'how_step_5_reply' => '> Suche abgeschlossen. 4 Dateien passend zu \'Rechnung\' vom 1. bis 31. März gefunden.',
 
+        'platforms_title' => 'Wählen Sie Ihre Plattform',
+        'platforms_desc' => 'Verwalten Sie Ihr Team über Ihre Lieblings-App.',
+        'pricing_title' => 'Preiskalkulator',
+        'pricing_desc' => 'Passen Sie den Regler an, um die Kosten zu schätzen.',
+
         'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
         'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register',
         'ft_doc_visual' => 'Doku', 'ft_doc_text' => 'Beispiele', 'ft_pricing' => 'Preise',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
+        'modal_captcha_title' => 'Sicherheit', 'modal_captcha_close' => 'Schließen',
     ],
 
     'italian' => [
@@ -265,9 +285,14 @@ $translations = [
         'how_step_5_cmd' => '“Trova tutte le fatture caricate dai membri a marzo.”',
         'how_step_5_reply' => '> Ricerca completata. Trovati 4 file corrispondenti a \'fattura\' caricati tra il 1° e il 31 marzo.',
 
+        'platforms_title' => 'Scegli la tua piattaforma',
+        'platforms_desc' => 'Gestisci il tuo team dalla tua app preferita.',
+        'pricing_title' => 'Calcolatore di Prezzi',
+        'pricing_desc' => 'Regola lo slider per stimare il costo mensile.',
+
         'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Esempi', 'ft_pricing' => 'Prezzi',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
+        'modal_captcha_title' => 'Sicurezza', 'modal_captcha_close' => 'Chiudi',
     ],
 
     'french' => [
@@ -308,9 +333,14 @@ $translations = [
         'how_step_5_cmd' => '« Trouve toutes les factures chargées par les membres en mars. »',
         'how_step_5_reply' => '> Recherche terminée. 4 fichiers correspondant à \'facture\' trouvés entre le 1er et le 31 mars.',
 
+        'platforms_title' => 'Choisissez votre plateforme',
+        'platforms_desc' => 'Gérez votre équipe depuis votre application préférée.',
+        'pricing_title' => 'Calculateur de Prix',
+        'pricing_desc' => 'Ajustez le curseur pour estimer votre coût mensuel.',
+
         'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemples', 'ft_pricing' => 'Tarifs',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
+        'modal_captcha_title' => 'Sécurité', 'modal_captcha_close' => 'Fermer',
     ],
 
     'portuguese' => [
@@ -351,9 +381,14 @@ $translations = [
         'how_step_5_cmd' => '“Encontre todas as faturas enviadas por membros em março.”',
         'how_step_5_reply' => '> Busca concluída. 4 arquivos correspondentes a \'fatura\' encontrados entre 1 e 31 de março.',
 
+        'platforms_title' => 'Escolha sua plataforma',
+        'platforms_desc' => 'Gerencie sua equipe no seu app favorito.',
+        'pricing_title' => 'Calculadora de Preços',
+        'pricing_desc' => 'Ajuste para estimar seu custo mensal.',
+
         'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemplos', 'ft_pricing' => 'Preços',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
+        'modal_captcha_title' => 'Segurança', 'modal_captcha_close' => 'Fechar',
     ],
 
     'spanish' => [
@@ -394,9 +429,14 @@ $translations = [
         'how_step_5_cmd' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
         'how_step_5_reply' => '> Búsqueda completada. 4 archivos coincidentes con \'factura\' encontrados entre el 1 y el 31 de marzo.',
 
+        'platforms_title' => 'Elige tu plataforma',
+        'platforms_desc' => 'Gestiona tu equipo desde tu app favorita.',
+        'pricing_title' => 'Calculadora de Precios',
+        'pricing_desc' => 'Ajusta el control para estimar tu costo mensual.',
+
         'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Ejemplos', 'ft_pricing' => 'Precios',
-        'ft_instagram' => 'Instagram', 'ft_messenger' => 'Messenger', 'ft_whatsapp' => 'WhatsApp', 'ft_discord' => 'Discord', 'ft_telegram' => 'Telegram', 'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
+        'modal_captcha_title' => 'Seguridad', 'modal_captcha_close' => 'Cerrar',
     ],
 ];
 
@@ -633,6 +673,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 opacity: 0;
             }
         }
+
+        /* Platform Cards Custom Hover CSS */
+        .platform-card {
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        html[data-theme='dark'] .platform-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .border-color {
+            border-color: var(--border-color) !important;
+        }
     </style>
 </head>
 <body>
@@ -651,7 +710,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 <li class="nav-item"><a class="nav-link" href="#features"><?php echo $t['nav_features']; ?></a></li>
                 <li class="nav-item"><a class="nav-link" href="#usecases"><?php echo $t['nav_usecases']; ?></a></li>
                 <li class="nav-item ms-3"><a class="btn btn-primary btn-sm rounded-pill px-3"
-                                             href="#contact"><?php echo $t['cta_request']; ?></a></li>
+                                             href="#platforms"><?php echo $t['cta_request']; ?></a></li>
 
                 <li class="nav-item ms-3">
                     <div class="dropdown">
@@ -691,7 +750,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 <h1 class="display-4 fw-bold mb-3"><?php echo $t['h1']; ?></h1>
                 <p class="lead text-secondary-theme mb-4"><?php echo $t['lead']; ?></p>
                 <div class="d-flex gap-2">
-                    <a href="#contact" class="btn btn-primary btn-lg rounded-pill"><?php echo $t['cta_request']; ?></a>
+                    <a href="#platforms"
+                       class="btn btn-primary btn-lg rounded-pill"><?php echo $t['cta_request']; ?></a>
                     <a href="#features"
                        class="btn btn-outline-secondary btn-lg rounded-pill"><?php echo $t['cta_explore']; ?></a>
                 </div>
@@ -777,7 +837,101 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
     </div>
 </section>
 
-<section id="contact">
+<section id="pricing" class="py-5 reveal">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold"><?php echo $t['pricing_title']; ?></h2>
+            <p class="text-secondary-theme"><?php echo $t['pricing_desc']; ?></p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="bg-card p-5 rounded-4 shadow-sm border border-color">
+                    <div class="mb-4 text-center">
+                        <div class="d-flex justify-content-between text-secondary-theme small fw-bold mb-2">
+                            <span>1,000 Msgs</span>
+                            <span>10,000 Msgs</span>
+                        </div>
+                        <input type="range" class="form-range" id="pricingSlider" min="0" max="6" step="1" value="0">
+                        <div class="mt-3 fs-5 fw-bold text-secondary-theme">
+                            <span id="sliderValue" class="text-primary fs-3">1,000</span> Member Messages
+                        </div>
+                        <div class="small text-primary fw-bold mt-1" id="planName">Solo Plan</div>
+                    </div>
+                    <hr class="my-4 border-color">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="fw-bold mb-0 text-body">Estimated Price</h3>
+                            <small class="text-secondary-theme">Billed monthly</small>
+                        </div>
+                        <div class="text-end">
+                            <h2 class="fw-bold text-primary mb-0">€<span id="calculatedPrice">99</span></h2>
+                            <small class="text-secondary-theme">/month</small>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-start small text-secondary-theme">
+                        <p class="mb-1">* All prices include VAT.</p>
+                        <p class="mb-0">* 1 Member message = 10 Customer messages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="platforms" class="py-5 bg-section reveal">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold"><?php echo $t['platforms_title']; ?></h2>
+            <p class="text-secondary-theme"><?php echo $t['platforms_desc']; ?></p>
+        </div>
+        <div class="row justify-content-center g-4">
+            <div class="col-6 col-md-4 col-lg-2">
+                <a href="https://www.instagram.com/idealistic.ai" target="_blank"
+                   class="platform-card text-center d-block p-4 rounded-4 bg-card text-decoration-none shadow-sm">
+                    <i class="bi bi-instagram fs-1" style="color: #E1306C;"></i>
+                    <span class="d-block mt-2 fw-bold text-body">Instagram</span>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <a href="https://www.facebook.com/idealisticai" target="_blank"
+                   class="platform-card text-center d-block p-4 rounded-4 bg-card text-decoration-none shadow-sm">
+                    <i class="bi bi-messenger fs-1" style="color: #0084FF;"></i>
+                    <span class="d-block mt-2 fw-bold text-body">Messenger</span>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <a href="https://t.me/idealisticBot" target="_blank"
+                   class="platform-card text-center d-block p-4 rounded-4 bg-card text-decoration-none shadow-sm">
+                    <i class="bi bi-telegram fs-1" style="color: #0088cc;"></i>
+                    <span class="d-block mt-2 fw-bold text-body">Telegram</span>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <a href="https://discord.com/invite/kmFJWcRtSP" target="_blank"
+                   class="platform-card text-center d-block p-4 rounded-4 bg-card text-decoration-none shadow-sm">
+                    <i class="bi bi-discord fs-1" style="color: #5865F2;"></i>
+                    <span class="d-block mt-2 fw-bold text-body">Discord</span>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <a href="https://wa.me/message/YA5Z4B5YULQZA1" target="_blank"
+                   class="platform-card text-center d-block p-4 rounded-4 bg-card text-decoration-none shadow-sm">
+                    <i class="bi bi-whatsapp fs-1" style="color: #25D366;"></i>
+                    <span class="d-block mt-2 fw-bold text-body">WhatsApp</span>
+                </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <a href="mailto:<?php echo IdealisticOfficeVariable::SUPPORT_EMAIL; ?>"
+                   class="platform-card text-center d-block p-4 rounded-4 bg-card text-decoration-none shadow-sm">
+                    <i class="bi bi-envelope fs-1 text-primary"></i>
+                    <span class="d-block mt-2 fw-bold text-body">Email</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="bg-section">
     <div class="container">
         <div class="row justify-content-center pt-5">
             <div class="col-lg-6 text-center mb-4 reveal">
@@ -785,7 +939,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 <p class="text-secondary-theme"><?php echo $t['contact_desc']; ?></p>
             </div>
         </div>
-        <div class="row justify-content-center reveal">
+        <div class="row justify-content-center reveal pb-5">
             <div class="col-lg-5">
                 <?php if ($errors): ?>
                     <div class="alert alert-danger"><?php echo implode('<br>', $errors); ?></div><?php endif; ?>
@@ -847,26 +1001,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/documentation/examples"
                target="_blank"><i class="bi bi-lightbulb"></i><span
                         class="d-none d-md-inline"><?php echo $t['ft_doc_text']; ?></span></a>
-            <a class="d-flex align-items-center gap-2"
-               href="<?php echo IdealisticOfficeVariable::APPLICATION_SUB_DIRECTORY ?>/pricing"
-               target="_blank"><i class="bi bi-tag"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_pricing']; ?></span></a>
-
-            <a class="d-flex align-items-center gap-2" href="https://www.instagram.com/idealistic.ai" target="_blank"><i
-                        class="bi bi-instagram"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_instagram']; ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://www.facebook.com/idealisticai" target="_blank"><i
-                        class="bi bi-messenger"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_messenger']; ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://wa.me/message/YA5Z4B5YULQZA1" target="_blank"><i
-                        class="bi bi-whatsapp"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_whatsapp']; ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://discord.com/invite/kmFJWcRtSP" target="_blank"><i
-                        class="bi bi-discord"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_discord']; ?></span></a>
-            <a class="d-flex align-items-center gap-2" href="https://t.me/idealisticBot" target="_blank"><i
-                        class="bi bi-telegram"></i><span
-                        class="d-none d-md-inline"><?php echo $t['ft_telegram']; ?></span></a>
         </div>
     </div>
 </footer>
@@ -909,11 +1043,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
     const toggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const root = document.documentElement;
-    const heroImg = document.getElementById('heroMockup');
-
-    // Image sources
-    const lightMock = 'https://www.idealistic.ai/.images/logoTransparent.png';
-    const darkMock = 'https://www.idealistic.ai/.images/backgroundLogoTransparent.png';
 
     function setTheme(theme) {
         root.setAttribute('data-theme', theme);
@@ -924,14 +1053,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         }
         const toggler = document.querySelector('.navbar-toggler-icon');
         if (toggler) toggler.style.filter = theme === 'dark' ? 'invert(1)' : 'invert(0)';
-
-        if (heroImg) {
-            heroImg.style.opacity = 0;
-            setTimeout(() => {
-                heroImg.src = theme === 'dark' ? darkMock : lightMock;
-                heroImg.style.opacity = 1;
-            }, 300);
-        }
     }
 
     if (localStorage.getItem('theme') === 'dark') {
@@ -1017,6 +1138,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
 
     if (timelineBox) {
         typeObserver.observe(timelineBox);
+    }
+
+    // Pricing Slider Logic
+    const pricingSlider = document.getElementById('pricingSlider');
+    const sliderValue = document.getElementById('sliderValue');
+    const calculatedPrice = document.getElementById('calculatedPrice');
+    const planName = document.getElementById('planName');
+
+    const pricingData = [
+        { messages: "1,000", price: "99", name: "Solo" },
+        { messages: "2,000", price: "169", name: "Solo+" },
+        { messages: "3,000", price: "239", name: "Pro" },
+        { messages: "4,000", price: "299", name: "Pro+" },
+        { messages: "6,000", price: "349", name: "Max" },
+        { messages: "8,000", price: "399", name: "Max+" },
+        { messages: "10,000", price: "499", name: "Ultra" }
+    ];
+
+    if (pricingSlider) {
+        pricingSlider.addEventListener('input', function () {
+            const val = parseInt(this.value);
+            const data = pricingData[val];
+            sliderValue.innerText = data.messages;
+            calculatedPrice.innerText = data.price;
+            if (planName) planName.innerText = data.name + " Plan";
+        });
+        // Init value
+        pricingSlider.dispatchEvent(new Event('input'));
     }
 </script>
 </body>
