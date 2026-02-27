@@ -853,7 +853,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                         </div>
                         <input type="range" class="form-range" id="pricingSlider" min="0" max="6" step="1" value="0">
                         <div class="mt-3 fs-5 fw-bold text-secondary-theme">
-                            <span id="sliderValue" class="text-primary fs-3">1,000</span> Member Messages
+                            <span id="sliderValue" class="text-primary fs-3">1,000</span> Member Messages<br>
+                            <span class="fs-6 fw-normal">or <span id="customerValue"
+                                                                  class="text-primary fs-4">10,000</span> Customer Messages</span>
                         </div>
                         <div class="small text-primary fw-bold mt-1" id="planName">Solo Plan</div>
                     </div>
@@ -865,12 +867,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                         </div>
                         <div class="text-end">
                             <h2 class="fw-bold text-primary mb-0">€<span id="calculatedPrice">99</span></h2>
-                            <small class="text-secondary-theme">/month</small>
+                            <small class="text-secondary-theme">/month</small><br>
+                            <small class="text-muted" style="font-size: 0.75rem;">(€<span id="pricePerMsg">0.099</span>
+                                / member msg)</small>
                         </div>
                     </div>
                     <div class="mt-4 text-start small text-secondary-theme">
                         <p class="mb-1">* All prices include VAT.</p>
-                        <p class="mb-0">* 1 Member message = 10 Customer messages.</p>
+                        <p class="mb-0">* Members are internal team users, while Customers are external users
+                            interacting through shopping chats. Both share a single message pool, but they are weighted
+                            differently due to processing requirements: 1 Member message is equivalent to 10 Customer
+                            messages.</p>
                     </div>
                 </div>
             </div>
@@ -1146,14 +1153,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
     const calculatedPrice = document.getElementById('calculatedPrice');
     const planName = document.getElementById('planName');
 
+    // Added constants for UI
+    const customerValue = document.getElementById('customerValue');
+    const pricePerMsg = document.getElementById('pricePerMsg');
+
     const pricingData = [
-        { messages: "1,000", price: "99", name: "Solo" },
-        { messages: "2,000", price: "169", name: "Solo+" },
-        { messages: "3,000", price: "239", name: "Pro" },
-        { messages: "4,000", price: "299", name: "Pro+" },
-        { messages: "6,000", price: "349", name: "Max" },
-        { messages: "8,000", price: "399", name: "Max+" },
-        { messages: "10,000", price: "499", name: "Ultra" }
+        {messages: "1,000", customer: "10,000", price: "99", name: "Solo", perMsg: "0.099"},
+        {messages: "2,000", customer: "20,000", price: "169", name: "Solo+", perMsg: "0.085"},
+        {messages: "3,000", customer: "30,000", price: "239", name: "Pro", perMsg: "0.08"},
+        {messages: "4,000", customer: "40,000", price: "299", name: "Pro+", perMsg: "0.075"},
+        {messages: "6,000", customer: "60,000", price: "349", name: "Max", perMsg: "0.058"},
+        {messages: "8,000", customer: "80,000", price: "399", name: "Max+", perMsg: "0.05"},
+        {messages: "10,000", customer: "100,000", price: "499", name: "Ultra", perMsg: "0.05"}
     ];
 
     if (pricingSlider) {
@@ -1163,6 +1174,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             sliderValue.innerText = data.messages;
             calculatedPrice.innerText = data.price;
             if (planName) planName.innerText = data.name + " Plan";
+            if (customerValue) customerValue.innerText = data.customer;
+            if (pricePerMsg) pricePerMsg.innerText = data.perMsg;
         });
         // Init value
         pricingSlider.dispatchEvent(new Event('input'));
