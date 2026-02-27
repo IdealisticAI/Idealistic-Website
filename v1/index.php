@@ -70,8 +70,20 @@ $translations = [
         // New Sections
         'platforms_title' => 'Choose your platform',
         'platforms_desc' => 'Start managing your team from your favorite app.',
+
         'pricing_title' => 'Pricing Calculator',
         'pricing_desc' => 'Adjust the slider to estimate your monthly cost.',
+        'pricing_msgs' => 'Msgs',
+        'pricing_member_msgs' => 'Member Messages',
+        'pricing_or' => 'or',
+        'pricing_customer_msgs' => 'Customer Messages',
+        'pricing_plan' => 'Plan',
+        'pricing_estimated' => 'Estimated Price',
+        'pricing_billed' => 'Billed monthly',
+        'pricing_per_month' => '/month',
+        'pricing_per_msg' => '/ member msg',
+        'pricing_vat' => '* All prices include VAT.',
+        'pricing_disclaimer' => '* Members are internal team users, while Customers are external users interacting through shopping chats. Both share a single message pool, but they are weighted differently due to processing requirements: 1 Member message is equivalent to 10 Customer messages.',
 
         'contact_title' => 'Contact Us', 'contact_desc' => 'Ready to simplify? Send us a message.',
         'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL,
@@ -140,8 +152,20 @@ $translations = [
 
         'platforms_title' => 'Επιλέξτε πλατφόρμα',
         'platforms_desc' => 'Διαχειριστείτε την ομάδα σας από την αγαπημένη σας εφαρμογή.',
+
         'pricing_title' => 'Υπολογισμός Κόστους',
         'pricing_desc' => 'Προσαρμόστε για να δείτε το μηνιαίο κόστος.',
+        'pricing_msgs' => 'Μηνύματα',
+        'pricing_member_msgs' => 'Μηνύματα Μελών',
+        'pricing_or' => 'ή',
+        'pricing_customer_msgs' => 'Μηνύματα Πελατών',
+        'pricing_plan' => 'Πλάνο',
+        'pricing_estimated' => 'Εκτιμώμενη Τιμή',
+        'pricing_billed' => 'Μηνιαία χρέωση',
+        'pricing_per_month' => '/μήνα',
+        'pricing_per_msg' => '/ μήνυμα μέλους',
+        'pricing_vat' => '* Οι τιμές περιλαμβάνουν ΦΠΑ.',
+        'pricing_disclaimer' => '* Τα Μέλη είναι εσωτερικοί χρήστες της ομάδας, ενώ οι Πελάτες είναι εξωτερικοί χρήστες που αλληλεπιδρούν μέσω αγορών. Και οι δύο μοιράζονται την ίδια δεξαμενή μηνυμάτων, αλλά ζυγίζονται διαφορετικά: 1 μήνυμα Μέλους ισούται με 10 μηνύματα Πελατών.',
 
         'contact_title' => 'Επικοινωνία', 'contact_desc' => 'Έτοιμοι για απλοποίηση; Στείλτε μας μήνυμα.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Ευρώπη, Αθήνα', 'label_name' => 'Όνομα', 'placeholder_name' => 'Γιάννης Παπαδόπουλος', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Μήνυμα', 'placeholder_message' => 'Θέλω να ρωτήσω...', 'btn_submit' => 'Αποστολή',
         'err_name_required' => 'Λείπει το όνομα.', 'err_name_length' => 'Μη έγκυρο όνομα.', 'err_email_required' => 'Λείπει το email.', 'err_email_length' => 'Μη έγκυρο email.', 'err_message_required' => 'Λείπει το μήνυμα.', 'err_message_length' => 'Μη έγκυρο μήνυμα.', 'err_rate_limit' => 'Πολύ γρήγορα.', 'err_captcha' => 'Αποτυχία ασφαλείας.', 'success_received' => 'Λήφθηκε. Θα απαντήσουμε σύντομα.', 'failure_received' => 'Σφάλμα αποστολής.', 'submission_problem' => 'Διορθώστε τα σφάλματα:', 'ft_terms' => 'Όροι', 'ft_privacy' => 'Απόρρητο', 'ft_registry' => 'Μητρώο',
@@ -189,8 +213,20 @@ $translations = [
 
         'platforms_title' => 'Kies uw platform',
         'platforms_desc' => 'Beheer uw team vanuit uw favoriete app.',
+
         'pricing_title' => 'Prijscalculator',
         'pricing_desc' => 'Pas de schuifregelaar aan om uw kosten te schatten.',
+        'pricing_msgs' => 'Berichten',
+        'pricing_member_msgs' => 'Ledenberichten',
+        'pricing_or' => 'of',
+        'pricing_customer_msgs' => 'Klantberichten',
+        'pricing_plan' => 'Plan',
+        'pricing_estimated' => 'Geschatte Prijs',
+        'pricing_billed' => 'Maandelijks gefactureerd',
+        'pricing_per_month' => '/maand',
+        'pricing_per_msg' => '/ ledenbericht',
+        'pricing_vat' => '* Alle prijzen zijn inclusief BTW.',
+        'pricing_disclaimer' => '* Leden zijn interne teamgebruikers, terwijl Klanten externe gebruikers zijn. Ze delen één berichtenpool, maar worden anders gewogen: 1 Ledenbericht is gelijk aan 10 Klantberichten.',
 
         'contact_title' => 'Starten', 'contact_desc' => 'Klaar om te versimpelen? Stuur een bericht.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Naam', 'placeholder_name' => 'Jan Jansen', 'label_email' => 'Werk Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Bericht', 'placeholder_message' => 'Ik wil integreren met...', 'btn_submit' => 'Verstuur',
         'err_name_required' => 'Naam ontbreekt.', 'err_name_length' => 'Naam ongeldig.', 'err_email_required' => 'Email ontbreekt.', 'err_email_length' => 'Email ongeldig.', 'err_message_required' => 'Bericht ontbreekt.', 'err_message_length' => 'Bericht ongeldig.', 'err_rate_limit' => 'Te snel.', 'err_captcha' => 'Beveiliging faalt.', 'success_received' => 'Ontvangen.', 'failure_received' => 'Fout bij verzenden.', 'submission_problem' => 'Los problemen op:', 'ft_terms' => 'Voorwaarden', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Register',
@@ -238,8 +274,20 @@ $translations = [
 
         'platforms_title' => 'Wählen Sie Ihre Plattform',
         'platforms_desc' => 'Verwalten Sie Ihr Team über Ihre Lieblings-App.',
+
         'pricing_title' => 'Preiskalkulator',
         'pricing_desc' => 'Passen Sie den Regler an, um die Kosten zu schätzen.',
+        'pricing_msgs' => 'Nachrichten',
+        'pricing_member_msgs' => 'Mitgliedsnachrichten',
+        'pricing_or' => 'oder',
+        'pricing_customer_msgs' => 'Kundennachrichten',
+        'pricing_plan' => 'Tarif',
+        'pricing_estimated' => 'Geschätzter Preis',
+        'pricing_billed' => 'Monatlich abgerechnet',
+        'pricing_per_month' => '/Monat',
+        'pricing_per_msg' => '/ mitgliedsnachricht',
+        'pricing_vat' => '* Alle Preise inkl. MwSt.',
+        'pricing_disclaimer' => '* Mitglieder sind interne Teamnutzer, Kunden externe Nutzer. Beide teilen sich ein Nachrichten-Kontingent, werden aber unterschiedlich gewichtet: 1 Mitgliedsnachricht entspricht 10 Kundennachrichten.',
 
         'contact_title' => 'Starten', 'contact_desc' => 'Bereit? Schreiben Sie uns.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estland', 'label_name' => 'Name', 'placeholder_name' => 'Max Mustermann', 'label_email' => 'E-Mail', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Nachricht', 'placeholder_message' => 'Ich möchte starten...', 'btn_submit' => 'Senden',
         'err_name_required' => 'Name fehlt.', 'err_name_length' => 'Name ungültig.', 'err_email_required' => 'E-Mail fehlt.', 'err_email_length' => 'Ungültig.', 'err_message_required' => 'Nachricht fehlt.', 'err_message_length' => 'Ungültig.', 'err_rate_limit' => 'Zu schnell.', 'err_captcha' => 'Fehler.', 'success_received' => 'Empfangen.', 'failure_received' => 'Fehler.', 'submission_problem' => 'Bitte korrigieren:', 'ft_terms' => 'AGB', 'ft_privacy' => 'Datenschutz', 'ft_registry' => 'Register',
@@ -287,8 +335,20 @@ $translations = [
 
         'platforms_title' => 'Scegli la tua piattaforma',
         'platforms_desc' => 'Gestisci il tuo team dalla tua app preferita.',
+
         'pricing_title' => 'Calcolatore di Prezzi',
         'pricing_desc' => 'Regola lo slider per stimare il costo mensile.',
+        'pricing_msgs' => 'Messaggi',
+        'pricing_member_msgs' => 'Messaggi Membri',
+        'pricing_or' => 'o',
+        'pricing_customer_msgs' => 'Messaggi Clienti',
+        'pricing_plan' => 'Piano',
+        'pricing_estimated' => 'Prezzo Stimato',
+        'pricing_billed' => 'Fatturato mensilmente',
+        'pricing_per_month' => '/mese',
+        'pricing_per_msg' => '/ msg membro',
+        'pricing_vat' => '* Tutti i prezzi includono l\'IVA.',
+        'pricing_disclaimer' => '* I Membri sono utenti interni al team, mentre i Clienti sono utenti esterni. Condividono un unico pool di messaggi, ma pesano diversamente: 1 messaggio Membro equivale a 10 messaggi Cliente.',
 
         'contact_title' => 'Inizia', 'contact_desc' => 'Pronto a semplificare? Scrivici.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nome', 'placeholder_name' => 'Mario Rossi', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Messaggio', 'placeholder_message' => 'Voglio iniziare...', 'btn_submit' => 'Invia', 'err_name_required' => 'Manca nome.', 'err_name_length' => 'Non valido.', 'err_email_required' => 'Manca email.', 'err_email_length' => 'Non valida.', 'err_message_required' => 'Manca messaggio.', 'err_message_length' => 'Non valido.', 'err_rate_limit' => 'Troppo veloce.', 'err_captcha' => 'Errore.', 'success_received' => 'Ricevuto.', 'failure_received' => 'Errore.', 'submission_problem' => 'Correggi:', 'ft_terms' => 'Termini', 'ft_privacy' => 'Privacy', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Esempi', 'ft_pricing' => 'Prezzi',
@@ -335,8 +395,20 @@ $translations = [
 
         'platforms_title' => 'Choisissez votre plateforme',
         'platforms_desc' => 'Gérez votre équipe depuis votre application préférée.',
+
         'pricing_title' => 'Calculateur de Prix',
         'pricing_desc' => 'Ajustez le curseur pour estimer votre coût mensuel.',
+        'pricing_msgs' => 'Messages',
+        'pricing_member_msgs' => 'Messages Membres',
+        'pricing_or' => 'ou',
+        'pricing_customer_msgs' => 'Messages Clients',
+        'pricing_plan' => 'Forfait',
+        'pricing_estimated' => 'Prix Estimé',
+        'pricing_billed' => 'Facturé mensuellement',
+        'pricing_per_month' => '/mois',
+        'pricing_per_msg' => '/ msg membre',
+        'pricing_vat' => '* Tous les prix incluent la TVA.',
+        'pricing_disclaimer' => '* Les Membres sont des utilisateurs internes, tandis que les Clients sont des utilisateurs externes. Ils partagent le même quota de messages, mais sont pondérés différemment : 1 message Membre équivaut à 10 messages Client.',
 
         'contact_title' => 'Démarrer', 'contact_desc' => 'Prêt à simplifier ? Écrivez-nous.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europe, Estonie', 'label_name' => 'Nom', 'placeholder_name' => 'Jean Dupont', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Message', 'placeholder_message' => 'Je veux intégrer...', 'btn_submit' => 'Envoyer', 'err_name_required' => 'Nom manquant.', 'err_name_length' => 'Invalide.', 'err_email_required' => 'Email manquant.', 'err_email_length' => 'Invalide.', 'err_message_required' => 'Message manquant.', 'err_message_length' => 'Invalide.', 'err_rate_limit' => 'Trop rapide.', 'err_captcha' => 'Erreur.', 'success_received' => 'Reçu.', 'failure_received' => 'Erreur.', 'submission_problem' => 'Erreurs :', 'ft_terms' => 'Conditions', 'ft_privacy' => 'Confidentialité', 'ft_registry' => 'Registre',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemples', 'ft_pricing' => 'Tarifs',
@@ -383,8 +455,20 @@ $translations = [
 
         'platforms_title' => 'Escolha sua plataforma',
         'platforms_desc' => 'Gerencie sua equipe no seu app favorito.',
+
         'pricing_title' => 'Calculadora de Preços',
         'pricing_desc' => 'Ajuste para estimar seu custo mensal.',
+        'pricing_msgs' => 'Mensagens',
+        'pricing_member_msgs' => 'Mensagens de Membros',
+        'pricing_or' => 'ou',
+        'pricing_customer_msgs' => 'Mensagens de Clientes',
+        'pricing_plan' => 'Plano',
+        'pricing_estimated' => 'Preço Estimado',
+        'pricing_billed' => 'Faturado mensalmente',
+        'pricing_per_month' => '/mês',
+        'pricing_per_msg' => '/ msg membro',
+        'pricing_vat' => '* Todos os preços incluem IVA.',
+        'pricing_disclaimer' => '* Membros são usuários internos da equipe, enquanto Clientes são usuários externos. Eles compartilham o mesmo pool de mensagens, mas são ponderados de forma diferente: 1 mensagem de Membro equivale a 10 mensagens de Cliente.',
 
         'contact_title' => 'Começar', 'contact_desc' => 'Pronto para simplificar? Envie mensagem.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estônia', 'label_name' => 'Nome', 'placeholder_name' => 'João Silva', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Mensagem', 'placeholder_message' => 'Quero começar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nome.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensagem.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muito rápido.', 'err_captcha' => 'Erro.', 'success_received' => 'Recebido.', 'failure_received' => 'Erro.', 'submission_problem' => 'Erros:', 'ft_terms' => 'Termos', 'ft_privacy' => 'Privacidade', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Exemplos', 'ft_pricing' => 'Preços',
@@ -431,8 +515,20 @@ $translations = [
 
         'platforms_title' => 'Elige tu plataforma',
         'platforms_desc' => 'Gestiona tu equipo desde tu app favorita.',
+
         'pricing_title' => 'Calculadora de Precios',
         'pricing_desc' => 'Ajusta el control para estimar tu costo mensual.',
+        'pricing_msgs' => 'Mensajes',
+        'pricing_member_msgs' => 'Mensajes de Miembros',
+        'pricing_or' => 'o',
+        'pricing_customer_msgs' => 'Mensajes de Clientes',
+        'pricing_plan' => 'Plan',
+        'pricing_estimated' => 'Precio Estimado',
+        'pricing_billed' => 'Facturado mensualmente',
+        'pricing_per_month' => '/mes',
+        'pricing_per_msg' => '/ msg miembro',
+        'pricing_vat' => '* Todos los precios incluyen IVA.',
+        'pricing_disclaimer' => '* Los Miembros son usuarios internos del equipo, mientras que los Clientes son usuarios externos. Ambos comparten un único pool de mensajes, pero se ponderan de forma diferente: 1 mensaje de Miembro equivale a 10 mensajes de Cliente.',
 
         'contact_title' => 'Empezar', 'contact_desc' => '¿Listo para simplificar? Escríbanos.', 'contact_email' => IdealisticOfficeVariable::SUPPORT_EMAIL, 'contact_site' => IdealisticOfficeVariable::COMPANY_WEBSITE_URL, 'contact_location' => 'Europa, Estonia', 'label_name' => 'Nombre', 'placeholder_name' => 'Juan Pérez', 'label_email' => 'Email', 'placeholder_email' => 'contact@idealistic.ai', 'label_message' => 'Mensaje', 'placeholder_message' => 'Quero empezar...', 'btn_submit' => 'Enviar', 'err_name_required' => 'Falta nombre.', 'err_name_length' => 'Inválido.', 'err_email_required' => 'Falta email.', 'err_email_length' => 'Inválido.', 'err_message_required' => 'Falta mensaje.', 'err_message_length' => 'Inválido.', 'err_rate_limit' => 'Muy rápido.', 'err_captcha' => 'Fallo.', 'success_received' => 'Recibido.', 'failure_received' => 'Error.', 'submission_problem' => 'Corrija:', 'ft_terms' => 'Términos', 'ft_privacy' => 'Privacidad', 'ft_registry' => 'Registro',
         'ft_doc_visual' => 'Docs', 'ft_doc_text' => 'Ejemplos', 'ft_pricing' => 'Precios',
@@ -848,36 +944,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                 <div class="bg-card p-5 rounded-4 shadow-sm border border-color">
                     <div class="mb-4 text-center">
                         <div class="d-flex justify-content-between text-secondary-theme small fw-bold mb-2">
-                            <span>1,000 Msgs</span>
-                            <span>10,000 Msgs</span>
+                            <span>1,000 <?php echo $t['pricing_msgs']; ?></span>
+                            <span>10,000 <?php echo $t['pricing_msgs']; ?></span>
                         </div>
                         <input type="range" class="form-range" id="pricingSlider" min="0" max="6" step="1" value="0">
                         <div class="mt-3 fs-5 fw-bold text-secondary-theme">
-                            <span id="sliderValue" class="text-primary fs-3">1,000</span> Member Messages<br>
-                            <span class="fs-6 fw-normal">or <span id="customerValue"
-                                                                  class="text-primary fs-4">10,000</span> Customer Messages</span>
+                            <span id="sliderValue"
+                                  class="text-primary fs-3">1,000</span> <?php echo $t['pricing_member_msgs']; ?><br>
+                            <span class="fs-6 fw-normal"><?php echo $t['pricing_or']; ?> <span id="customerValue"
+                                                                                               class="text-primary fs-4">10,000</span> <?php echo $t['pricing_customer_msgs']; ?></span>
                         </div>
-                        <div class="small text-primary fw-bold mt-1" id="planName">Solo Plan</div>
+                        <div class="small text-primary fw-bold mt-1" id="planName">
+                            Solo <?php echo $t['pricing_plan']; ?></div>
                     </div>
                     <hr class="my-4 border-color">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h3 class="fw-bold mb-0 text-body">Estimated Price</h3>
-                            <small class="text-secondary-theme">Billed monthly</small>
+                            <h3 class="fw-bold mb-0 text-body"><?php echo $t['pricing_estimated']; ?></h3>
+                            <small class="text-secondary-theme"><?php echo $t['pricing_billed']; ?></small>
                         </div>
                         <div class="text-end">
                             <h2 class="fw-bold text-primary mb-0">€<span id="calculatedPrice">99</span></h2>
-                            <small class="text-secondary-theme">/month</small><br>
+                            <small class="text-secondary-theme"><?php echo $t['pricing_per_month']; ?></small><br>
                             <small class="text-muted" style="font-size: 0.75rem;">(€<span id="pricePerMsg">0.099</span>
-                                / member msg)</small>
+                                <?php echo $t['pricing_per_msg']; ?>)</small>
                         </div>
                     </div>
                     <div class="mt-4 text-start small text-secondary-theme">
-                        <p class="mb-1">* All prices include VAT.</p>
-                        <p class="mb-0">* Members are internal team users, while Customers are external users
-                            interacting through shopping chats. Both share a single message pool, but they are weighted
-                            differently due to processing requirements: 1 Member message is equivalent to 10 Customer
-                            messages.</p>
+                        <p class="mb-1"><?php echo $t['pricing_vat']; ?></p>
+                        <p class="mb-0"><?php echo $t['pricing_disclaimer']; ?></p>
                     </div>
                 </div>
             </div>
@@ -1153,6 +1248,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
     const calculatedPrice = document.getElementById('calculatedPrice');
     const planName = document.getElementById('planName');
 
+    // UI constants for localized string injections
+    const planTranslated = <?php echo json_encode(" " . $t['pricing_plan']); ?>;
+
     // Added constants for UI
     const customerValue = document.getElementById('customerValue');
     const pricePerMsg = document.getElementById('pricePerMsg');
@@ -1173,7 +1271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             const data = pricingData[val];
             sliderValue.innerText = data.messages;
             calculatedPrice.innerText = data.price;
-            if (planName) planName.innerText = data.name + " Plan";
+            if (planName) planName.innerText = data.name + planTranslated;
             if (customerValue) customerValue.innerText = data.customer;
             if (pricePerMsg) pricePerMsg.innerText = data.perMsg;
         });
