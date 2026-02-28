@@ -32,12 +32,22 @@ $translations = [
         // Features
         'features_title' => 'It replaces your dashboard.',
         'features_desc' => 'Don\'t buy expensive software you won\'t use. Do it all in the chat.',
-        'f_company' => 'Team Roster', 'f_company_desc' => 'Add or remove employees instantly. See who is in which department.',
-        'f_employees' => 'Tasks & Deadlines', 'f_employees_desc' => 'Assign tasks via text. We nag your team about deadlines so you don\'t have to.',
-        'f_positions' => 'Client Database', 'f_positions_desc' => 'Pull up client details, history, and active deals without leaving the chat.',
-        'f_departments' => 'Permissions', 'f_departments_desc' => 'Lock down sensitive data. Control exactly who sees what and when.',
-        'f_access' => 'File Generator', 'f_access_desc' => 'Create images, edit documents, and analyze links on the fly.',
-        'f_reminders' => 'Document Search', 'f_reminders_desc' => 'Find that one contract from last year by asking. We search inside the files.',
+
+        'f_1' => 'Announcements', 'f_1_desc' => 'Broadcast messages instantly. Notify the whole team or specific people without switching apps.',
+        'f_2' => 'Reminders / Deadlines', 'f_2_desc' => 'Never miss a task. Set automated nudges for your team, specific roles, or individual members.',
+        'f_3' => 'Shortcuts', 'f_3_desc' => 'Type less, say more. Expand short phrases into full responses to save time and stay consistent.',
+        'f_4' => 'Polls', 'f_4_desc' => 'Make decisions faster. Create instant polls and let your team vote directly in the chat.',
+        'f_5' => 'Weekly Schedule', 'f_5_desc' => 'Keep everyone aligned. Set and manage flexible weekly routines per team, role, or member.',
+        'f_6' => 'Roles / Managers', 'f_6_desc' => 'Build a healthy team structure. Group members easily and define clear management tiers.',
+        'f_7' => 'Instructions', 'f_7_desc' => 'Set the rules of engagement. Assign strict, customizable guidelines for the whole team or specific roles.',
+        'f_8' => 'Access Window', 'f_8_desc' => 'Control who works when. Lock down access down to the specific day, hour, and minute.',
+        'f_9' => 'Topics', 'f_9_desc' => 'Organize the chaos. Group chats, files, and links into dedicated spaces for focused teamwork.',
+        'f_10' => 'File/Link Search', 'f_10_desc' => 'Find anything in seconds. Search through uploaded files and URLs using natural language and tags.',
+        'f_11' => 'File Generator', 'f_11_desc' => 'Create on the fly. Generate, store, and edit documents or images securely from your chat prompts.',
+        'f_12' => 'File/Link Analysis', 'f_12_desc' => 'Instant AI insights. Drop a file or link and let AI analyze, summarize, and store the data for you.',
+        'f_13' => 'Plans', 'f_13_desc' => 'Turn data into strategy. Let AI analyze your info and generate actionable plans to hit your goals.',
+        'f_14' => 'Website Panel', 'f_14_desc' => 'See the big picture. Temporarily switch to a visual dashboard to review team data in a broader view.',
+        'f_15' => 'Portal', 'f_15_desc' => 'Deploy client-facing chats via unique URLs. Link them to your internal topics to power personalized customer assistance and showcase offerings.',
 
         'about_title' => 'Why ' . $appName . '?',
         'about_p1' => 'Traditional software is cluttered. You spend more time managing the tool than doing the work. ' . $appName . ' strips that away.',
@@ -47,25 +57,41 @@ $translations = [
         'how_title' => 'It takes seconds.',
         'how_desc' => 'Text your commands like you\'re talking to an assistant.',
 
-        'how_step_1' => 'Team Roster',
-        'how_step_1_cmd' => '“Add John (john@example.com) to the team.”',
-        'how_step_1_reply' => '> New member \'John\' successfully created.',
+        'how_step_1' => 'Announcements',
+        'how_step_1_cmd' => '“Announce to the team: Office is closed this Friday.”',
+        'how_step_1_reply' => '> Announcement successfully sent to 14 team members.',
 
-        'how_step_2' => 'Tasks & Deadlines',
-        'how_step_2_cmd' => '“Task for John: Finish the report by Friday.”',
-        'how_step_2_reply' => '> Deadline \'Friday Report\' successfully created with \'daily\' frequency and will expire in \'2 days\'.',
+        'how_step_2' => 'Reminders / Deadlines',
+        'how_step_2_cmd' => '“Remind the design team about the logo deadline tomorrow at 9 AM.”',
+        'how_step_2_reply' => '> Reminder \'logo deadline\' scheduled for the \'design\' role.',
 
-        'how_step_3' => 'Client Database',
-        'how_step_3_cmd' => '“Show me the contact info for Client X.”',
-        'how_step_3_reply' => '> Retrieved details for \'Client X\'. Email: client.x@example.com, Phone: +1 555-0192.',
+        'how_step_3' => 'Shortcuts',
+        'how_step_3_cmd' => '“Create shortcut \'brb\' for \'Be right back, in a meeting.\'”',
+        'how_step_3_reply' => '> Shortcut \'brb\' successfully saved.',
 
-        'how_step_4' => 'Permissions',
-        'how_step_4_cmd' => '“Block access to the team after 6 PM.”',
-        'how_step_4_reply' => '> Access rule updated. Team access is now blocked between 18:00 and 08:00.',
+        'how_step_4' => 'Polls',
+        'how_step_4_cmd' => '“Poll the team: Pizza or Sushi for Friday lunch?”',
+        'how_step_4_reply' => '> Poll \'Friday lunch\' created with options: 1. Pizza, 2. Sushi.',
 
-        'how_step_5' => 'Document Search',
-        'how_step_5_cmd' => '“Find all invoice files uploaded by members in last March.”',
-        'how_step_5_reply' => '> Search complete. Found 4 files matching \'invoice\' uploaded between March 1st and March 31st.',
+        'how_step_5' => 'Weekly Schedule',
+        'how_step_5_cmd' => '“Set Sarah\'s schedule to Monday-Thursday, 9 AM to 5 PM.”',
+        'how_step_5_reply' => '> Weekly schedule successfully updated for member \'Sarah\'.',
+
+        'how_step_6' => 'Roles / Managers',
+        'how_step_6_cmd' => '“Create role \'Marketing\' and make Alex the manager.”',
+        'how_step_6_reply' => '> Role \'Marketing\' created. \'Alex\' assigned as manager.',
+
+        'how_step_7' => 'Instructions',
+        'how_step_7_cmd' => '“Add instruction for Support: Always reply within 5 minutes.”',
+        'how_step_7_reply' => '> Instruction successfully added to \'Support\' role guidelines.',
+
+        'how_step_8' => 'Access Window',
+        'how_step_8_cmd' => '“Block team access during the weekend.”',
+        'how_step_8_reply' => '> Access rule updated. Team access blocked Saturday and Sunday.',
+
+        'how_step_9' => 'Topics',
+        'how_step_9_cmd' => '“Create topic \'Q3 Launch\' and add the marketing team.”',
+        'how_step_9_reply' => '> Topic \'Q3 Launch\' initialized with 4 members added.',
 
         // New Sections
         'platforms_title' => 'Choose your platform',
@@ -118,37 +144,56 @@ $translations = [
         'pill_3_title' => 'Ιδιωτικό', 'pill_3_desc' => 'Ασφάλεια δεδομένων',
         'features_title' => 'Αντικαθιστά το dashboard σας.',
         'features_desc' => 'Κάντε τη δουλειά σας μέσα από τη συνομιλία.',
-        'f_company' => 'Ομάδα', 'f_company_desc' => 'Προσθέστε ή αφαιρέστε υπαλλήλους άμεσα.',
-        'f_employees' => 'Εργασίες & Προθεσμίες', 'f_employees_desc' => 'Αναθέστε εργασίες με μήνυμα. Εμείς υπενθυμίζουμε τις προθεσμίες.',
-        'f_positions' => 'Πελατολόγιο', 'f_positions_desc' => 'Βρείτε στοιχεία πελατών χωρίς να βγείτε από το chat.',
-        'f_departments' => 'Δικαιώματα', 'f_departments_desc' => 'Ελέγξτε ποιος βλέπει τι και πότε.',
-        'f_access' => 'Αρχεία', 'f_access_desc' => 'Δημιουργήστε εικόνες και έγγραφα άμεσα.',
-        'f_reminders' => 'Αναζήτηση Εγγράφων', 'f_reminders_desc' => 'Βρείτε παλιά συμβόλαια ψάχνοντας το περιεχόμενο τους.',
+
+        'f_1' => 'Ανακοινώσεις', 'f_1_desc' => 'Στείλτε άμεσα μηνύματα σε όλη την ομάδα ή σε συγκεκριμένα άτομα.',
+        'f_2' => 'Υπενθυμίσεις', 'f_2_desc' => 'Ορίστε αυτοματοποιημένες υπενθυμίσεις για την ομάδα ή ρόλους.',
+        'f_3' => 'Συντομεύσεις', 'f_3_desc' => 'Πληκτρολογήστε λιγότερα. Επεκτείνετε μικρές φράσεις σε ολόκληρα κείμενα.',
+        'f_4' => 'Δημοσκοπήσεις', 'f_4_desc' => 'Λάβετε αποφάσεις γρήγορα δημιουργώντας ψηφοφορίες στο chat.',
+        'f_5' => 'Πρόγραμμα', 'f_5_desc' => 'Ορίστε εβδομαδιαία προγράμματα για την ομάδα ή συγκεκριμένα μέλη.',
+        'f_6' => 'Ρόλοι & Managers', 'f_6_desc' => 'Οργανώστε την ομάδα σας και ορίστε ξεκάθαρα επίπεδα διαχείρισης.',
+        'f_7' => 'Οδηγίες', 'f_7_desc' => 'Θέστε κανόνες. Αναθέστε κατευθυντήριες γραμμές για συγκεκριμένους ρόλους.',
+        'f_8' => 'Πρόσβαση', 'f_8_desc' => 'Ελέγξτε ακριβώς ποια μέρα και ώρα έχει πρόσβαση η ομάδα σας.',
+        'f_9' => 'Θέματα', 'f_9_desc' => 'Οργανώστε αρχεία, συνδέσμους και συζητήσεις σε ειδικούς φακέλους.',
+        'f_10' => 'Αναζήτηση', 'f_10_desc' => 'Βρείτε αρχεία και links σε δευτερόλεπτα με έξυπνη αναζήτηση.',
+        'f_11' => 'Δημιουργία Αρχείων', 'f_11_desc' => 'Δημιουργήστε έγγραφα και εικόνες επιτόπου μέσω του chat.',
+        'f_12' => 'Ανάλυση Αρχείων', 'f_12_desc' => 'Αφήστε το AI να αναλύσει και να συνοψίσει αρχεία ή συνδέσμους.',
+        'f_13' => 'Σχέδια', 'f_13_desc' => 'Μετατρέψτε τα δεδομένα σε στρατηγική με πλάνα που δημιουργεί το AI.',
+        'f_14' => 'Website Panel', 'f_14_desc' => 'Δείτε τη μεγάλη εικόνα μέσα από τον οπτικό πίνακα ελέγχου.',
+        'f_15' => 'Portal', 'f_15_desc' => 'Αναπτύξτε chats πελατών μέσω μοναδικών URL. Συνδέστε τα με εσωτερικά θέματα για να παρέχετε απόλυτα προσαρμοσμένη υποστήριξη.',
+
         'about_title' => 'Γιατί ' . $appName . ';',
         'about_p1' => 'Το κλασικό λογισμικό είναι αργό. Το ' . $appName . ' είναι γρήγορο σαν μήνυμα.',
         'about_p2' => 'Δώστε εντολή και εκτελείται.',
         'how_title' => 'Παίρνει δευτερόλεπτα.',
         'how_desc' => 'Γράψτε εντολές όπως μιλάτε σε έναν βοηθό.',
 
-        'how_step_1' => 'Ομάδα',
-        'how_step_1_cmd' => '«Πρόσθεσε τον Γιάννη (john@example.com) στην ομάδα.»',
-        'how_step_1_reply' => '> Το νέο μέλος \'Γιάννης\' δημιουργήθηκε επιτυχώς.',
-
-        'how_step_2' => 'Εργασίες & Προθεσμίες',
-        'how_step_2_cmd' => '«Εργασία για Γιάννη: Τελείωσε την αναφορά ως την Παρασκευή.»',
-        'how_step_2_reply' => '> Η προθεσμία \'Αναφορά Παρασκευής\' δημιουργήθηκε με \'καθημερινή\' συχνότητα και λήγει σε \'2 ημέρες\'.',
-
-        'how_step_3' => 'Πελατολόγιο',
-        'how_step_3_cmd' => '«Δείξε μου τα στοιχεία του Πελάτη Χ.»',
-        'how_step_3_reply' => '> Ανακτήθηκαν λεπτομέρειες για \'Πελάτη Χ\'. Email: client.x@example.com, Τηλ: +1 555-0192.',
-
-        'how_step_4' => 'Δικαιώματα',
-        'how_step_4_cmd' => '«Κλείδωσε την πρόσβαση στην ομάδα μετά τις 6μμ.»',
-        'how_step_4_reply' => '> Ο κανόνας ενημερώθηκε. Η πρόσβαση ομάδας είναι κλειδωμένη μεταξύ 18:00 και 08:00.',
-
-        'how_step_5' => 'Αναζήτηση Εγγράφων',
-        'how_step_5_cmd' => '«Βρες όλα τα τιμολόγια που ανέβασαν μέλη τον Μάρτιο.»',
-        'how_step_5_reply' => '> Η αναζήτηση ολοκληρώθηκε. Βρέθηκαν 4 αρχεία για \'τιμολόγιο\' που ανέβηκαν μεταξύ 1ης και 31ης Μαρτίου.',
+        'how_step_1' => 'Ανακοινώσεις',
+        'how_step_1_cmd' => '«Ανακοίνωση στην ομάδα: Το γραφείο κλείνει την Παρασκευή.»',
+        'how_step_1_reply' => '> Η ανακοίνωση στάλθηκε επιτυχώς σε 14 μέλη.',
+        'how_step_2' => 'Υπενθυμίσεις',
+        'how_step_2_cmd' => '«Υπενθύμισε στους σχεδιαστές το deadline αύριο στις 9πμ.»',
+        'how_step_2_reply' => '> Η υπενθύμιση προγραμματίστηκε για τον ρόλο \'σχεδιαστές\'.',
+        'how_step_3' => 'Συντομεύσεις',
+        'how_step_3_cmd' => '«Φτιάξε συντόμευση \'καλημ\' για \'Καλημέρα, πώς μπορώ να βοηθήσω;\'»',
+        'how_step_3_reply' => '> Η συντόμευση \'καλημ\' αποθηκεύτηκε.',
+        'how_step_4' => 'Δημοσκοπήσεις',
+        'how_step_4_cmd' => '«Ψηφοφορία: Πίτσα ή Σουβλάκια για Παρασκευή;»',
+        'how_step_4_reply' => '> Η ψηφοφορία δημιουργήθηκε: 1. Πίτσα, 2. Σουβλάκια.',
+        'how_step_5' => 'Πρόγραμμα',
+        'how_step_5_cmd' => '«Βάλε ωράριο στη Μαρία Δευ-Πεμ 9πμ με 5μμ.»',
+        'how_step_5_reply' => '> Το πρόγραμμα ενημερώθηκε για το μέλος \'Μαρία\'.',
+        'how_step_6' => 'Ρόλοι',
+        'how_step_6_cmd' => '«Φτιάξε ρόλο Marketing και βάλε manager τον Νίκο.»',
+        'how_step_6_reply' => '> Ο ρόλος δημιουργήθηκε. Ο \'Νίκος\' ορίστηκε manager.',
+        'how_step_7' => 'Οδηγίες',
+        'how_step_7_cmd' => '«Οδηγία στο Support: Να απαντάτε μέσα σε 5 λεπτά.»',
+        'how_step_7_reply' => '> Η οδηγία προστέθηκε στους κανόνες του ρόλου \'Support\'.',
+        'how_step_8' => 'Πρόσβαση',
+        'how_step_8_cmd' => '«Κλείδωσε την πρόσβαση το Σαββατοκύριακο.»',
+        'how_step_8_reply' => '> Ο κανόνας ενημερώθηκε. Πρόσβαση κλειδωμένη Σαβ/Κυρ.',
+        'how_step_9' => 'Θέματα',
+        'how_step_9_cmd' => '«Φτιάξε θέμα \'Launch Q3\' και βάλε το Marketing.»',
+        'how_step_9_reply' => '> Το θέμα δημιουργήθηκε με 4 μέλη.',
 
         'platforms_title' => 'Επιλέξτε πλατφόρμα',
         'platforms_desc' => 'Διαχειριστείτε την ομάδα σας από την αγαπημένη σας εφαρμογή.',
@@ -182,34 +227,35 @@ $translations = [
         'pill_1_title' => 'Overal', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Geen Training', 'pill_2_desc' => 'Zo simpel als sms\'en', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Veilige data',
         'features_title' => 'Vervangt uw dashboard.', 'features_desc' => 'Doe al het werk in de chat.',
-        'f_company' => 'Teamlijst', 'f_company_desc' => 'Voeg medewerkers direct toe of verwijder ze.',
-        'f_employees' => 'Taken & Deadlines', 'f_employees_desc' => 'Wijs taken toe via tekst. Wij herinneren uw team aan deadlines.',
-        'f_positions' => 'Klanten', 'f_positions_desc' => 'Bekijk klantgegevens zonder de chat te verlaten.',
-        'f_departments' => 'Rechten', 'f_departments_desc' => 'Beheer wie wat ziet en wanneer.',
-        'f_access' => 'Bestanden', 'f_access_desc' => 'Maak afbeeldingen en documenten direct aan.',
-        'f_reminders' => 'Documenten Zoeken', 'f_reminders_desc' => 'Vind contracten door in de inhoud te zoeken.',
+
+        'f_1' => 'Aankondigingen', 'f_1_desc' => 'Stuur direct berichten naar het hele team of specifieke personen.',
+        'f_2' => 'Herinneringen', 'f_2_desc' => 'Stel automatische herinneringen in voor uw team of rollen.',
+        'f_3' => 'Snelkoppelingen', 'f_3_desc' => 'Typ minder. Breid korte zinnen uit tot volledige reacties.',
+        'f_4' => 'Peilingen', 'f_4_desc' => 'Maak sneller beslissingen met directe peilingen in de chat.',
+        'f_5' => 'Weekrooster', 'f_5_desc' => 'Stel flexibele wekelijkse routines in per team of lid.',
+        'f_6' => 'Rollen & Managers', 'f_6_desc' => 'Groepeer leden eenvoudig en bepaal duidelijke beheerniveaus.',
+        'f_7' => 'Instructies', 'f_7_desc' => 'Wijs strikte richtlijnen toe voor het hele team of rollen.',
+        'f_8' => 'Toegangsvenster', 'f_8_desc' => 'Beheer de toegang tot op de dag en minuut nauwkeurig.',
+        'f_9' => 'Onderwerpen', 'f_9_desc' => 'Groepeer bestanden en links in speciale ruimtes voor focus.',
+        'f_10' => 'Bestand Zoeken', 'f_10_desc' => 'Zoek door bestanden en URL\'s met tags en natuurlijke taal.',
+        'f_11' => 'Bestandsgenerator', 'f_11_desc' => 'Genereer en bewerk documenten direct via chatopdrachten.',
+        'f_12' => 'Analyse', 'f_12_desc' => 'Laat AI uw bestanden of links analyseren en samenvatten.',
+        'f_13' => 'Plannen', 'f_13_desc' => 'Laat AI actieplannen genereren om uw doelen te bereiken.',
+        'f_14' => 'Websitepaneel', 'f_14_desc' => 'Schakel over naar een visueel dashboard voor een breder overzicht.',
+        'f_15' => 'Portaal', 'f_15_desc' => 'Zet klantgerichte chats in via unieke URL\'s. Koppel ze aan interne onderwerpen voor gepersonaliseerde klantenservice.',
+
         'about_title' => 'Waarom ' . $appName . '?', 'about_p1' => 'Traditionele software is traag. ' . $appName . ' is snel en direct.', 'about_p2' => 'Geen menu\'s, gewoon werk.',
         'how_title' => 'Het duurt seconden.', 'how_desc' => 'Typ commando\'s alsof u met een assistent praat.',
 
-        'how_step_1' => 'Teamlijst',
-        'how_step_1_cmd' => '“Voeg Jan (jan@example.com) toe aan het team.”',
-        'how_step_1_reply' => '> Nieuw lid \'Jan\' succesvol aangemaakt.',
-
-        'how_step_2' => 'Taken & Deadlines',
-        'how_step_2_cmd' => '“Taak voor Jan: Rapport afmaken voor vrijdag.”',
-        'how_step_2_reply' => '> Deadline \'Vrijdag Rapport\' succesvol aangemaakt met \'dagelijkse\' frequentie en verloopt in \'2 dagen\'.',
-
-        'how_step_3' => 'Klanten',
-        'how_step_3_cmd' => '“Toon contactinfo voor Klant X.”',
-        'how_step_3_reply' => '> Gegevens opgehaald voor \'Klant X\'. Email: client.x@example.com, Tel: +1 555-0192.',
-
-        'how_step_4' => 'Rechten',
-        'how_step_4_cmd' => '“Blokkeer toegang tot het team na 18:00.”',
-        'how_step_4_reply' => '> Toegangsregel bijgewerkt. Teamtoegang is nu geblokkeerd tussen 18:00 en 08:00.',
-
-        'how_step_5' => 'Documenten Zoeken',
-        'how_step_5_cmd' => '“Vind alle facturen geüpload door leden in maart.”',
-        'how_step_5_reply' => '> Zoekopdracht voltooid. 4 bestanden gevonden voor \'factuur\' geüpload tussen 1 en 31 maart.',
+        'how_step_1' => 'Aankondigingen', 'how_step_1_cmd' => '“Aankondiging: Het kantoor is vrijdag gesloten.”', 'how_step_1_reply' => '> Aankondiging verzonden naar 14 leden.',
+        'how_step_2' => 'Herinneringen', 'how_step_2_cmd' => '“Herinner design aan de deadline morgen om 9:00.”', 'how_step_2_reply' => '> Herinnering ingepland voor de \'design\' rol.',
+        'how_step_3' => 'Snelkoppelingen', 'how_step_3_cmd' => '“Maak snelkoppeling \'mvg\' voor \'Met vriendelijke groet\'”', 'how_step_3_reply' => '> Snelkoppeling \'mvg\' opgeslagen.',
+        'how_step_4' => 'Peilingen', 'how_step_4_cmd' => '“Peiling: Pizza of Sushi voor vrijdag?”', 'how_step_4_reply' => '> Peiling aangemaakt: 1. Pizza, 2. Sushi.',
+        'how_step_5' => 'Weekrooster', 'how_step_5_cmd' => '“Zet Sarah\'s rooster op ma-do 9:00 tot 17:00.”', 'how_step_5_reply' => '> Rooster succesvol bijgewerkt voor \'Sarah\'.',
+        'how_step_6' => 'Rollen', 'how_step_6_cmd' => '“Maak rol Marketing met Alex als manager.”', 'how_step_6_reply' => '> Rol aangemaakt. \'Alex\' is nu manager.',
+        'how_step_7' => 'Instructies', 'how_step_7_cmd' => '“Instructie Support: Antwoord binnen 5 minuten.”', 'how_step_7_reply' => '> Instructie toegevoegd aan de \'Support\' rol.',
+        'how_step_8' => 'Toegangsvenster', 'how_step_8_cmd' => '“Blokkeer toegang in het weekend.”', 'how_step_8_reply' => '> Regel bijgewerkt. Toegang geblokkeerd zat-zon.',
+        'how_step_9' => 'Onderwerpen', 'how_step_9_cmd' => '“Maak onderwerp \'Q3 Launch\' voor marketing.”', 'how_step_9_reply' => '> Onderwerp aangemaakt met 4 leden.',
 
         'platforms_title' => 'Kies uw platform',
         'platforms_desc' => 'Beheer uw team vanuit uw favoriete app.',
@@ -243,34 +289,35 @@ $translations = [
         'pill_1_title' => 'Überall', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, E-Mail',
         'pill_2_title' => 'Kein Training', 'pill_2_desc' => 'Einfach wie SMS', 'pill_3_title' => 'Privat', 'pill_3_desc' => 'Sichere Daten',
         'features_title' => 'Ersetzt Ihr Dashboard.', 'features_desc' => 'Erledigen Sie alles im Chat.',
-        'f_company' => 'Teamliste', 'f_company_desc' => 'Mitarbeiter sofort hinzufügen oder entfernen.',
-        'f_employees' => 'Aufgaben & Fristen', 'f_employees_desc' => 'Aufgaben per Text zuweisen. Wir erinnern Ihr Team an Fristen.',
-        'f_positions' => 'Kundendatenbank', 'f_positions_desc' => 'Kundendetails abrufen, ohne den Chat zu verlassen.',
-        'f_departments' => 'Berechtigungen', 'f_departments_desc' => 'Steuern Sie genau, wer was sieht.',
-        'f_access' => 'Dateien', 'f_access_desc' => 'Erstellen Sie Bilder und Dokumente sofort.',
-        'f_reminders' => 'Dokumentensuche', 'f_reminders_desc' => 'Finden Sie Verträge, indem Sie den Inhalt durchsuchen.',
+
+        'f_1' => 'Ankündigungen', 'f_1_desc' => 'Senden Sie Sofortnachrichten an das gesamte Team oder bestimmte Personen.',
+        'f_2' => 'Erinnerungen', 'f_2_desc' => 'Verpassen Sie keine Aufgabe. Richten Sie automatische Erinnerungen ein.',
+        'f_3' => 'Shortcuts', 'f_3_desc' => 'Tippen Sie weniger. Erweitern Sie kurze Phrasen zu vollständigen Texten.',
+        'f_4' => 'Umfragen', 'f_4_desc' => 'Treffen Sie Entscheidungen schneller mit Live-Umfragen im Chat.',
+        'f_5' => 'Zeitplan', 'f_5_desc' => 'Legen Sie wöchentliche Routinen für Teams oder einzelne Mitglieder fest.',
+        'f_6' => 'Rollen', 'f_6_desc' => 'Gruppieren Sie Mitglieder einfach und definieren Sie Management-Ebenen.',
+        'f_7' => 'Anweisungen', 'f_7_desc' => 'Legen Sie strenge, anpassbare Richtlinien für bestimmte Rollen fest.',
+        'f_8' => 'Zugriffsfenster', 'f_8_desc' => 'Sperren Sie den Zugriff auf den Chat auf die Minute genau.',
+        'f_9' => 'Themen', 'f_9_desc' => 'Organisieren Sie Dateien und Links in dedizierten Arbeitsbereichen.',
+        'f_10' => 'Suche', 'f_10_desc' => 'Durchsuchen Sie Dateien und URLs mit natürlicher Sprache und Tags.',
+        'f_11' => 'Dateigenerator', 'f_11_desc' => 'Erstellen und bearbeiten Sie Dokumente direkt über Chat-Befehle.',
+        'f_12' => 'Analyse', 'f_12_desc' => 'Lassen Sie KI hochgeladene Dateien oder Links für Sie analysieren.',
+        'f_13' => 'Pläne', 'f_13_desc' => 'Lassen Sie KI aus Ihren Daten umsetzbare Pläne generieren.',
+        'f_14' => 'Web-Panel', 'f_14_desc' => 'Wechseln Sie für einen breiteren Überblick zu einem visuellen Dashboard.',
+        'f_15' => 'Portal', 'f_15_desc' => 'Stellen Sie Kunden-Chats über einzigartige URLs bereit. Verknüpfen Sie diese mit internen Themen für personalisierten Support.',
+
         'about_title' => 'Warum ' . $appName . '?', 'about_p1' => 'Klassische Software ist langsam. ' . $appName . ' ist schnell und direkt.', 'about_p2' => 'Befehl eingeben, erledigt.',
         'how_title' => 'Dauert Sekunden.', 'how_desc' => 'Schreiben Sie Befehle wie an einen Assistenten.',
 
-        'how_step_1' => 'Teamliste',
-        'how_step_1_cmd' => '„Füge Max (max@example.com) zum Team hinzu.“',
-        'how_step_1_reply' => '> Neues Mitglied \'Max\' erfolgreich erstellt.',
-
-        'how_step_2' => 'Aufgaben & Fristen',
-        'how_step_2_cmd' => '„Aufgabe für Max: Bericht bis Freitag fertigstellen.“',
-        'how_step_2_reply' => '> Frist \'Freitagsbericht\' erfolgreich erstellt (täglich), läuft in \'2 Tagen\' ab.',
-
-        'how_step_3' => 'Kundendatenbank',
-        'how_step_3_cmd' => '„Zeige Kontaktinfos für Kunde X.“',
-        'how_step_3_reply' => '> Details für \'Kunde X\' abgerufen. E-Mail: client.x@example.com, Tel: +1 555-0192.',
-
-        'how_step_4' => 'Berechtigungen',
-        'how_step_4_cmd' => '„Sperre Zugriff auf das Team nach 18:00.“',
-        'how_step_4_reply' => '> Zugriffsregel aktualisiert. Teamzugriff ist jetzt zwischen 18:00 und 08:00 Uhr gesperrt.',
-
-        'how_step_5' => 'Dokumentensuche',
-        'how_step_5_cmd' => '„Finde alle Rechnungen, die im März hochgeladen wurden.“',
-        'how_step_5_reply' => '> Suche abgeschlossen. 4 Dateien passend zu \'Rechnung\' vom 1. bis 31. März gefunden.',
+        'how_step_1' => 'Ankündigungen', 'how_step_1_cmd' => '„Ankündigung: Büro ist am Freitag geschlossen.“', 'how_step_1_reply' => '> Ankündigung an 14 Mitglieder gesendet.',
+        'how_step_2' => 'Erinnerungen', 'how_step_2_cmd' => '„Erinnere Design an die Deadline morgen um 9 Uhr.“', 'how_step_2_reply' => '> Erinnerung für die Rolle \'Design\' geplant.',
+        'how_step_3' => 'Shortcuts', 'how_step_3_cmd' => '„Shortcut \'mfg\' für \'Mit freundlichen Grüßen\' erstellen.“', 'how_step_3_reply' => '> Shortcut \'mfg\' gespeichert.',
+        'how_step_4' => 'Umfragen', 'how_step_4_cmd' => '„Umfrage: Pizza oder Sushi am Freitag?“', 'how_step_4_reply' => '> Umfrage erstellt: 1. Pizza, 2. Sushi.',
+        'how_step_5' => 'Zeitplan', 'how_step_5_cmd' => '„Setze Sarahs Zeitplan auf Mo-Do 9 bis 17 Uhr.“', 'how_step_5_reply' => '> Zeitplan für \'Sarah\' aktualisiert.',
+        'how_step_6' => 'Rollen', 'how_step_6_cmd' => '„Rolle Marketing erstellen, Alex ist Manager.“', 'how_step_6_reply' => '> Rolle erstellt. \'Alex\' ist Manager.',
+        'how_step_7' => 'Anweisungen', 'how_step_7_cmd' => '„Anweisung Support: Innerhalb von 5 Min antworten.“', 'how_step_7_reply' => '> Anweisung zur Rolle \'Support\' hinzugefügt.',
+        'how_step_8' => 'Zugriff', 'how_step_8_cmd' => '„Zugriff für das Team am Wochenende sperren.“', 'how_step_8_reply' => '> Zugriffsregel aktualisiert. Wochenende gesperrt.',
+        'how_step_9' => 'Themen', 'how_step_9_cmd' => '„Thema \'Q3 Launch\' für Marketing erstellen.“', 'how_step_9_reply' => '> Thema mit 4 Mitgliedern erstellt.',
 
         'platforms_title' => 'Wählen Sie Ihre Plattform',
         'platforms_desc' => 'Verwalten Sie Ihr Team über Ihre Lieblings-App.',
@@ -304,34 +351,35 @@ $translations = [
         'pill_1_title' => 'Ovunque', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Zero Training', 'pill_2_desc' => 'Facile come un SMS', 'pill_3_title' => 'Privato', 'pill_3_desc' => 'Dati sicuri',
         'features_title' => 'Sostituisce la dashboard.', 'features_desc' => 'Fai tutto via chat.',
-        'f_company' => 'Team', 'f_company_desc' => 'Aggiungi o rimuovi dipendenti all\'istante.',
-        'f_employees' => 'Compiti & Scadenze', 'f_employees_desc' => 'Assegna compiti via testo. Noi ricordiamo le scadenze.',
-        'f_positions' => 'Clienti', 'f_positions_desc' => 'Vedi dettagli clienti senza uscire dalla chat.',
-        'f_departments' => 'Permessi', 'f_departments_desc' => 'Controlla chi vede cosa e quando.',
-        'f_access' => 'File', 'f_access_desc' => 'Crea immagini e documenti al volo.',
-        'f_reminders' => 'Ricerca Documenti', 'f_reminders_desc' => 'Trova contratti cercando nel contenuto.',
+
+        'f_1' => 'Annunci', 'f_1_desc' => 'Trasmetti messaggi istantaneamente a tutto il team o a membri specifici.',
+        'f_2' => 'Promemoria', 'f_2_desc' => 'Imposta avvisi automatici per il team, i ruoli o i singoli membri.',
+        'f_3' => 'Scorciatoie', 'f_3_desc' => 'Scrivi di meno. Espandi brevi frasi in risposte complete per risparmiare tempo.',
+        'f_4' => 'Sondaggi', 'f_4_desc' => 'Prendi decisioni più veloci. Crea sondaggi diretti nella chat.',
+        'f_5' => 'Orario', 'f_5_desc' => 'Imposta routine settimanali flessibili per team o membri.',
+        'f_6' => 'Ruoli e Manager', 'f_6_desc' => 'Raggruppa i membri e definisci livelli di gestione chiari.',
+        'f_7' => 'Istruzioni', 'f_7_desc' => 'Assegna linee guida rigorose per ruoli specifici.',
+        'f_8' => 'Accesso', 'f_8_desc' => 'Controlla l\'accesso bloccando la chat al minuto esatto.',
+        'f_9' => 'Argomenti', 'f_9_desc' => 'Raggruppa file e link in spazi dedicati per il lavoro di squadra.',
+        'f_10' => 'Ricerca', 'f_10_desc' => 'Cerca nei file caricati usando il linguaggio naturale e i tag.',
+        'f_11' => 'Generatore', 'f_11_desc' => 'Crea, memorizza e modifica documenti direttamente dai prompt della chat.',
+        'f_12' => 'Analisi', 'f_12_desc' => 'Lascia che l\'IA analizzi e riassuma file o link caricati.',
+        'f_13' => 'Piani', 'f_13_desc' => 'Trasforma i dati in strategia con piani generati dall\'IA.',
+        'f_14' => 'Pannello Web', 'f_14_desc' => 'Passa temporaneamente a una dashboard visiva per i dati del team.',
+        'f_15' => 'Portale', 'f_15_desc' => 'Distribuisci chat per i clienti tramite URL univoci. Collegale ai tuoi argomenti per fornire assistenza clienti iper-personalizzata.',
+
         'about_title' => 'Perché ' . $appName . '?', 'about_p1' => 'Software classico è lento. ' . $appName . ' è immediato.', 'about_p2' => 'Dai un comando ed è fatto.',
         'how_title' => 'Ci vogliono secondi.', 'how_desc' => 'Scrivi comandi come se parlassi a un assistente.',
 
-        'how_step_1' => 'Team',
-        'how_step_1_cmd' => '“Aggiungi Luca (luca@example.com) al team.”',
-        'how_step_1_reply' => '> Nuovo membro \'Luca\' creato con successo.',
-
-        'how_step_2' => 'Compiti & Scadenze',
-        'how_step_2_cmd' => '“Compito per Luca: Finire il report entro venerdì.”',
-        'how_step_2_reply' => '> Scadenza \'Report Venerdì\' creata con frequenza \'giornaliera\', scade in \'2 giorni\'.',
-
-        'how_step_3' => 'Clienti',
-        'how_step_3_cmd' => '“Mostra info contatto per Cliente X.”',
-        'how_step_3_reply' => '> Dettagli recuperati per \'Cliente X\'. Email: client.x@example.com, Tel: +1 555-0192.',
-
-        'how_step_4' => 'Permessi',
-        'how_step_4_cmd' => '“Blocca accesso al team dopo le 18:00.”',
-        'how_step_4_reply' => '> Regola di accesso aggiornata. L\'accesso del team è ora bloccato tra le 18:00 e le 08:00.',
-
-        'how_step_5' => 'Ricerca Documenti',
-        'how_step_5_cmd' => '“Trova tutte le fatture caricate dai membri a marzo.”',
-        'how_step_5_reply' => '> Ricerca completata. Trovati 4 file corrispondenti a \'fattura\' caricati tra il 1° e il 31 marzo.',
+        'how_step_1' => 'Annunci', 'how_step_1_cmd' => '“Annuncia: L\'ufficio è chiuso venerdì.”', 'how_step_1_reply' => '> Annuncio inviato a 14 membri.',
+        'how_step_2' => 'Promemoria', 'how_step_2_cmd' => '“Ricorda al design la scadenza domani alle 9.”', 'how_step_2_reply' => '> Promemoria programmato per il ruolo \'design\'.',
+        'how_step_3' => 'Scorciatoie', 'how_step_3_cmd' => '“Crea scorciatoia \'buong\' per \'Buongiorno, come posso aiutarla?\'”', 'how_step_3_reply' => '> Scorciatoia \'buong\' salvata.',
+        'how_step_4' => 'Sondaggi', 'how_step_4_cmd' => '“Sondaggio: Pizza o Sushi per venerdì?”', 'how_step_4_reply' => '> Sondaggio creato: 1. Pizza, 2. Sushi.',
+        'how_step_5' => 'Orario', 'how_step_5_cmd' => '“Imposta orario di Sara Lun-Gio 9:00 - 17:00.”', 'how_step_5_reply' => '> Orario aggiornato per \'Sara\'.',
+        'how_step_6' => 'Ruoli', 'how_step_6_cmd' => '“Crea ruolo Marketing con Alex manager.”', 'how_step_6_reply' => '> Ruolo creato. \'Alex\' assegnato come manager.',
+        'how_step_7' => 'Istruzioni', 'how_step_7_cmd' => '“Istruzione Supporto: Rispondi in 5 minuti.”', 'how_step_7_reply' => '> Istruzione aggiunta al ruolo \'Supporto\'.',
+        'how_step_8' => 'Accesso', 'how_step_8_cmd' => '“Blocca l\'accesso al team nel fine settimana.”', 'how_step_8_reply' => '> Regola aggiornata. Accesso bloccato Sab e Dom.',
+        'how_step_9' => 'Argomenti', 'how_step_9_cmd' => '“Crea argomento \'Lancio Q3\' per marketing.”', 'how_step_9_reply' => '> Argomento creato con 4 membri.',
 
         'platforms_title' => 'Scegli la tua piattaforma',
         'platforms_desc' => 'Gestisci il tuo team dalla tua app preferita.',
@@ -364,34 +412,35 @@ $translations = [
         'pill_1_title' => 'Partout', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Zéro Formation', 'pill_2_desc' => 'Aussi simple qu\'un SMS', 'pill_3_title' => 'Privé', 'pill_3_desc' => 'Données sécurisées',
         'features_title' => 'Remplace votre dashboard.', 'features_desc' => 'Faites tout le travail dans le chat.',
-        'f_company' => 'Équipe', 'f_company_desc' => 'Ajoutez ou supprimez des employés instantanément.',
-        'f_employees' => 'Tâches & Délais', 'f_employees_desc' => 'Assignez des tâches par texto. Nous rappelons les délais.',
-        'f_positions' => 'Clients', 'f_positions_desc' => 'Consultez les infos clients sans quitter le chat.',
-        'f_departments' => 'Permissions', 'f_departments_desc' => 'Contrôlez qui voit quoi et quand.',
-        'f_access' => 'Fichiers', 'f_access_desc' => 'Créez images et documents à la volée.',
-        'f_reminders' => 'Recherche Documents', 'f_reminders_desc' => 'Trouvez des contrats en cherchant dans le contenu.',
+
+        'f_1' => 'Annonces', 'f_1_desc' => 'Diffusez des messages instantanément à toute l\'équipe ou à des personnes spécifiques.',
+        'f_2' => 'Rappels', 'f_2_desc' => 'Définissez des notifications automatiques pour votre équipe ou vos rôles.',
+        'f_3' => 'Raccourcis', 'f_3_desc' => 'Écrivez moins. Transformez de courtes phrases en réponses complètes.',
+        'f_4' => 'Sondages', 'f_4_desc' => 'Prenez des décisions plus rapidement avec des sondages directs dans le chat.',
+        'f_5' => 'Planning', 'f_5_desc' => 'Définissez des routines hebdomadaires flexibles par équipe ou par membre.',
+        'f_6' => 'Rôles & Managers', 'f_6_desc' => 'Regroupez facilement les membres et définissez des niveaux de gestion.',
+        'f_7' => 'Instructions', 'f_7_desc' => 'Attribuez des directives strictes à des rôles spécifiques.',
+        'f_8' => 'Accès', 'f_8_desc' => 'Contrôlez l\'accès de l\'équipe à la minute près.',
+        'f_9' => 'Sujets', 'f_9_desc' => 'Regroupez les fichiers et liens dans des espaces dédiés.',
+        'f_10' => 'Recherche', 'f_10_desc' => 'Trouvez des fichiers en utilisant le langage naturel et des tags.',
+        'f_11' => 'Générateur', 'f_11_desc' => 'Créez et modifiez des documents directement à partir du chat.',
+        'f_12' => 'Analyse', 'f_12_desc' => 'Laissez l\'IA analyser et résumer les fichiers ou les liens pour vous.',
+        'f_13' => 'Plans', 'f_13_desc' => 'Laissez l\'IA générer des plans d\'action pour atteindre vos objectifs.',
+        'f_14' => 'Panneau Web', 'f_14_desc' => 'Passez à un tableau de bord visuel pour examiner les données de l\'équipe.',
+        'f_15' => 'Portail', 'f_15_desc' => 'Déployez des chats clients via des URL uniques. Liez-les à vos sujets pour offrir une assistance client hautement personnalisée.',
+
         'about_title' => 'Pourquoi ' . $appName . ' ?', 'about_p1' => 'Logiciel classique est lent. ' . $appName . ' est immédiat.', 'about_p2' => 'Donnez un ordre, c\'est fait.',
         'how_title' => 'Ça prend des secondes.', 'how_desc' => 'Écrivez vos commandes comme à un assistant.',
 
-        'how_step_1' => 'Équipe',
-        'how_step_1_cmd' => '« Ajoute Jean (jean@example.com) à l\'équipe. »',
-        'how_step_1_reply' => '> Nouveau membre \'Jean\' créé avec succès.',
-
-        'how_step_2' => 'Tâches & Délais',
-        'how_step_2_cmd' => '« Tâche pour Jean : Finir le rapport pour vendredi. »',
-        'how_step_2_reply' => '> Échéance \'Rapport Vendredi\' créée avec fréquence \'quotidienne\', expire dans \'2 jours\'.',
-
-        'how_step_3' => 'Clients',
-        'how_step_3_cmd' => '« Montre-moi les infos du Client X. »',
-        'how_step_3_reply' => '> Détails récupérés pour \'Client X\'. Email : client.x@example.com, Tél : +1 555-0192.',
-
-        'how_step_4' => 'Permissions',
-        'how_step_4_cmd' => '« Bloque accès à l\'équipe après 18h. »',
-        'how_step_4_reply' => '> Règle d\'accès mise à jour. L\'accès de l\'équipe est maintenant bloqué entre 18h00 et 08h00.',
-
-        'how_step_5' => 'Recherche Documents',
-        'how_step_5_cmd' => '« Trouve toutes les factures chargées par les membres en mars. »',
-        'how_step_5_reply' => '> Recherche terminée. 4 fichiers correspondant à \'facture\' trouvés entre le 1er et le 31 mars.',
+        'how_step_1' => 'Annonces', 'how_step_1_cmd' => '« Annonce : Le bureau est fermé vendredi. »', 'how_step_1_reply' => '> Annonce envoyée à 14 membres.',
+        'how_step_2' => 'Rappels', 'how_step_2_cmd' => '« Rappelle au design la deadline demain à 9h. »', 'how_step_2_reply' => '> Rappel programmé pour le rôle \'design\'.',
+        'how_step_3' => 'Raccourcis', 'how_step_3_cmd' => '« Crée raccourci \'cdlt\' pour \'Cordialement\' »', 'how_step_3_reply' => '> Raccourci \'cdlt\' sauvegardé.',
+        'how_step_4' => 'Sondages', 'how_step_4_cmd' => '« Sondage : Pizza ou Sushi pour vendredi ? »', 'how_step_4_reply' => '> Sondage créé : 1. Pizza, 2. Sushi.',
+        'how_step_5' => 'Planning', 'how_step_5_cmd' => '« Planning de Sarah : Lun-Jeu 9h à 17h. »', 'how_step_5_reply' => '> Planning mis à jour pour \'Sarah\'.',
+        'how_step_6' => 'Rôles', 'how_step_6_cmd' => '« Crée rôle Marketing avec Alex comme manager. »', 'how_step_6_reply' => '> Rôle créé. \'Alex\' est manager.',
+        'how_step_7' => 'Instructions', 'how_step_7_cmd' => '« Instruction Support : Répondre en 5 min. »', 'how_step_7_reply' => '> Instruction ajoutée au rôle \'Support\'.',
+        'how_step_8' => 'Accès', 'how_step_8_cmd' => '« Bloque l\'accès de l\'équipe le week-end. »', 'how_step_8_reply' => '> Règle mise à jour. Accès bloqué Sam et Dim.',
+        'how_step_9' => 'Sujets', 'how_step_9_cmd' => '« Crée sujet \'Lancement Q3\' pour le marketing. »', 'how_step_9_reply' => '> Sujet créé avec 4 membres.',
 
         'platforms_title' => 'Choisissez votre plateforme',
         'platforms_desc' => 'Gérez votre équipe depuis votre application préférée.',
@@ -424,34 +473,35 @@ $translations = [
         'pill_1_title' => 'Em todo lugar', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Zero Treino', 'pill_2_desc' => 'Simples como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Dados seguros',
         'features_title' => 'Substitui seu painel.', 'features_desc' => 'Faça tudo pelo chat.',
-        'f_company' => 'Equipe', 'f_company_desc' => 'Adicione ou remova funcionários instantaneamente.',
-        'f_employees' => 'Tarefas & Prazos', 'f_employees_desc' => 'Designe tarefas por texto. Nós cobramos os prazos.',
-        'f_positions' => 'Clientes', 'f_positions_desc' => 'Veja dados de clientes sem sair do chat.',
-        'f_departments' => 'Permissões', 'f_departments_desc' => 'Controle quem vê o que e quando.',
-        'f_access' => 'Arquivos', 'f_access_desc' => 'Crie imagens e documentos na hora.',
-        'f_reminders' => 'Busca Documentos', 'f_reminders_desc' => 'Encontre contratos buscando pelo conteúdo.',
+
+        'f_1' => 'Anúncios', 'f_1_desc' => 'Envie mensagens instantâneas para toda a equipe ou pessoas específicas.',
+        'f_2' => 'Lembretes', 'f_2_desc' => 'Configure avisos automatizados para sua equipe ou funções.',
+        'f_3' => 'Atalhos', 'f_3_desc' => 'Digite menos. Transforme frases curtas em respostas completas.',
+        'f_4' => 'Enquetes', 'f_4_desc' => 'Tome decisões mais rápido com enquetes diretas no chat.',
+        'f_5' => 'Horário', 'f_5_desc' => 'Configure rotinas semanais para equipes ou membros.',
+        'f_6' => 'Funções', 'f_6_desc' => 'Agrupe membros facilmente e defina níveis de gestão.',
+        'f_7' => 'Instruções', 'f_7_desc' => 'Atribua diretrizes rigorosas para funções específicas.',
+        'f_8' => 'Acesso', 'f_8_desc' => 'Controle o acesso bloqueando a equipe até os minutos exatos.',
+        'f_9' => 'Tópicos', 'f_9_desc' => 'Agrupe arquivos e links em espaços dedicados.',
+        'f_10' => 'Busca', 'f_10_desc' => 'Busque arquivos e URLs usando linguagem natural e tags.',
+        'f_11' => 'Gerador', 'f_11_desc' => 'Crie e edite documentos diretamente dos seus comandos de chat.',
+        'f_12' => 'Análise', 'f_12_desc' => 'Deixe a IA analisar e resumir arquivos ou links para você.',
+        'f_13' => 'Planos', 'f_13_desc' => 'Transforme dados em estratégia com planos gerados por IA.',
+        'f_14' => 'Painel Web', 'f_14_desc' => 'Mude para um painel visual para ver os dados da equipe.',
+        'f_15' => 'Portal', 'f_15_desc' => 'Implante chats para clientes via URLs únicos. Vincule-os aos seus tópicos para potencializar a assistência personalizada.',
+
         'about_title' => 'Por que ' . $appName . '?', 'about_p1' => 'Software tradicional é lento. ' . $appName . ' é imediato.', 'about_p2' => 'Dê o comando, e está feito.',
         'how_title' => 'Leva segundos.', 'how_desc' => 'Escreva comandos como se falasse com um assistente.',
 
-        'how_step_1' => 'Equipe',
-        'how_step_1_cmd' => '“Adicione João (joao@example.com) à equipe.”',
-        'how_step_1_reply' => '> Novo membro \'João\' criado com sucesso.',
-
-        'how_step_2' => 'Tarefas & Prazos',
-        'how_step_2_cmd' => '“Tarefa para João: Terminar o relatório até sexta.”',
-        'how_step_2_reply' => '> Prazo \'Relatório Sexta\' criado com frequência \'diária\', expira em \'2 dias\'.',
-
-        'how_step_3' => 'Clientes',
-        'how_step_3_cmd' => '“Mostre-me os dados do Cliente X.”',
-        'how_step_3_reply' => '> Dados recuperados para \'Cliente X\'. Email: client.x@example.com, Tel: +1 555-0192.',
-
-        'how_step_4' => 'Permissões',
-        'how_step_4_cmd' => '“Bloqueie acesso à equipe após as 18h.”',
-        'how_step_4_reply' => '> Regra de acesso atualizada. Acesso da equipe bloqueado entre 18:00 e 08:00.',
-
-        'how_step_5' => 'Busca Documentos',
-        'how_step_5_cmd' => '“Encontre todas as faturas enviadas por membros em março.”',
-        'how_step_5_reply' => '> Busca concluída. 4 arquivos correspondentes a \'fatura\' encontrados entre 1 e 31 de março.',
+        'how_step_1' => 'Anúncios', 'how_step_1_cmd' => '“Anúncio: O escritório fecha na sexta.”', 'how_step_1_reply' => '> Anúncio enviado a 14 membros.',
+        'how_step_2' => 'Lembretes', 'how_step_2_cmd' => '“Lembrar o design do prazo amanhã às 9h.”', 'how_step_2_reply' => '> Lembrete agendado para a função \'design\'.',
+        'how_step_3' => 'Atalhos', 'how_step_3_cmd' => '“Criar atalho \'btd\' para \'Bom dia, em que posso ajudar?\'”', 'how_step_3_reply' => '> Atalho \'btd\' salvo.',
+        'how_step_4' => 'Enquetes', 'how_step_4_cmd' => '“Enquete: Pizza ou Sushi na sexta?”', 'how_step_4_reply' => '> Enquete criada: 1. Pizza, 2. Sushi.',
+        'how_step_5' => 'Horário', 'how_step_5_cmd' => '“Horário da Sara: Seg-Qui 9h às 17h.”', 'how_step_5_reply' => '> Horário atualizado para \'Sara\'.',
+        'how_step_6' => 'Funções', 'how_step_6_cmd' => '“Criar função Marketing com Alex gerente.”', 'how_step_6_reply' => '> Função criada. \'Alex\' é gerente.',
+        'how_step_7' => 'Instruções', 'how_step_7_cmd' => '“Instrução Suporte: Responder em 5 min.”', 'how_step_7_reply' => '> Instrução adicionada à função \'Suporte\'.',
+        'how_step_8' => 'Acesso', 'how_step_8_cmd' => '“Bloquear acesso da equipe no fim de semana.”', 'how_step_8_reply' => '> Regra atualizada. Acesso bloqueado Sáb e Dom.',
+        'how_step_9' => 'Tópicos', 'how_step_9_cmd' => '“Criar tópico \'Lançamento Q3\' para o marketing.”', 'how_step_9_reply' => '> Tópico criado com 4 membros.',
 
         'platforms_title' => 'Escolha sua plataforma',
         'platforms_desc' => 'Gerencie sua equipe no seu app favorito.',
@@ -484,34 +534,35 @@ $translations = [
         'pill_1_title' => 'En todas partes', 'pill_1_desc' => 'Instagram, Messenger, WhatsApp, Discord, Telegram, Email',
         'pill_2_title' => 'Cero Formación', 'pill_2_desc' => 'Tan simple como SMS', 'pill_3_title' => 'Privado', 'pill_3_desc' => 'Datos seguros',
         'features_title' => 'Reemplaza su panel.', 'features_desc' => 'Haga todo el trabajo en el chat.',
-        'f_company' => 'Equipo', 'f_company_desc' => 'Añada o elimine empleados al instante.',
-        'f_employees' => 'Tareas y Plazos', 'f_employees_desc' => 'Asigne tareas por texto. Recordamos los plazos.',
-        'f_positions' => 'Clientes', 'f_positions_desc' => 'Vea datos de clientes sin salir del chat.',
-        'f_departments' => 'Permisos', 'f_departments_desc' => 'Controle quién ve qué y cuándo.',
-        'f_access' => 'Archivos', 'f_access_desc' => 'Cree imágenes y documentos al vuelo.',
-        'f_reminders' => 'Búsqueda Documentos', 'f_reminders_desc' => 'Encuentre contratos buscando en el contenido.',
+
+        'f_1' => 'Anuncios', 'f_1_desc' => 'Difunda mensajes al instante a todo el equipo o a personas específicas.',
+        'f_2' => 'Recordatorios', 'f_2_desc' => 'Configure avisos automatizados para su equipo, roles o miembros.',
+        'f_3' => 'Atajos', 'f_3_desc' => 'Escriba menos. Expanda frases cortas en respuestas completas.',
+        'f_4' => 'Encuestas', 'f_4_desc' => 'Tome decisiones más rápido con encuestas directas en el chat.',
+        'f_5' => 'Horario', 'f_5_desc' => 'Configure rutinas semanales flexibles para equipos o miembros.',
+        'f_6' => 'Roles y Mánagers', 'f_6_desc' => 'Agrupe a los miembros fácilmente y defina niveles de gestión.',
+        'f_7' => 'Instrucciones', 'f_7_desc' => 'Asigne pautas estrictas y personalizables para roles específicos.',
+        'f_8' => 'Acceso', 'f_8_desc' => 'Controle el acceso bloqueando al equipo hasta el minuto exacto.',
+        'f_9' => 'Temas', 'f_9_desc' => 'Agrupe archivos y enlaces en espacios dedicados para el equipo.',
+        'f_10' => 'Búsqueda', 'f_10_desc' => 'Busque archivos y URL utilizando lenguaje natural y etiquetas.',
+        'f_11' => 'Generador', 'f_11_desc' => 'Cree y edite documentos directamente desde los comandos del chat.',
+        'f_12' => 'Análisis', 'f_12_desc' => 'Deje que la IA analice y resuma los archivos o enlaces por usted.',
+        'f_13' => 'Planes', 'f_13_desc' => 'Convierta los datos en estrategia con planes generados por IA.',
+        'f_14' => 'Panel Web', 'f_14_desc' => 'Cambie a un panel visual para revisar los datos del equipo.',
+        'f_15' => 'Portal', 'f_15_desc' => 'Despliegue chats para clientes a través de URL únicas. Conéctelos a sus temas internos para potenciar la asistencia personalizada.',
+
         'about_title' => '¿Por qué ' . $appName . '?', 'about_p1' => 'El software clásico es lento. ' . $appName . ' es inmediato.', 'about_p2' => 'Dé una orden y listo.',
         'how_title' => 'Toma segundos.', 'how_desc' => 'Escriba comandos como si hablara con un asistente.',
 
-        'how_step_1' => 'Equipo',
-        'how_step_1_cmd' => '“Añada a Juan (juan@example.com) al equipo.”',
-        'how_step_1_reply' => '> Nuevo miembro \'Juan\' creado con éxito.',
-
-        'how_step_2' => 'Tareas y Plazos',
-        'how_step_2_cmd' => '“Tarea para Juan: Terminar el informe para el viernes.”',
-        'how_step_2_reply' => '> Plazo \'Informe Viernes\' creado con frecuencia \'diaria\', vence en \'2 días\'.',
-
-        'how_step_3' => 'Clientes',
-        'how_step_3_cmd' => '“Muestre la info de contacto del Cliente X.”',
-        'how_step_3_reply' => '> Detalles recuperados para \'Cliente X\'. Email: client.x@example.com, Tel: +1 555-0192.',
-
-        'how_step_4' => 'Permisos',
-        'how_step_4_cmd' => '“Bloquee acceso al equipo tras las 18:00.”',
-        'how_step_4_reply' => '> Regla de acceso actualizada. El acceso del equipo está bloqueado entre las 18:00 y las 08:00.',
-
-        'how_step_5' => 'Búsqueda Documentos',
-        'how_step_5_cmd' => '“Encuentre todas las facturas subidas por miembros en marzo.”',
-        'how_step_5_reply' => '> Búsqueda completada. 4 archivos coincidentes con \'factura\' encontrados entre el 1 y el 31 de marzo.',
+        'how_step_1' => 'Anuncios', 'how_step_1_cmd' => '“Anuncio: La oficina cierra el viernes.”', 'how_step_1_reply' => '> Anuncio enviado a 14 miembros.',
+        'how_step_2' => 'Recordatorios', 'how_step_2_cmd' => '“Recordar a diseño la entrega mañana a las 9 am.”', 'how_step_2_reply' => '> Recordatorio programado para el rol \'diseño\'.',
+        'how_step_3' => 'Atajos', 'how_step_3_cmd' => '“Crear atajo \'sds\' para \'Saludos cordiales\'”', 'how_step_3_reply' => '> Atajo \'sds\' guardado con éxito.',
+        'how_step_4' => 'Encuestas', 'how_step_4_cmd' => '“Encuesta: ¿Pizza o Sushi para el viernes?”', 'how_step_4_reply' => '> Encuesta creada: 1. Pizza, 2. Sushi.',
+        'how_step_5' => 'Horario', 'how_step_5_cmd' => '“Horario de Sara: Lun-Jue 9am a 5pm.”', 'how_step_5_reply' => '> Horario actualizado para \'Sara\'.',
+        'how_step_6' => 'Roles', 'how_step_6_cmd' => '“Crear rol Marketing con Alex de mánager.”', 'how_step_6_reply' => '> Rol creado. \'Alex\' asignado como mánager.',
+        'how_step_7' => 'Instrucciones', 'how_step_7_cmd' => '“Instrucción Soporte: Responder en 5 min.”', 'how_step_7_reply' => '> Instrucción añadida al rol \'Soporte\'.',
+        'how_step_8' => 'Acceso', 'how_step_8_cmd' => '“Bloquear acceso al equipo el fin de semana.”', 'how_step_8_reply' => '> Regla actualizada. Acceso bloqueado Sab y Dom.',
+        'how_step_9' => 'Temas', 'how_step_9_cmd' => '“Crear tema \'Lanzamiento Q3\' para marketing.”', 'how_step_9_reply' => '> Tema inicializado con 4 miembros.',
 
         'platforms_title' => 'Elige tu plataforma',
         'platforms_desc' => 'Gestiona tu equipo desde tu app favorita.',
@@ -873,8 +924,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         </div>
         <div class="row g-4">
             <?php
-            $feats = ['company', 'employees', 'positions', 'departments', 'access', 'reminders'];
-            $icons = ['building', 'people', 'person-check', 'shield-lock', 'pencil-square', 'search'];
+            $feats = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'];
+            $icons = ['megaphone', 'clock', 'lightning', 'bar-chart', 'calendar3', 'diagram-3', 'list-check', 'lock', 'folder', 'search', 'file-earmark-plus', 'graph-up', 'map', 'window-sidebar', 'shop'];
             foreach ($feats as $k => $f): ?>
                 <div class="col-md-6 col-lg-4 reveal">
                     <div class="feature-card">
@@ -915,7 +966,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             <div class="col-lg-8">
                 <div class="bg-card p-4 rounded-4 shadow-sm timeline-container" id="timelineBox">
                     <?php
-                    $steps = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5'];
+                    $steps = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5', 'step_6', 'step_7', 'step_8', 'step_9'];
                     foreach ($steps as $s): ?>
                         <div class="timeline-item">
                             <div class="timeline-bullet"></div>
@@ -966,7 +1017,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
                         <div class="text-end">
                             <h2 class="fw-bold text-primary mb-0">€<span id="calculatedPrice">99</span></h2>
                             <small class="text-secondary-theme"><?php echo $t['pricing_per_month']; ?></small><br>
-                            <small class="text-muted" style="font-size: 0.75rem;">(€<span id="pricePerMsg">0.099</span>
+                            <small class="text-secondary-theme" style="font-size: 0.75rem;">(€<span id="pricePerMsg">0.099</span>
                                 <?php echo $t['pricing_per_msg']; ?>)</small>
                         </div>
                     </div>
@@ -1135,7 +1186,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
             sys: <?php echo json_encode($t['how_step_4_reply']); ?> },
         'step_5': {
             user: <?php echo json_encode($t['how_step_5_cmd']); ?>,
-            sys: <?php echo json_encode($t['how_step_5_reply']); ?> }
+            sys: <?php echo json_encode($t['how_step_5_reply']); ?> },
+        'step_6': {
+            user: <?php echo json_encode($t['how_step_6_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_6_reply']); ?> },
+        'step_7': {
+            user: <?php echo json_encode($t['how_step_7_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_7_reply']); ?> },
+        'step_8': {
+            user: <?php echo json_encode($t['how_step_8_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_8_reply']); ?> },
+        'step_9': {
+            user: <?php echo json_encode($t['how_step_9_cmd']); ?>,
+            sys: <?php echo json_encode($t['how_step_9_reply']); ?> }
     };
 </script>
 
@@ -1209,7 +1272,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_form'])) {
         if (hasTyped) return;
         hasTyped = true;
 
-        const keys = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5'];
+        const keys = ['step_1', 'step_2', 'step_3', 'step_4', 'step_5', 'step_6', 'step_7', 'step_8', 'step_9'];
 
         for (const key of keys) {
             const container = document.querySelector(`.type-container[data-step="${key}"]`);
